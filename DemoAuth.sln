@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppRazor", "WebAppRazor\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{10DDBD65-5FDF-4708-9F4A-AE76AF2CCB5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMVC2", "WebAppMVC2\WebAppMVC2.csproj", "{4A8790AA-C228-4E4A-B85C-B91A91B9CA33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMVC2", "WebAppMVC2\WebAppMVC2.csproj", "{4A8790AA-C228-4E4A-B85C-B91A91B9CA33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90CBFBE1-7960-40A5-8DD8-FFE604F9EF5E}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
