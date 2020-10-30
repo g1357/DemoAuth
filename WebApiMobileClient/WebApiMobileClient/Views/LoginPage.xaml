@@ -11,7 +11,7 @@
                      VerticalOptions="Center" HorizontalOptions="Center"
                      Spacing="20" Padding="20">
             <Label Text="Имя пользователя или эл. почта:" />
-            <Entry Text="{Binding LoginData.Username}" Placeholder="User Name"/>
+            <Entry Text="{Binding LoginData.UserName}" Placeholder="User Name"/>
             <Label Text="Пароль:" />
             <Entry Text="{Binding LoginData.Password}" Placeholder="Password"
                    IsPassword="True"/>

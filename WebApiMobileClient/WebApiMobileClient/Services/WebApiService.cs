@@ -54,8 +54,16 @@ namespace WebApiMobileClient.Services
             request.Content = new FormUrlEncodedContent(keyValues);
             // Создаём клиента Http
             var client = new HttpClient();
-            // Выполняем запрос и одидаем ответа
-            var response = await client.SendAsync(request);
+            HttpResponseMessage response = null;
+            try
+            {
+                // Выполняем запрос и одидаем ответа
+                response = await client.SendAsync(request);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+            }
             // Проверяем код возврата ответа
             if (!response.IsSuccessStatusCode)
             {

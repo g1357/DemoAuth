@@ -12,10 +12,12 @@ namespace WebApiMobileClient.ViewModels
     {
         private readonly WebApiService _webApiService = new WebApiService();
 
-        public LoginDTO LoginData { get; set; }
+        public LoginDTO LoginData { get; set; } = new LoginDTO();
         public ICommand LoginCommand => new Command(async () =>
         {
             var accesstoken = await _webApiService.LoginAsync(LoginData);
+            App.Current.Properties["UserName"] = LoginData.UserName;
+            App.Current.Properties["Password"] = LoginData.Password;
             App.Current.Properties["AccessToken"] = accesstoken;
         });
 
@@ -27,7 +29,7 @@ namespace WebApiMobileClient.ViewModels
             }
             else
             {
-                LoginData.UserName = string.Empty;
+                LoginData.UserName = "ahmad@gmail.com"; // string.Empty;
             }
             if (App.Current.Properties.TryGetValue("Password", out value))
             {
@@ -35,7 +37,7 @@ namespace WebApiMobileClient.ViewModels
             }
             else
             {
-                LoginData.Password = string.Empty;
+                LoginData.Password = "Ahmad@123"; // string.Empty;
             }
 
         }
