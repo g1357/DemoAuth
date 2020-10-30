@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
         // POST: api/account/login
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<User>> PostLoginAsync(Login login)
+        public async Task<ActionResult<User>> PostLoginAsync([FromBody] Login login)
         {
             // Ищем пользователя в системе по адресу эл. почты
             var user = await _userManager.FindByEmailAsync(login.Email);

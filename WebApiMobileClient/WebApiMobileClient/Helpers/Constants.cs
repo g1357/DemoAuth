@@ -9,6 +9,6 @@ namespace WebApiMobileClient.Helpers
     /// </summary>
     public static class Constants
     {
-        public static readonly string BaseWebApiAddress = "https://localhost:5001";
+        public static readonly string BaseWebApiAddress = "http://localhost:57999"; //5001";
     }
 }

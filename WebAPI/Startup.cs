@@ -73,7 +73,7 @@ namespace WebAPI
                     .CreateScope().ServiceProvider
             );
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

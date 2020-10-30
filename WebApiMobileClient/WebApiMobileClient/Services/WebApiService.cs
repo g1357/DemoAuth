@@ -43,8 +43,10 @@ namespace WebApiMobileClient.Services
             // Создаём набор пар "ключ-значение" для моделирования ответа формы
             var keyValues = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("username", loginData.UserName),
-                new KeyValuePair<string, string>("password", loginData.Password),
+                //new KeyValuePair<string, string>("username", loginData.UserName),
+                //new KeyValuePair<string, string>("password", loginData.Password),
+                new KeyValuePair<string, string>("Email", loginData.UserName),
+                new KeyValuePair<string, string>("Password", loginData.Password),
                 new KeyValuePair<string, string>("grant_type", "password")
             };
             // Формируем запрос к вёб сервису
@@ -52,6 +54,7 @@ namespace WebApiMobileClient.Services
                 Constants.BaseWebApiAddress + "/api/account/login");
             // Добавляем в запрос тело, как ответ формы
             request.Content = new FormUrlEncodedContent(keyValues);
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
             // Создаём клиента Http
             var client = new HttpClient();
             HttpResponseMessage response = null;
@@ -63,6 +66,7 @@ namespace WebApiMobileClient.Services
             catch(Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                return string.Empty; ;
             }
             // Проверяем код возврата ответа
             if (!response.IsSuccessStatusCode)
