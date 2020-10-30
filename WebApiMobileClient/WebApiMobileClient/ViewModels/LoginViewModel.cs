@@ -12,32 +12,56 @@ namespace WebApiMobileClient.ViewModels
     {
         private readonly WebApiService _webApiService = new WebApiService();
 
-        public LoginDTO LoginData { get; set; } = new LoginDTO();
+        private string _email;
+        public string Email
+        { 
+            get => _email;
+            set => SetProperty(ref _email, value);
+        }
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set => SetProperty(ref _password, value);
+        }
+        private string _token;
+        public string Token
+        {
+            get => _token;
+            set => SetProperty(ref _token,value);
+        }
         public ICommand LoginCommand => new Command(async () =>
         {
+            Token = string.Empty;
+            LoginDTO LoginData = new LoginDTO
+            {
+                Email = Email,
+                Password = Password
+            };
             var accesstoken = await _webApiService.LoginAsync(LoginData);
-            App.Current.Properties["UserName"] = LoginData.UserName;
+            App.Current.Properties["UserName"] = LoginData.Email;
             App.Current.Properties["Password"] = LoginData.Password;
             App.Current.Properties["AccessToken"] = accesstoken;
+            Token = accesstoken;
         });
 
         public LoginViewModel()
         {
             if (App.Current.Properties.TryGetValue("UserName", out object value))
             {
-                LoginData.UserName = (string)value;
+                Email = (string)value;
             }
             else
             {
-                LoginData.UserName = "ahmad@gmail.com"; // string.Empty;
+                Email = "ahmad@gmail.com"; // string.Empty;
             }
             if (App.Current.Properties.TryGetValue("Password", out value))
             {
-                LoginData.Password = (string)value;
+                Password = (string)value;
             }
             else
             {
-                LoginData.Password = "Ahmad@123"; // string.Empty;
+                Password = "Ahmad@123"; // string.Empty;
             }
 
         }

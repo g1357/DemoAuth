@@ -11,12 +11,14 @@
                      VerticalOptions="Center" HorizontalOptions="Center"
                      Spacing="20" Padding="20">
             <Label Text="Имя пользователя или эл. почта:" />
-            <Entry Text="{Binding LoginData.UserName}" Placeholder="User Name"/>
+            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="User Name"/>
             <Label Text="Пароль:" />
-            <Entry Text="{Binding LoginData.Password}" Placeholder="Password"
+            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password"
                    IsPassword="True"/>
             <Button Text="ВХОД" Command="{Binding LoginCommand}"
                     FontSize="30" TextColor="White" BackgroundColor="DeepSkyBlue" />
+            <Label Text="Жетон (токен):" Margin="0,20,0,0" />
+            <Label Text="{Binding Token}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

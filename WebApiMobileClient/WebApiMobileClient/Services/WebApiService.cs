@@ -21,12 +21,12 @@ namespace WebApiMobileClient.Services
         /// </summary>
         /// <param name="RegisterData">Данные о пользователе для регистрации</param>
         /// <returns>Флаг успешности создания пользователя</returns>
-        public async Task<bool> RegisterUserAsync(RegisterDTO RegisterData)
+        public async Task<bool> RegisterUserAsync(RegisterDTO registerData)
         {
             // Создаём клиента Http
             var client = new HttpClient();
             // Сериализуем данные регистрации
-            var json = JsonSerializer.Serialize(RegisterData);
+            var json = JsonSerializer.Serialize(registerData);
             // Создаём содержимое запроса (тело)
             HttpContent httpContent = new StringContent(json);
             // Устанавливаем тип содержимого в заголовке запроса
@@ -41,20 +41,24 @@ namespace WebApiMobileClient.Services
         public async Task<string> LoginAsync(LoginDTO loginData)
         {
             // Создаём набор пар "ключ-значение" для моделирования ответа формы
-            var keyValues = new List<KeyValuePair<string, string>>
-            {
-                //new KeyValuePair<string, string>("username", loginData.UserName),
-                //new KeyValuePair<string, string>("password", loginData.Password),
-                new KeyValuePair<string, string>("Email", loginData.UserName),
-                new KeyValuePair<string, string>("Password", loginData.Password),
-                new KeyValuePair<string, string>("grant_type", "password")
-            };
+            //var keyValues = new List<KeyValuePair<string, string>>
+            //{
+            //    //new KeyValuePair<string, string>("username", loginData.UserName),
+            //    //new KeyValuePair<string, string>("password", loginData.Password),
+            //    new KeyValuePair<string, string>("Email", loginData.Email),
+            //    new KeyValuePair<string, string>("Password", loginData.Password),
+            //    new KeyValuePair<string, string>("grant_type", "password")
+            //};
+            // Сериализуем данные входа
+            var json = JsonSerializer.Serialize(loginData);
+
             // Формируем запрос к вёб сервису
             var request = new HttpRequestMessage(HttpMethod.Post,
                 Constants.BaseWebApiAddress + "/api/account/login");
             // Добавляем в запрос тело, как ответ формы
-            request.Content = new FormUrlEncodedContent(keyValues);
-            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+            //request.Content = new FormUrlEncodedContent(keyValues);
+            request.Content = new StringContent(json);
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             // Создаём клиента Http
             var client = new HttpClient();
             HttpResponseMessage response = null;
@@ -82,7 +86,7 @@ namespace WebApiMobileClient.Services
             // Получаем время истечения срока действия
             var hasExpir = pairs.TryGetValue(".expires", out string expir);
             // Получаем токен доступа
-            var hasToken = pairs.TryGetValue("access_token", out string token);
+            var hasToken = pairs.TryGetValue("jwtToken", out string token);
             return token;
         }
     }

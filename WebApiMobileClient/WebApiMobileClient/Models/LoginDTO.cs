@@ -10,9 +10,9 @@ namespace WebApiMobileClient.Models
     public class LoginDTO
     {
         /// <summary>
-        /// Имя пользователя
+        /// Эл. почта пользователя
         /// </summary>
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// Пароль
