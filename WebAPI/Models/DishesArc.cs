@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAPI.Models
 {
     /// <summary>
-    /// Текущий набор блюд
+    /// Архив блюд
     /// </summary>
-    public class Catalog
+    public class DishesArc
     {
         /// <summary>
         /// Идентификатор элемента
@@ -47,18 +46,6 @@ namespace WebAPI.Models
         /// </summary>
         public decimal Weight { get; set; }
 
-        [NotMapped]
-        /// <summary>
-        /// Идентификаторы дополнительных картинки
-        /// </summary>
-        public int[] PictureIds
-        {
-            get => Array.ConvertAll(PictuteIdsList.Split(";"), int.Parse);
-            set => PictuteIdsList = string.Join(";", value.Select( p =>
-                p.ToString()).ToArray());
-        }
-        private string PictuteIdsList { get; set; }
-
         /// <summary>
         /// Признак доступности для заказа
         /// </summary>
@@ -68,6 +55,5 @@ namespace WebAPI.Models
         /// Идентификатор элемента
         /// </summary>
         public decimal Rating { get; set; }
-
     }
 }
