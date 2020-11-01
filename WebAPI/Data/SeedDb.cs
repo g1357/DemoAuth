@@ -26,6 +26,8 @@ namespace WebAPI.Data
                 userManager.CreateAsync(user, "Ahmad@123");
             }
 
+            //using(var catalog = context.)
+
         }
     }
 }

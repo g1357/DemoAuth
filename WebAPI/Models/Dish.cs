@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace WebAPI.Models
 {
     /// <summary>
-    /// Текущий набор блюд
+    /// Опимсание блюда
     /// </summary>
-    public class Catalog
+    public class Dish
     {
         /// <summary>
         /// Идентификатор элемента

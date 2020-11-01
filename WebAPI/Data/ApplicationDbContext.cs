@@ -11,6 +11,7 @@ namespace WebAPI.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Dish> Dishes { get; set; }
         public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {
