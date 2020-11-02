@@ -14,6 +14,6 @@ namespace WebAPI.Helpers
         public const int PORT = 465;
         public const bool ENABLESSL = true;
         public const string USERNAME = "g1357";
-        public const string PASSWORD = "Moscow-2012";
+        public const string PASSWORD = "********";
     }
 }
