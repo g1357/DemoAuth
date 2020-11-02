@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WebAPI.Models
 {
     /// <summary>
-    /// Опимсание блюда
+    /// Описание блюда
     /// </summary>
     public class Dish
     {
@@ -43,21 +43,21 @@ namespace WebAPI.Models
         public int MainPictureIdd { get; set; }
 
         /// <summary>
-        /// Вес
+        /// Вес (может быть в формате: "125/50/30")
         /// </summary>
-        public decimal Weight { get; set; }
+        public string Weight { get; set; }
 
-        [NotMapped]
-        /// <summary>
-        /// Идентификаторы дополнительных картинки
-        /// </summary>
-        public int[] PictureIds
-        {
-            get => Array.ConvertAll(PictuteIdsList.Split(";"), int.Parse);
-            set => PictuteIdsList = string.Join(";", value.Select( p =>
-                p.ToString()).ToArray());
-        }
-        private string PictuteIdsList { get; set; }
+        //[NotMapped]
+        ///// <summary>
+        ///// Идентификаторы дополнительных картинки
+        ///// </summary>
+        //public int[] PictureIds
+        //{
+        //    get => Array.ConvertAll(PictuteIdsList.Split(";"), int.Parse);
+        //    set => PictuteIdsList = string.Join(";", value.Select( p =>
+        //        p.ToString()).ToArray());
+        //}
+        //private string PictuteIdsList { get; set; }
 
         /// <summary>
         /// Признак доступности для заказа

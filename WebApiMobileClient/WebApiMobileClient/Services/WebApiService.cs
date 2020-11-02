@@ -54,7 +54,7 @@ namespace WebApiMobileClient.Services
 
             // Формируем запрос к вёб сервису
             var request = new HttpRequestMessage(HttpMethod.Post,
-                Constants.BaseWebApiAddress + "/api/account/login");
+                Constants.GetBaseWebApiAddress() + "/api/account/login");
             // Добавляем в запрос тело, как ответ формы
             //request.Content = new FormUrlEncodedContent(keyValues);
             request.Content = new StringContent(json);
