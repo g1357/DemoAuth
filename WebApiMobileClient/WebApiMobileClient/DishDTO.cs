@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace WebAPI.Models
+namespace WebApiMobileClient
 {
     /// <summary>
-    /// Описание блюда
+    /// Описание блюда, получаемое от сервиса
     /// </summary>
-    public class Dish
+    public class DishDTO
     {
         /// <summary>
         /// Идентификатор элемента
@@ -47,18 +45,6 @@ namespace WebAPI.Models
         /// </summary>
         public string Weight { get; set; }
 
-        //[NotMapped]
-        ///// <summary>
-        ///// Идентификаторы дополнительных картинки
-        ///// </summary>
-        //public int[] PictureIds
-        //{
-        //    get => Array.ConvertAll(PictuteIdsList.Split(";"), int.Parse);
-        //    set => PictuteIdsList = string.Join(";", value.Select( p =>
-        //        p.ToString()).ToArray());
-        //}
-        //private string PictuteIdsList { get; set; }
-
         /// <summary>
         /// Признак доступности для заказа
         /// </summary>
@@ -68,21 +54,5 @@ namespace WebAPI.Models
         /// Идентификатор элемента
         /// </summary>
         public decimal Rating { get; set; }
-
-        public Photo Photo
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public DishType DishType
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

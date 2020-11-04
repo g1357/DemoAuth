@@ -14,6 +14,14 @@ namespace WebAPI.Models
         public int Id { get; set; }
         public string FileName { get; set; }
         public int DishId { get; set; }
-        public string FileData { get; set; } 
+        public string FileData { get; set; }
+
+        public Dish Dish
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

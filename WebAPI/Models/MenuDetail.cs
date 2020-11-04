@@ -10,8 +10,23 @@ namespace WebAPI.Models
     /// </summary>
     public class MenuDetail
     {
-        public int Id { get; set; }
+        public int MenuId { get; set; }
         public int DishId { get; set; }
 
+        public Dish Dish
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Menu Menu
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
