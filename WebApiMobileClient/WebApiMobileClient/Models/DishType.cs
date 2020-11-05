@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebApiMobileClient
+namespace WebApiMobileClient.Models
 {
     /// <summary>
     /// Вид блюда (закуска, первое, основное и т.д.)

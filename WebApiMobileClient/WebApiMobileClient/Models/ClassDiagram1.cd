@@ -1,35 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="WebApiMobileClient.Dish">
-    <Position X="2.75" Y="3.5" Width="1.5" />
+  <Class Name="WebApiMobileClient.Models.CurrentMenuDTO">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>Dish.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Photo" />
-      <Property Name="DishType" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="WebApiMobileClient.DishDTO">
-    <Position X="2.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAQAgAAAAAAABAAQAACEAAAEgAAAAAAAAAAA=</HashCode>
-      <FileName>DishDTO.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CurrentMenuDTO.cs</FileName>
+      <NewMemberFileName>Models\CurrentMenu.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebApiMobileClient.DishType">
-    <Position X="5" Y="5.25" Width="1.5" />
+  <Class Name="WebApiMobileClient.Models.Dish">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAACQAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Dish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApiMobileClient.Models.DishDTO">
+    <Position X="8" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAAABABAAQAACAAAAEgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DishDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApiMobileClient.Models.DishType">
+    <Position X="8" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAgAAAQAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DishType.cs</FileName>
+      <FileName>Models\DishType.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebApiMobileClient.Photo">
-    <Position X="0.5" Y="5.5" Width="1.5" />
+  <Class Name="WebApiMobileClient.Models.Photo">
+    <Position X="6" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAA=</HashCode>
-      <FileName>Photo.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\Photo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApiMobileClient.Models.OrderDTO">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQAgAAAAAQAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrderDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

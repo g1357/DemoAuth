@@ -16,7 +16,8 @@ namespace WebAPI.Models
         public decimal Total { get; set; }
         public int EatingAreaId { get; set; }
 
-        public Microsoft.AspNetCore.Identity.IdentityUser<object> IdentityUser
+
+        public EatingArea EatingArea
         {
             get => default;
             set
@@ -24,7 +25,7 @@ namespace WebAPI.Models
             }
         }
 
-        public EatingArea EatingArea
+        public ApplicationUser ApplicationUser
         {
             get => default;
             set

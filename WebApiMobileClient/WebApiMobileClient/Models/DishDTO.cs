@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebApiMobileClient
+namespace WebApiMobileClient.Models
 {
     /// <summary>
     /// Описание блюда, получаемое от сервиса
@@ -38,7 +38,7 @@ namespace WebApiMobileClient
         /// <summary>
         /// Идентификатор основной картинки
         /// </summary>
-        public int MainPictureIdd { get; set; }
+        public int MainPictureId { get; set; }
 
         /// <summary>
         /// Вес (может быть в формате: "125/50/30")

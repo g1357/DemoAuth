@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebApiMobileClient
+namespace WebApiMobileClient.Models
 {
     /// <summary>
     /// Фотография блюда
@@ -23,7 +23,7 @@ namespace WebApiMobileClient
         /// Идентификатор блюда для которого сделана фотография
         /// </summary>
         public int DishId { get; set; }
-        
+
         /// <summary>
         /// Данные фотографии
         /// </summary>
