@@ -54,5 +54,13 @@ namespace DataModel.Models
         /// Идентификатор элемента
         /// </summary>
         public decimal Rating { get; set; }
+
+        public DishType DishType
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataModel.Models.Dish">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAAAAABAAQAACAAAEEAAQABAAAAAAA=</HashCode>
+      <FileName>Models\Dish.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DishType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.DishType">
+    <Position X="3.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAQAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DishType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Models.Photo">
+    <Position X="1.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\Photo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.DayMenu">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>DayMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

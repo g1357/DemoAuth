@@ -11,11 +11,18 @@ namespace DataModel.Data
         public DbSet<Photo> Photos { get; set; }
         public DbSet<DishType> DishTypes { get; set; }
         public DbSet<Dish> Dishes { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public DbSet<DayMenu> DayMenus { get; set; }
+
+        public ApplicationDbContext()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(
-                Microsoft.Extensions.Configuration.GetConnectionString("DefaultConnection"));
+                @"Server=(localdb)\\mssqllocaldb;Database=EFDemo;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
     }
 }
