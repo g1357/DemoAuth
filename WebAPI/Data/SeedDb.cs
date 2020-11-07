@@ -27,7 +27,8 @@ namespace WebAPI.Data
             }
             var dishTypes = context.DishTypes;
             /*
-            dishTypes.Add(new DishType
+            dishTypes.Add(
+            new DishType
             {
                 Name = "Закуска", Plurals = "Закуски",
                 Description = "Блюда с которых начинают обед."
