@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using WebApiMobileClient.Models;
 using KeyType = System.Int16;
@@ -11,6 +12,10 @@ namespace WebApiMobileClient.Services
     /// </summary>
     public class CanteenDemoService : ICanteenService
     {
+        // Список типов (видов) блюд
+        List<DishType> DishTypeList;
+        // Список всех блюд
+        List<Dish> DishList;
         // Список дневных меню на 5-дневку
         List<DayMenu> DayMenuList;
 
@@ -19,35 +24,7 @@ namespace WebApiMobileClient.Services
         /// </summary>
         public CanteenDemoService()
         {
-
-            // Создаём список днеыных меню.
-            List<DayMenu> DayMenuList = new List<DayMenu>
-            {
-                new DayMenu
-                {
-                },
-                new DayMenu
-                {
-                },
-                new DayMenu
-                {
-                },
-                new DayMenu
-                {
-                },
-                new DayMenu
-                {
-                }
-            };
-
-        }
-
-        /// <summary>
-        /// Получение списка типов блюд
-        /// </summary>
-        /// <returns>Список типов блюд</returns>
-        public List<DishType> GetDishTypesAsync()
-        {
+            // Создаём список типов блюд
             var DishTypeList = new List<DishType>
             {
                 new DishType
@@ -87,6 +64,87 @@ namespace WebApiMobileClient.Services
                     IconName = string.Empty
                 }
             };
+            // Создаём список всех блюд
+            var dishTypeId = DishTypeList.FirstOrDefault(r => r.Name == "Закуска").Id;
+            DishList.Add(new Dish
+            {
+                Name = "ФРИТТА МИСТА", Price = 590.00M,
+                Description = "Кальмары и креветки в кляре под соусом айоли",
+                Weight = "290", TypeId = dishTypeId
+            });
+            DishList.Add(new Dish
+            {
+                Name = "БАКЛАЖАН ПАРМИДЖАНО", Price = 640.00M,
+                Description = "Баклажаны, томатный соус, базилик, пармезан, масло оливковое",
+                Weight = "370", TypeId = dishTypeId
+            });
+            DishList.Add(new Dish
+            {
+                Name = "ТУНЕЦ С ГУАКОМОЛЕ", Price = 880.00M,
+                Description = "Гуакомоле, филе тунца, лук-резанец, кинза, перец чили, пармезан, соус шрирача, вустерский соус, соус табаско, оливковое масло",
+                Weight = "260", TypeId = dishTypeId
+            });
+            DishList.Add(new Dish
+            {
+                Name = "ТАР ТАР ИЗ ГОВЯЖЕЙ ВЫРЕЗКИ", Price = 950.00M,
+                Description = "Вырезка из говядины, красный лук, каперсы, соус табаско, дижонская горчица, вустерский соус, соль, яйцо перепелиное, багет, оливковое масло",
+                Weight = "145/25", TypeId = dishTypeId
+            });
+            DishList.Add(new Dish
+            {
+                Name = "СЫР БУРАТТА",
+                Price = 780.00M,
+                Description = "Сыр Буратта, руккола, бальзамик.",
+                Weight = "125",
+                TypeId = dishTypeId
+            });
+
+            // Определяемся с датами текущего мень
+            // (на текущую или следующую неделю)
+            var dayOfWeek = (int) DateTime.Today.DayOfWeek;
+            var offset = dayOfWeek < 5 ? -dayOfWeek + 1 : -dayOfWeek + 8;
+            var today = DateTime.Today;
+            // Создаём список днеыных меню.
+            DayMenuList = new List<DayMenu>();
+            var date = today.AddDays(offset);
+            DayMenuList.Add(new DayMenu
+            {
+                Id = 1, Date = date, Disabled = date <= today,
+                Comment = "Дневное меню на понедельник."
+            });
+            date = today.AddDays(offset + 1);
+            DayMenuList.Add(new DayMenu
+            {
+                Id = 2, Date = date, Disabled = date <= today,
+                Comment = "Дневное меню на вторник."
+            });
+            date = today.AddDays(offset + 2);
+            DayMenuList.Add(new DayMenu
+            {
+                Id = 3, Date = date, Disabled = date <= today,
+                Comment = "Дневное меню на среду."
+            });
+            date = today.AddDays(offset + 3);
+            DayMenuList.Add(new DayMenu
+            {
+                Id = 4, Date = date, Disabled = date <= today,
+                Comment = "Дневное меню на четверг."
+            });
+            date = today.AddDays(offset + 4);
+            DayMenuList.Add(new DayMenu
+            {
+                Id = 5, Date = date, Disabled = date <= today,
+                Comment = "Дневное меню на пятницу."
+            });
+            // Заполняем список днеыных меню
+        }
+
+        /// <summary>
+        /// Получение списка типов блюд
+        /// </summary>
+        /// <returns>Список типов блюд</returns>
+        public List<DishType> GetDishTypesAsync()
+        {
             return DishTypeList;
         }
 
@@ -113,7 +171,7 @@ namespace WebApiMobileClient.Services
         {
             if (id > 0 && id <= DayMenuList.Count)
             {
-                return DayMenuList[id];
+                return DayMenuList[id - 1];
             }
             else
             {

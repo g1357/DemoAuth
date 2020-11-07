@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApiMobileClient.Services;
 using WebApiMobileClient.Views;
 using Xamarin.Forms;
 
@@ -14,6 +15,8 @@ namespace WebApiMobileClient
         public MainPage()
         {
             InitializeComponent();
+
+            new CanteenDemoService();
         }
 
         private async void NavigateToLognPage_OnClicked(object sender, EventArgs e)
