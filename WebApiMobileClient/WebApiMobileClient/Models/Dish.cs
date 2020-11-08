@@ -6,34 +6,42 @@ namespace WebApiMobileClient.Models
 {
     public class Dish :DishDTO
     {
-        private Photo _photo;
         /// <summary>
-        /// Основная фотография блюда
+        /// Имя файла фотографии
         /// </summary>
-        public Photo Photo
-        {
-            get
-            {
-                if (_photo == null)
-                {
-                    if (MainPictureId > 0)
-                    {
-                        //_photo = _service.GetPhotoAsync(MainPictureId);
-                    }
-                    else
-                    {
-                        _photo = null;
-                        // Ошибка внутренней структуры базы данных
-                    }
-                }
-                return _photo;
-            }
-            set
-            {
-                _photo = value;
-                MainPictureId = value.Id;
-            }
-        }
+        public string PhotoFileName { get; set; }
+
+        ///// <summary>
+        ///// Поле основной фотографии блюда
+        ///// </summary>
+        //private Photo _photo;
+        ///// <summary>
+        ///// Основная фотография блюда
+        ///// </summary>
+        //public Photo Photo
+        //{
+        //    get
+        //    {
+        //        if (_photo == null)
+        //        {
+        //            if (MainPictureId > 0)
+        //            {
+        //                //_photo = _service.GetPhotoAsync(MainPictureId);
+        //            }
+        //            else
+        //            {
+        //                _photo = null;
+        //                // Ошибка внутренней структуры базы данных
+        //            }
+        //        }
+        //        return _photo;
+        //    }
+        //    set
+        //    {
+        //        _photo = value;
+        //        MainPictureId = value.Id;
+        //    }
+        //}
 
         public DishType _type;
         public DishType Type
