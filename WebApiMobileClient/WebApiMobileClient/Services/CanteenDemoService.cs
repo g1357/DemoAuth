@@ -35,36 +35,43 @@ namespace WebApiMobileClient.Services
                 },
                 new DishType
                 {
-                    Id = 2, Name = "Слат", Plurals = "Салаты",
+                    Id = 2, Name = "Салат", Plurals = "Салаты",
                     Description = "Вид закуски с которой начинают обед.",
                     IconName = string.Empty
                 },
                 new DishType
                 {
-                    Id = 3, Name = "Основное блюдо", Plurals = "Основные блюда",
+                    Id = 3, Name = "Первое блюдо", Plurals = "Первые блюда",
+                    Description = "Первое блюдо(суп) за обедом.",
+                    IconName = string.Empty
+                },
+                new DishType
+                {
+                    Id = 4, Name = "Основное блюдо", Plurals = "Основные блюда",
                     Description = "Второе (основное) блюдо за обедом.",
                     IconName = string.Empty
                 },
                 new DishType
                 {
-                    Id = 4, Name = "Гарнир", Plurals = "Гарниры",
+                    Id = 5, Name = "Гарнир", Plurals = "Гарниры",
                     Description = "Гарнир к основному (второму) блюду.",
                     IconName = string.Empty
                 },
                 new DishType
                 {
-                    Id = 5, Name = "Десерт", Plurals = "Десерты",
+                    Id = 6, Name = "Десерт", Plurals = "Десерты",
                     Description = "Сладкое блюдо, которое едят в конце обеда.",
                     IconName = string.Empty
                 },
                 new DishType
                 {
-                    Id = 6, Name = "Напиток", Plurals = "Напитки",
+                    Id = 7, Name = "Напиток", Plurals = "Напитки",
                     Description = "Напитки в конце обеда. Компот и т.п",
                     IconName = string.Empty
                 }
             };
             // Создаём список всех блюд
+            DishList = new List<Dish>();
             var dishTypeId = DishTypeList.FirstOrDefault(r => r.Name == "Закуска").Id;
             DishList.Add(new Dish
             {
@@ -187,8 +194,8 @@ namespace WebApiMobileClient.Services
                 TypeId = dishTypeId,
                 PhotoFileName = "photo13.png"
             });
-            // Супы
-            dishTypeId = DishTypeList.FirstOrDefault(r => r.Name == "Суп").Id;
+            // Первые блюда
+            dishTypeId = DishTypeList.FirstOrDefault(r => r.Name == "Первое блюдо").Id;
             DishList.Add(new Dish
             {
                 Id = 14,

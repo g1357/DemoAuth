@@ -23,6 +23,10 @@ namespace WebApiMobileClient
         {
             await Navigation.PushAsync(new LoginPage());
         }
+        private async void NavigateToMainMenuPage_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainMenuPage());
+        }
 
     }
 }

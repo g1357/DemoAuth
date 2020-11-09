@@ -20,6 +20,7 @@
             </Label.FormattedText>
         </Label>
         <Button Text="Врйти в систему." Clicked="NavigateToLognPage_OnClicked" />
+        <Button Text="Перейти к главному меню." Clicked="NavigateToMainMenuPage_OnClicked" />
     </StackLayout>
 
 </ContentPage>

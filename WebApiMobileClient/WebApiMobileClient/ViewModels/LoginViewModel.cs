@@ -24,6 +24,16 @@ namespace WebApiMobileClient.ViewModels
             get => _password;
             set => SetProperty(ref _password, value);
         }
+
+        private string _message;
+
+        public string Message
+        {
+            get { return _message; }
+            set { SetProperty(ref _message, value); }
+        }
+
+
         private string _token;
         public string Token
         {
@@ -43,6 +53,14 @@ namespace WebApiMobileClient.ViewModels
             App.Current.Properties["Password"] = LoginData.Password;
             App.Current.Properties["AccessToken"] = accesstoken;
             Token = accesstoken;
+            if (string.IsNullOrEmpty(Token))
+            {
+                Message = "Токен НЕ получен!";
+            }
+            else
+            {
+                Message = "Токен получен!";
+            }
         });
 
         public LoginViewModel()

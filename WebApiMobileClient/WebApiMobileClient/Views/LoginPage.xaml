@@ -17,6 +17,7 @@
                    IsPassword="True"/>
             <Button Text="ВХОД" Command="{Binding LoginCommand}"
                     FontSize="30" TextColor="White" BackgroundColor="DeepSkyBlue" />
+            <Label Text="{Binding Message}" />
             <Label Text="Жетон (токен):" Margin="0,20,0,0" />
             <Label Text="{Binding Token}" />
         </StackLayout>
