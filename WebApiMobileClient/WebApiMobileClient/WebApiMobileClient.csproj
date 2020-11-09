@@ -12,6 +12,92 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\photo01.png" />
+    <None Remove="Images\photo02.png" />
+    <None Remove="Images\photo03.png" />
+    <None Remove="Images\photo04.png" />
+    <None Remove="Images\photo05.png" />
+    <None Remove="Images\photo06.png" />
+    <None Remove="Images\photo07.png" />
+    <None Remove="Images\photo08.png" />
+    <None Remove="Images\photo09.png" />
+    <None Remove="Images\photo10.png" />
+    <None Remove="Images\photo11.png" />
+    <None Remove="Images\photo12.png" />
+    <None Remove="Images\photo13.png" />
+    <None Remove="Images\photo14.png" />
+    <None Remove="Images\photo15.png" />
+    <None Remove="Images\photo16.png" />
+    <None Remove="Images\photo17.png" />
+    <None Remove="Images\photo18.png" />
+    <None Remove="Images\photo19.png" />
+    <None Remove="Images\photo20.png" />
+    <None Remove="Images\photo21.png" />
+    <None Remove="Images\photo22.png" />
+    <None Remove="Images\photo23.png" />
+    <None Remove="Images\photo24.png" />
+    <None Remove="Images\photo25.png" />
+    <None Remove="Images\photo26.png" />
+    <None Remove="Images\photo27.png" />
+    <None Remove="Images\photo28.png" />
+    <None Remove="Images\photo29.png" />
+    <None Remove="Images\photo30.png" />
+    <None Remove="Images\photo31.png" />
+    <None Remove="Images\photo32.png" />
+    <None Remove="Images\photo33.png" />
+    <None Remove="Images\photo34.png" />
+    <None Remove="Images\photo35.png" />
+    <None Remove="Images\photo36.png" />
+    <None Remove="Images\photo37.png" />
+    <None Remove="Images\photo38.png" />
+    <None Remove="Images\photo39.png" />
+    <None Remove="Images\photo40.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\photo01.png" />
+    <EmbeddedResource Include="Images\photo02.png" />
+    <EmbeddedResource Include="Images\photo03.png" />
+    <EmbeddedResource Include="Images\photo04.png" />
+    <EmbeddedResource Include="Images\photo05.png" />
+    <EmbeddedResource Include="Images\photo06.png" />
+    <EmbeddedResource Include="Images\photo07.png" />
+    <EmbeddedResource Include="Images\photo08.png" />
+    <EmbeddedResource Include="Images\photo09.png" />
+    <EmbeddedResource Include="Images\photo10.png" />
+    <EmbeddedResource Include="Images\photo11.png" />
+    <EmbeddedResource Include="Images\photo12.png" />
+    <EmbeddedResource Include="Images\photo13.png" />
+    <EmbeddedResource Include="Images\photo14.png" />
+    <EmbeddedResource Include="Images\photo15.png" />
+    <EmbeddedResource Include="Images\photo16.png" />
+    <EmbeddedResource Include="Images\photo17.png" />
+    <EmbeddedResource Include="Images\photo18.png" />
+    <EmbeddedResource Include="Images\photo19.png" />
+    <EmbeddedResource Include="Images\photo20.png" />
+    <EmbeddedResource Include="Images\photo21.png" />
+    <EmbeddedResource Include="Images\photo22.png" />
+    <EmbeddedResource Include="Images\photo23.png" />
+    <EmbeddedResource Include="Images\photo24.png" />
+    <EmbeddedResource Include="Images\photo25.png" />
+    <EmbeddedResource Include="Images\photo26.png" />
+    <EmbeddedResource Include="Images\photo27.png" />
+    <EmbeddedResource Include="Images\photo28.png" />
+    <EmbeddedResource Include="Images\photo29.png" />
+    <EmbeddedResource Include="Images\photo30.png" />
+    <EmbeddedResource Include="Images\photo31.png" />
+    <EmbeddedResource Include="Images\photo32.png" />
+    <EmbeddedResource Include="Images\photo33.png" />
+    <EmbeddedResource Include="Images\photo34.png" />
+    <EmbeddedResource Include="Images\photo35.png" />
+    <EmbeddedResource Include="Images\photo36.png" />
+    <EmbeddedResource Include="Images\photo37.png" />
+    <EmbeddedResource Include="Images\photo38.png" />
+    <EmbeddedResource Include="Images\photo39.png" />
+    <EmbeddedResource Include="Images\photo40.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />

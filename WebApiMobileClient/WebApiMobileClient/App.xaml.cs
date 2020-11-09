@@ -10,6 +10,8 @@ namespace WebApiMobileClient
         {
             InitializeComponent();
 
+            //DependencyService.Register<MockDataStore>();
+
             MainPage = new NavigationPage(new MainPage());
         }
 

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:WebApiMobileClient.Helpers;assembly=WebApiMobileClient"
              x:Class="WebApiMobileClient.MainPage">
 
     <StackLayout>
@@ -21,6 +22,6 @@
         </Label>
         <Button Text="Врйти в систему." Clicked="NavigateToLognPage_OnClicked" />
         <Button Text="Перейти к главному меню." Clicked="NavigateToMainMenuPage_OnClicked" />
+        <Image Source="{helper:ImageResource WebApiMobileClient.Images.photo01.png}" />
     </StackLayout>
-
 </ContentPage>
