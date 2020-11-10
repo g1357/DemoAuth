@@ -23,6 +23,8 @@
         <Button Text="Врйти в систему." Clicked="NavigateToLognPage_OnClicked" />
         <Button Text="Перейти к главному меню." Clicked="NavigateToMainMenuPage_OnClicked" />
         <Image Source="{helper:ImageResource WebApiMobileClient.Images.photo01.png}" />
-        <Image Source="{Binding PhotoSource}"/>
+        <!--<Label Text="{Binding Message}"/>
+        <Label Text="{Binding PhotoSource}"/>
+        <Image Source="{Binding PhotoSource}"/>-->
     </StackLayout>
 </ContentPage>

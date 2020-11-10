@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WebApiMobileClient.Services;
+using WebApiMobileClient.ViewModels;
 using WebApiMobileClient.Views;
 using Xamarin.Forms;
 
@@ -12,14 +14,11 @@ namespace WebApiMobileClient
 {
     public partial class MainPage : ContentPage
     {
-        public object PhotoSource { get; set; }
         public MainPage()
         {
-            PhotoSource = ImageSource.FromResource("WebApiMobileClient.Images.photo02.png");
-
             InitializeComponent();
 
-
+            BindingContext = new MainViewModel(this);
             //new CanteenDemoService();
         }
 

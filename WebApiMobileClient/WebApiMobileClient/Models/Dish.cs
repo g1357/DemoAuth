@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using Xamarin.Forms;
 
 namespace WebApiMobileClient.Models
 {
@@ -10,7 +12,12 @@ namespace WebApiMobileClient.Models
         /// Имя файла фотографии
         /// </summary>
         public string PhotoFileName { get; set; }
-
+        public ImageSource PhotoSource
+        {
+            get =>
+               ImageSource.FromResource($"WebApiMobileClient.Images.{PhotoFileName}",
+                 typeof(Dish).GetTypeInfo().Assembly);
+        }
         ///// <summary>
         ///// Поле основной фотографии блюда
         ///// </summary>

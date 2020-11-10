@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WebApiMobileClient.Views.FullMenuPage">
-  <ListView x:Name="MyListView"
+  <ListView x:Name="MyListView" HorizontalOptions="Center"
+            WidthRequest="400"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
@@ -18,11 +19,21 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Name}" 
+            <StackLayout Spacing="5" HorizontalOptions="Center">
+                <Image Source="{Binding PhotoSource}"
+                   WidthRequest="200" HeightRequest="200" />
+                <Label Text="{Binding Name}" 
                    Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Description}" 
+                <Label Text="{Binding Description}" 
                    Style="{DynamicResource ListItemDetailTextStyle}"/>
+                <StackLayout Orientation="Horizontal" Padding="10">
+                    <Label Text="Вес:" />
+                    <Label Text="{Binding Weight}"/>
+                    <Label Text="гр." />
+                    <Label Text="Цена:" />
+                    <Label Text="{Binding Price}"/>
+                    <Label Text="руб." />
+                </StackLayout>
           </StackLayout>
         </ViewCell>
       </DataTemplate>
