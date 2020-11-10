@@ -1,4 +1,5 @@
 ﻿using System;
+using WebApiMobileClient.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace WebApiMobileClient
         {
             InitializeComponent();
 
-            //DependencyService.Register<MockDataStore>();
+            DependencyService.Register<CanteenDemoService>();
 
             MainPage = new NavigationPage(new MainPage());
         }

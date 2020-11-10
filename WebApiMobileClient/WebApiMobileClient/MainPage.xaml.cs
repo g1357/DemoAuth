@@ -12,11 +12,15 @@ namespace WebApiMobileClient
 {
     public partial class MainPage : ContentPage
     {
+        public object PhotoSource { get; set; }
         public MainPage()
         {
+            PhotoSource = ImageSource.FromResource("WebApiMobileClient.Images.photo02.png");
+
             InitializeComponent();
 
-            new CanteenDemoService();
+
+            //new CanteenDemoService();
         }
 
         private async void NavigateToLognPage_OnClicked(object sender, EventArgs e)

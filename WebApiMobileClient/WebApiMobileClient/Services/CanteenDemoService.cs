@@ -498,6 +498,15 @@ namespace WebApiMobileClient.Services
         }
 
         /// <summary>
+        /// Получение полного меню.
+        /// </summary>
+        /// <returns>Полный список блюд</returns>
+        public List<Dish> GetFullMenuAsync()
+        {
+            return DishList;
+        }
+
+        /// <summary>
         /// Получение списка идентификаторов текущего меню
         /// </summary>
         /// <returns>Список идентификаторов дневных меню</returns>
