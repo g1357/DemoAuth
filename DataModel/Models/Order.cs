@@ -4,9 +4,12 @@ using System.Text;
 
 namespace DataModel.Models
 {
-    public class Photo
+    /// <summary>
+    /// Заказ клиента
+    /// </summary>
+    public  class Order : OrderDTO
     {
-        public int Id
+        public OrderStatus OrderStatus
         {
             get => default;
             set
@@ -14,7 +17,7 @@ namespace DataModel.Models
             }
         }
 
-        public string PhotoFileName
+        public User User
         {
             get => default;
             set
@@ -22,7 +25,7 @@ namespace DataModel.Models
             }
         }
 
-        public PhotoType PhotoType
+        public EatingZone EatingZone
         {
             get => default;
             set

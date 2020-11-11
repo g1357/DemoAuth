@@ -4,8 +4,16 @@ using System.Text;
 
 namespace DataModel.Models
 {
-    public class Photo
+    public class OrderDetails
     {
+        public int OrderId
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public int Id
         {
             get => default;
@@ -14,7 +22,7 @@ namespace DataModel.Models
             }
         }
 
-        public string PhotoFileName
+        public int DishId
         {
             get => default;
             set
@@ -22,7 +30,15 @@ namespace DataModel.Models
             }
         }
 
-        public PhotoType PhotoType
+        public Dish Dish
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Order Order
         {
             get => default;
             set

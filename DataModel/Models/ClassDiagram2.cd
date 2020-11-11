@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataModel.Models.DishType">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgACAQAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DishType.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Photo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.DishDTO">
+    <Position X="3.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAAABABAAQAACAAAAEgAAAgAAAAAAA=</HashCode>
+      <FileName>Models\DishDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Models.Dish">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Photo" Type="DataModel.Models.Photo" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="4.824" />
+        <Point X="5.125" Y="4.824" />
+        <Point X="5.125" Y="8.148" />
+        <Point X="6" Y="8.148" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAACQACAAEAAAAAAAAAEAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Dish.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DishType" />
+      <Property Name="DishStatus1" />
+      <Property Name="Photo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.DayMenu">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAA=</HashCode>
+      <FileName>Models\DayMenu.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MenuStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.OrderDTO">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAIQAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrderDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Models.Order">
+    <Position X="8.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="OrderStatus" />
+      <Property Name="User" />
+      <Property Name="EatingZone" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.DayMenuDetails">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAACIAAAA=</HashCode>
+      <FileName>Models\DayMenuDetails.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DayMenu" />
+      <Property Name="Dish" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.EatingZone">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgACAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EatingZone.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Photo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Models.Extensions">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DishStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Models.Photo">
+    <Position X="6" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Photo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PhotoType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.User">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAEAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.Models.OrderDetails">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Order" Type="DataModel.Models.Order" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="2.938" />
+        <Point X="8.75" Y="2.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\OrderDetails.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Dish" />
+      <Property Name="Order" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="DataModel.Models.OrderStatus">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAQAAAQAIAAAQAAAAgAACAAAA=</HashCode>
+      <FileName>Models\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DataModel.Models.MenuStatus">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAgAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MenuStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DataModel.Models.DishStatus">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAgAAAAAAAAAggAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DishStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DataModel.PhotoType">
+    <Position X="8.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAACACAAAAA=</HashCode>
+      <FileName>Models\PhotoType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

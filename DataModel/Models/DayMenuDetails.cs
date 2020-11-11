@@ -4,9 +4,9 @@ using System.Text;
 
 namespace DataModel.Models
 {
-    public class Photo
+    public class DayMenuDetails
     {
-        public int Id
+        public int DayMenuId
         {
             get => default;
             set
@@ -14,7 +14,7 @@ namespace DataModel.Models
             }
         }
 
-        public string PhotoFileName
+        public int DishId
         {
             get => default;
             set
@@ -22,7 +22,15 @@ namespace DataModel.Models
             }
         }
 
-        public PhotoType PhotoType
+        public DayMenu DayMenu
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Dish Dish
         {
             get => default;
             set

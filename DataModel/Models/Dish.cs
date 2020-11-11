@@ -1,61 +1,106 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using Xamarin.Forms;
 
 namespace DataModel.Models
 {
-    /// <summary>
-    /// Описание блюда
-    /// </summary>
-    public class Dish
+    public class Dish : DishDTO
     {
         /// <summary>
-        /// Идентификатор элемента
+        /// Имя файла фотографии
         /// </summary>
-        public int Id { get; set; }
+        public string PhotoFileName { get; set; }
+        public ImageSource PhotoSource
+        {
+            get =>
+               ImageSource.FromResource($"WebApiMobileClient.Images.{PhotoFileName}",
+                 typeof(Dish).GetTypeInfo().Assembly);
+        }
+        ///// <summary>
+        ///// Поле основной фотографии блюда
+        ///// </summary>
+        //private Photo _photo;
+        ///// <summary>
+        ///// Основная фотография блюда
+        ///// </summary>
+        //public Photo Photo
+        //{
+        //    get
+        //    {
+        //        if (_photo == null)
+        //        {
+        //            if (MainPictureId > 0)
+        //            {
+        //                //_photo = _service.GetPhotoAsync(MainPictureId);
+        //            }
+        //            else
+        //            {
+        //                _photo = null;
+        //                // Ошибка внутренней структуры базы данных
+        //            }
+        //        }
+        //        return _photo;
+        //    }
+        //    set
+        //    {
+        //        _photo = value;
+        //        MainPictureId = value.Id;
+        //    }
+        //}
 
-        /// <summary>
-        /// Название блюда
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Цена блюда
-        /// </summary>
-        public decimal Price { get; set; }
-
-        /// <summary>
-        /// Идентификатор типа блюда
-        /// (закуска, первое, основное, десерт, напиток и т.п.)
-        /// </summary>
-        public DishType Type { get; set; }
-
-        /// <summary>
-        /// Описание блюда
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Идентификатор основной картинки
-        /// </summary>
-        public Photo MainPicture { get; set; }
-
-        /// <summary>
-        /// Вес (может быть в формате: "125/50/30")
-        /// </summary>
-        public string Weight { get; set; }
-
-        /// <summary>
-        /// Признак доступности для заказа
-        /// </summary>
-        public bool Availability { get; set; }
-
-        /// <summary>
-        /// Идентификатор элемента
-        /// </summary>
-        public decimal Rating { get; set; }
+        public DishType _type;
+        public DishType Type
+        {
+            get
+            {
+                if (_type == null)
+                {
+                    if (TypeId > 0)
+                    {
+                        //_type = _service.GetPhotoAsync(TypeId);
+                    }
+                    else
+                    {
+                        _type = null;
+                        // Ошибка внутренней структуры базы данных
+                    }
+                }
+                return _type;
+            }
+            set
+            {
+                _type = value;
+                TypeId = value.Id;
+            }
+        }
 
         public DishType DishType
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public DishStatus DishStatus
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public DishStatus DishStatus1
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Photo Photo
         {
             get => default;
             set

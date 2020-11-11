@@ -72,6 +72,7 @@ namespace WebApiMobileClient.Services
             };
             // Создаём список всех блюд
             DishList = new List<Dish>();
+            // Закуски
             var dishTypeId = DishTypeList.FirstOrDefault(r => r.Name == "Закуска").Id;
             DishList.Add(new Dish
             {
@@ -112,7 +113,7 @@ namespace WebApiMobileClient.Services
                 Weight = "125", TypeId = dishTypeId,
                 PhotoFileName = "photo05.png"
             });
-
+            // Салаты
             dishTypeId = DishTypeList.FirstOrDefault(r => r.Name == "Салат").Id;
             DishList.Add(new Dish
             {

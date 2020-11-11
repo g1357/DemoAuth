@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebApiMobileClient.Models
+namespace DataModel.Models
 {
     /// <summary>
     /// Дневное меню
@@ -11,17 +11,32 @@ namespace WebApiMobileClient.Models
         /// Идентификатор дневного меню
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// Дата меню
         /// </summary>
         public DateTime Date { get; set; }
+
         /// <summary>
-        /// Признак доступности
+        /// Статус меню
         /// </summary>
-        public bool Disabled { get; set; }
+        public MenuStatus Status
+        {
+            get => default;
+            set { }
+        }
+
         /// <summary>
         /// Комментарий к меню
         /// </summary>
         public string Comment { get; set; }
+
+        public MenuStatus MenuStatus
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

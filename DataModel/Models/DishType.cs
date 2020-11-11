@@ -33,5 +33,13 @@ namespace DataModel.Models
         /// Имя (файла) иконки типа блюда
         /// </summary>
         public string IconName { get; set; }
+
+        public Photo Photo
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
