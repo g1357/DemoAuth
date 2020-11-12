@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebApiMobileClient
+namespace WebApiMobileClient.Models
 {
     /// <summary>
     /// Текущее меню на несколько дней

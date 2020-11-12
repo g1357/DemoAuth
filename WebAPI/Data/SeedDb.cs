@@ -72,7 +72,7 @@ namespace WebAPI.Data
             context.SaveChanges();
             */
             var dishes = context.Dishes;
-            var dishTypeId = dishTypes.FirstOrDefault(r => r.Name == "Закуска").Id;
+            //var dishTypeId = dishTypes.FirstOrDefault(r => r.Name == "Закуска").Id;
             /*
             dishes.Add(new Dish
             {
