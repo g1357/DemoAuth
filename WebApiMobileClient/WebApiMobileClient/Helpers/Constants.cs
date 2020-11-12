@@ -25,7 +25,7 @@ namespace WebApiMobileClient.Helpers
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    address = "http://192.168.200.76:5001";
+                    address = "http://10.10.1.2:5001"; //"http://192.168.200.76:5001";
                     break;
                 case Device.UWP:
                     address = "http://localhost:5001";

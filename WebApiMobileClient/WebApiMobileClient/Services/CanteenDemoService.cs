@@ -18,6 +18,8 @@ namespace WebApiMobileClient.Services
         List<Dish> DishList;
         // Список дневных меню на 5-дневку
         List<DayMenu> DayMenuList;
+        // Список детальной информации дневного меню
+        List<DayMenuDetails> DayMenuDetailsList;
 
         /// <summary>
         /// Конструктор класса
@@ -456,36 +458,87 @@ namespace WebApiMobileClient.Services
             var today = DateTime.Today;
             // Создаём список днеыных меню.
             DayMenuList = new List<DayMenu>();
+            DayMenuDetailsList = new List<DayMenuDetails>();
             var date = today.AddDays(offset);
             DayMenuList.Add(new DayMenu
             {
                 Id = 1, Date = date, Disabled = date <= today,
                 Comment = "Дневное меню на понедельник."
             });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 1 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 6});
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 14 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 15 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 19 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 20 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 28 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 29 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 33 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 34 });
             date = today.AddDays(offset + 1);
             DayMenuList.Add(new DayMenu
             {
                 Id = 2, Date = date, Disabled = date <= today,
                 Comment = "Дневное меню на вторник."
             });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 2 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 7 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 16 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 17 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 21 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 22 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 30 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 31 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 35 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 36 });
             date = today.AddDays(offset + 2);
             DayMenuList.Add(new DayMenu
             {
                 Id = 3, Date = date, Disabled = date <= today,
                 Comment = "Дневное меню на среду."
             });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 3 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 8 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 18 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 14 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 23 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 24 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 32 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 28 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 37 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 38 });
             date = today.AddDays(offset + 3);
             DayMenuList.Add(new DayMenu
             {
                 Id = 4, Date = date, Disabled = date <= today,
                 Comment = "Дневное меню на четверг."
             });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 4 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 9 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 15 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 16 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 25 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 26 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 29 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 30 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 39 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 40 });
             date = today.AddDays(offset + 4);
             DayMenuList.Add(new DayMenu
             {
                 Id = 5, Date = date, Disabled = date <= today,
                 Comment = "Дневное меню на пятницу."
             });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 5 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 10 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 17 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 18 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 27 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 21 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 30 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 32 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 34 });
+            DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 35 });
             // Заполняем список днеыных меню
         }
 

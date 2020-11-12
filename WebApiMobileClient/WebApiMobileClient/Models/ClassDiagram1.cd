@@ -43,8 +43,8 @@
       <FileName>Models\OrderDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WebApiMobileClient.DayMenu">
-    <Position X="4.75" Y="0.75" Width="1.5" />
+  <Class Name="WebApiMobileClient.Models.DayMenu">
+    <Position X="4.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAEAAAAAAAAAACAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Models\DayMenu.cs</FileName>
