@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataModel.Temp.Page1">
+    <ContentView>
+        <StackLayout>
+            <ListView x:Name="apartmentListView" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout VerticalOptions="StartAndExpand">
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="Gray">
+                                        <Label HorizontalOptions="StartAndExpand" Text="{Binding ApartmentName}" />
+                                        <Label HorizontalOptions="End" Text="{Binding Address}" />
+                                    </StackLayout>
+                                    <Label Text="{Binding ManagerPhoneNumber}" />
+                                    <!--<control:TenantViewTemplate Tenants="{Binding Tenants}" />-->
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentView>
+</ContentPage>
