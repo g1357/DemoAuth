@@ -27,8 +27,14 @@ namespace WebApiMobileClient.Services
         public CanteenDemoService()
         {
             // Создаём список типов блюд
-            var DishTypeList = new List<DishType>
+            DishTypeList = new List<DishType>
             {
+                new DishType
+                {
+                    Id = 0, Name = "Не задано", Plurals = "Не задано",
+                    Description = "Тип блюда не задан.",
+                    IconName = string.Empty
+                },
                 new DishType
                 {
                     Id = 1, Name = "Закуска", Plurals = "Закуски",
@@ -555,7 +561,7 @@ namespace WebApiMobileClient.Services
         /// Получение полного меню.
         /// </summary>
         /// <returns>Полный список блюд</returns>
-        public List<Dish> GetFullMenuAsync()
+        public IList<Dish> GetFullMenuAsync()
         {
             return DishList;
         }
@@ -574,8 +580,10 @@ namespace WebApiMobileClient.Services
             return CurrentMenuList;
         }
 
+        //public IEnumerable<>
+
         /// <summary>
-        /// ПОлочение дневного меню по идентификатору
+        /// Полочение дневного меню по идентификатору
         /// </summary>
         /// <param name="id">Идентификатор дневного меню</param>
         /// <returns>Дневное меню</returns>
