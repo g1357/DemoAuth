@@ -8,11 +8,18 @@
             <Label Text="Текущее меню на 5-ти дневку."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="xDishType"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
             <ListView ItemsSource="{Binding ItemsGrouped}" HasUnevenRows="True" 
                       IsGroupingEnabled="true"
                       GroupDisplayBinding="{Binding Key}"
                       GroupShortNameBinding="{Binding Key}"
-                      SeparatorColor="DarkRed">
+                      SeparatorColor="DarkRed"
+                      Header="Начало меню."
+                      Footer="Конец меню."
+                      ItemAppearing="ListView_ItemAppearing"
+                      ItemDisappearing="ListView_ItemDisappearing">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Dish" >
                         <ViewCell>
