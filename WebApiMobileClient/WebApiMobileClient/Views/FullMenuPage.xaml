@@ -5,8 +5,9 @@
   <ListView x:Name="MyListView" HorizontalOptions="Center"
             WidthRequest="400"
             ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
+            SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
+            CachingStrategy="RecycleElement"
+            ItemTapped="Handle_ItemTapped" >
     <!--Built in Cells-->
     <!--<ListView.ItemTemplate>
         <DataTemplate>

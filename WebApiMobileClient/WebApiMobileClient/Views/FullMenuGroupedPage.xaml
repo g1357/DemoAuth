@@ -11,7 +11,9 @@
             <Label x:Name="xDishType"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding ItemsGrouped}" HasUnevenRows="True" 
+            <ListView ItemsSource="{Binding ItemsGrouped}" 
+                      SelectedItem="{Binding ItemSelected}"
+                      HasUnevenRows="True" 
                       IsGroupingEnabled="true"
                       GroupDisplayBinding="{Binding Key}"
                       GroupShortNameBinding="{Binding Key}"

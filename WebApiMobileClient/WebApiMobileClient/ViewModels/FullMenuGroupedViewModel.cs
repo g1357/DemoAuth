@@ -18,6 +18,22 @@ namespace WebApiMobileClient.ViewModels
 
         public ObservableCollection<Dish> Items { get; set; }
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
+
+        private Dish _itemSelected;
+
+        public Dish ItemSelected
+        {
+            get { return _itemSelected; }
+            set
+            {
+                if (SetProperty(ref _itemSelected, value))
+                {
+                    _page.Navigation.PushAsync(new DishDetailsPage(_itemSelected));
+                    //ItemSelected = null;
+                }
+            }
+        }
+
         public FullMenuGroupedViewModel(FullMenuGroupedPage page)
         {
             _page = page;

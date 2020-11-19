@@ -15,6 +15,25 @@ namespace WebApiMobileClient.ViewModels
         CanteenDemoService _canteenService;
 
         public ObservableCollection<Dish> Items { get; set; }
+
+        private Dish _itemSelected;
+
+        public Dish ItemSelected
+        {
+            get { return _itemSelected; }
+            set
+            {
+                if (SetProperty(ref _itemSelected, value))
+                {
+                    if (value != null)
+                    {
+                        _page.Navigation.PushAsync(new DishDetailsPage(_itemSelected));
+                        ItemSelected = null;
+                    }
+                }
+            }
+        }
+
         public FullMenuViewModel(FullMenuPage page)
         {
             _page = page;

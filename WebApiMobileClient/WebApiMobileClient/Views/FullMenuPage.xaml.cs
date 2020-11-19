@@ -40,7 +40,7 @@ namespace WebApiMobileClient.Views
             await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
             //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            //(ListView)sender).SelectedItem = null;
         }
     }
 }
