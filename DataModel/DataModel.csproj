@@ -15,4 +15,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model3\" />
+  </ItemGroup>
+
 </Project>
