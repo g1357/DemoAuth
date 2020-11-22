@@ -8,6 +8,8 @@
                      VerticalOptions="Center" HorizontalOptions="Center"
                      Spacing="20" Padding="20">
             <Label Text="Выбирите действие:" />
+            <Button Text="ТЕКУЩЕЕ МЕНЮ" Command="{Binding CurrentMenuCommand}"
+                    FontSize="30" TextColor="White" BackgroundColor="DeepSkyBlue" />
             <Button Text="ПОЛНОЕ МЕНЮ" Command="{Binding FullMenuCommand}"
                     FontSize="30" TextColor="White" BackgroundColor="DeepSkyBlue" />
             <Button Text="ПОЛНОЕ МЕНЮ с группировкой" Command="{Binding FullMenuGroupedCommand}"

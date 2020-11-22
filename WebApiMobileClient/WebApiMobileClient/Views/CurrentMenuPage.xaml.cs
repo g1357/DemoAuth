@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WebApiMobileClient.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,8 @@ namespace WebApiMobileClient.Views
         public CurrentMenuPage()
         {
             InitializeComponent();
+
+            BindingContext = new CurrentMenuViewModel(this);
         }
     }
 }

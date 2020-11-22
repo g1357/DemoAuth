@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WebApiMobileClient.Models;
-using KeyType = System.Int16;
+//using KeyType = System.Int16;
 
 namespace WebApiMobileClient.Services
 {
@@ -17,7 +17,7 @@ namespace WebApiMobileClient.Services
         // Список всех блюд
         List<Dish> DishList;
         // Список дневных меню на 5-дневку
-        List<DayMenu> DayMenuList;
+        List<DayMenuDTO> DayMenuList;
         // Список детальной информации дневного меню
         List<DayMenuDetails> DayMenuDetailsList;
 
@@ -78,6 +78,8 @@ namespace WebApiMobileClient.Services
                     IconName = string.Empty
                 }
             };
+
+            #region Список всех блюд
             // Создаём список всех блюд
             DishList = new List<Dish>();
             // Закуски
@@ -456,19 +458,22 @@ namespace WebApiMobileClient.Services
                 Weight = "160", TypeId = dishTypeId,
                 PhotoFileName = "photo40.png"
             });
+            #endregion Список всех блюд
 
+            #region Пятидневное меню
             // Определяемся с датами текущего мень
             // (на текущую или следующую неделю)
             var dayOfWeek = (int) DateTime.Today.DayOfWeek;
             var offset = dayOfWeek < 5 ? -dayOfWeek + 1 : -dayOfWeek + 8;
             var today = DateTime.Today;
             // Создаём список днеыных меню.
-            DayMenuList = new List<DayMenu>();
+            DayMenuList = new List<DayMenuDTO>();
             DayMenuDetailsList = new List<DayMenuDetails>();
             var date = today.AddDays(offset);
-            DayMenuList.Add(new DayMenu
+            DayMenuList.Add(new DayMenuDTO
             {
                 Id = 1, Date = date, Disabled = date <= today,
+                MenuStatus = MenuStatus.Active,
                 Comment = "Дневное меню на понедельник."
             });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 1 });
@@ -482,9 +487,10 @@ namespace WebApiMobileClient.Services
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 33 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 1, DishId = 34 });
             date = today.AddDays(offset + 1);
-            DayMenuList.Add(new DayMenu
+            DayMenuList.Add(new DayMenuDTO
             {
                 Id = 2, Date = date, Disabled = date <= today,
+                MenuStatus = MenuStatus.Active,
                 Comment = "Дневное меню на вторник."
             });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 2 });
@@ -498,9 +504,10 @@ namespace WebApiMobileClient.Services
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 35 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 2, DishId = 36 });
             date = today.AddDays(offset + 2);
-            DayMenuList.Add(new DayMenu
+            DayMenuList.Add(new DayMenuDTO
             {
                 Id = 3, Date = date, Disabled = date <= today,
+                MenuStatus = MenuStatus.Active,
                 Comment = "Дневное меню на среду."
             });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 3 });
@@ -514,9 +521,10 @@ namespace WebApiMobileClient.Services
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 37 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 3, DishId = 38 });
             date = today.AddDays(offset + 3);
-            DayMenuList.Add(new DayMenu
+            DayMenuList.Add(new DayMenuDTO
             {
                 Id = 4, Date = date, Disabled = date <= today,
+                MenuStatus = MenuStatus.Active,
                 Comment = "Дневное меню на четверг."
             });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 4 });
@@ -530,9 +538,10 @@ namespace WebApiMobileClient.Services
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 39 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 4, DishId = 40 });
             date = today.AddDays(offset + 4);
-            DayMenuList.Add(new DayMenu
+            DayMenuList.Add(new DayMenuDTO
             {
                 Id = 5, Date = date, Disabled = date <= today,
+                MenuStatus = MenuStatus.Active,
                 Comment = "Дневное меню на пятницу."
             });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 5 });
@@ -545,7 +554,7 @@ namespace WebApiMobileClient.Services
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 32 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 34 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 35 });
-            // Заполняем список днеыных меню
+            #endregion Пятидневное меню
         }
 
         /// <summary>
@@ -570,24 +579,33 @@ namespace WebApiMobileClient.Services
         /// Получение списка идентификаторов текущего меню
         /// </summary>
         /// <returns>Список идентификаторов дневных меню</returns>
-        public List<KeyType> GetCurrentMenuIdsAsync()
+        public IList<DayMenuDTO> GetCurrentMenuAsync()
         {
-            var CurrentMenuList = new List<KeyType>
-            {
-                1, 2, 3, 4, 5
-            };
-
-            return CurrentMenuList;
+            return DayMenuList;
         }
 
-        //public IEnumerable<>
+        public List<int> GetDishIdListAsync(int dayMenuId)
+        {
+            var dishIdList = from item in DayMenuDetailsList
+                             where item.DayMenuId == dayMenuId
+                             select (item.DishId);
+            return new List<int>(dishIdList);
+        }
+
+        public Dish GetDishByIdAsync(int dishId)
+        {
+            var dish = from item in DishList
+                       where item.Id == dishId
+                       select item;
+            return dish.FirstOrDefault();
+        }
 
         /// <summary>
         /// Полочение дневного меню по идентификатору
         /// </summary>
         /// <param name="id">Идентификатор дневного меню</param>
         /// <returns>Дневное меню</returns>
-        public DayMenu GetDayMenuAsync(KeyType id)
+        public DayMenuDTO GetDayMenuAsync(int id)
         {
             if (id > 0 && id <= DayMenuList.Count)
             {

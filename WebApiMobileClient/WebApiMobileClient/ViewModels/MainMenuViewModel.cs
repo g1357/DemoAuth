@@ -18,6 +18,11 @@ namespace WebApiMobileClient.ViewModels
             get { return _message; }
             set { SetProperty(ref _message, value); }
         }
+        public ICommand CurrentMenuCommand => new Command(async () =>
+        {
+            await _page.Navigation.PushAsync(new CurrentMenuPage());
+            Message = "Было выбрано текущее меню.";
+        });
         public ICommand FullMenuCommand => new Command(async () =>
         {
             await _page.Navigation.PushAsync(new FullMenuPage());
@@ -27,13 +32,6 @@ namespace WebApiMobileClient.ViewModels
         {
             await _page.Navigation.PushAsync(new FullMenuGroupedPage());
             Message = "Было выбрано полное меню с группировкой.";
-        });
-
-
-        public ICommand CurrentMenuCommand => new Command(async () =>
-        {
-            await _page.Navigation.PushAsync(new CurrentMenuPage());
-            Message = "Было выбрано текущее меню!";
         });
 
         public MainMenuViewModel(ContentPage page)

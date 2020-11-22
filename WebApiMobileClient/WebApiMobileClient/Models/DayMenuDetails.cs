@@ -5,7 +5,7 @@ using System.Text;
 namespace WebApiMobileClient.Models
 {
     /// <summary>
-    /// Детвльная информация дневного меню.
+    /// Детвльная информация меню на день.
     /// Набор блюд дневного меню.
     /// </summary>
     public class DayMenuDetails
