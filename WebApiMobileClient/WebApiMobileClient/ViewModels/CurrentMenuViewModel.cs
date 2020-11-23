@@ -12,13 +12,28 @@ namespace WebApiMobileClient.ViewModels
     /// <summary>
     /// Модель представления текщего 5-днеыгного меню
     /// </summary>
-    public class CurrentMenuViewModel
+    public class CurrentMenuViewModel : BaseViewModel
     {
         CurrentMenuPage _page;
         CanteenDemoService _canteenService;
         private List<DayMenuDTO> _currentMenuDTO { get; set; }
         private List<DayMenu> _currentMenu { get; set; }
         public ObservableCollection<DayMenu> CurrentMenu { get; set; }
+
+        private DayMenu _selectedItem;
+
+        public DayMenu SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            { 
+                if (SetProperty(ref _selectedItem, value))
+                {
+                    _page.Navigation.PushAsync(new DayMenuPage(_selectedItem));
+                }
+            }
+        }
+
 
         public CurrentMenuViewModel(CurrentMenuPage page)
         {
@@ -32,6 +47,7 @@ namespace WebApiMobileClient.ViewModels
             {
                 _currentMenu.Add(new DayMenu(item));
             }
+            var dishTypes = _canteenService.GetDishTypesAsync();
             foreach (var item in _currentMenu)
             {
                 var dayMenuId = item.Id;
@@ -40,6 +56,8 @@ namespace WebApiMobileClient.ViewModels
                 foreach (var dishId in dishIdList)
                 {
                     var dishDTO = _canteenService.GetDishByIdAsync(dishId);
+                    dishDTO.Type = dishTypes[dishDTO.TypeId];
+                    item.Dishes.Add(dishDTO);
                 }
             }
             CurrentMenu = new ObservableCollection<DayMenu>(_currentMenu);
