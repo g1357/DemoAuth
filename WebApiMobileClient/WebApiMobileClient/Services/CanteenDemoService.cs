@@ -616,5 +616,39 @@ namespace WebApiMobileClient.Services
                 return null;
             }
         }
+
+        /// <summary>
+        /// Получить текущий список меню и заказов
+        /// </summary>
+        /// <returns>Подневный список пар менюБ заказ.</returns>
+        public List<MenuOrder> GetMenuOrderListAsync()
+        {
+            var result = new List<MenuOrder>();
+            DayMenu dayMenu;
+            foreach (var item in DayMenuList)
+            {
+                dayMenu = new DayMenu(item);
+                var dishIdList = from record in DayMenuDetailsList
+                                 where record.DayMenuId == dayMenu.Id
+                                 select (record.DishId);
+                dayMenu.Dishes = new List<Dish>();
+                foreach (var dishId in dishIdList)
+                {
+                    var dishDTO = from d in DishList
+                               where d.Id == dishId
+                               select d;
+                    Dish dish = dishDTO.FirstOrDefault();
+                    dish.Type = DishTypeList[dish.TypeId];
+                    dayMenu.Dishes.Add(dish);
+                }
+
+                result.Add(new MenuOrder
+                {
+                    DMenu = dayMenu,
+                    DOrder = null
+                });
+            }
+            return result;
+        }
     }
 }

@@ -23,6 +23,11 @@ namespace WebApiMobileClient.ViewModels
             await _page.Navigation.PushAsync(new CurrentMenuPage());
             Message = "Было выбрано текущее меню.";
         });
+        public ICommand CurrentMenu2Command => new Command(async () =>
+        {
+            await _page.Navigation.PushAsync(new CurrentMenu2Page());
+            Message = "Было выбрано текущее меню 2 (с Заказами).";
+        });
         public ICommand FullMenuCommand => new Command(async () =>
         {
             await _page.Navigation.PushAsync(new FullMenuPage());
