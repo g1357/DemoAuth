@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace WebApiMobileClient.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CurrentMenu2Page : ContentPage
+    public partial class DayMenu2Page : ContentPage
     {
-        public CurrentMenu2Page()
+        public DayMenu2Page(DayMenu dayMenu = null)
         {
             InitializeComponent();
 
-            BindingContext = new CurrentMenu2ViewModel(this);
+            BindingContext = new DayMenu2ViewModel(this, dayMenu);
         }
     }
 }

@@ -15,7 +15,7 @@
             <Button Text="ПОЛНОЕ МЕНЮ с группировкой" Command="{Binding FullMenuGroupedCommand}"
                     FontSize="20" TextColor="White" BackgroundColor="DeepSkyBlue" />
             <Button Text="ТЕКУЩЕЕ МЕНЮ" Command="{Binding CurrentMenuCommand}"
-                    FontSize="20" TextColor="White" BackgroundColor="DeepSkyBlue" />
+                    FontSize="20" TextColor="White" BackgroundColor="DeepSkyBlue" WidthRequest="400" />
             <Label Text="{Binding Message}" />
         </StackLayout>
     </ContentPage.Content>

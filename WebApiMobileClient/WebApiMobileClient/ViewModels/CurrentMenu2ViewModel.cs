@@ -37,8 +37,8 @@ namespace WebApiMobileClient.ViewModels
         }
         public ICommand TapMenuCommand => new Command<MenuOrder>(async (param) =>
         {
-            await _page.DisplayAlert("Alert", $"You Tap {param.DMenu.Comment}!", "Ok");
-            //await _page.Navigation.PushAsync(new CurrentMenuPage());
+            //wait _page.DisplayAlert("Alert", $"You Tap {param.DMenu.Comment}!", "Ok");
+            await _page.Navigation.PushAsync(new DayMenu2Page(param.DMenu));
         });
         public ICommand TapOrderCommand => new Command<MenuOrder>(async (param) =>
         {

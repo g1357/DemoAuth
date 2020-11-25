@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using WebApiMobileClient.Helpers;
 using WebApiMobileClient.Models;
+using WebApiMobileClient.Services;
 using WebApiMobileClient.Views;
+using Xamarin.Forms;
 
 namespace WebApiMobileClient.ViewModels
 {
-    public class DayMenuViewModel : BaseViewModel
+    public class DayMenu2ViewModel : BaseViewModel
     {
-        DayMenuPage _page;
+        DayMenu2Page _page;
+        CanteenDemoService _canteenService;
 
         private DayMenu _dayMenu;
 
@@ -22,9 +26,19 @@ namespace WebApiMobileClient.ViewModels
         }
 
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
-        public DayMenuViewModel(DayMenuPage page, DayMenu dayMenu)
+
+        public ICommand OrderDishCommand => new Command<Dish>(async (param) =>
+        {
+            // Добавить блюдо в заказ
+            _canteenService.AddDistToOrderAsync(DayMenu, param);
+            await _page.DisplayAlert("Alert", $"Блюдо {param.Name} добавлено в заказ!", "Ok");
+        });
+
+        public DayMenu2ViewModel(DayMenu2Page page, DayMenu dayMenu)
         {
             _page = page;
+            _canteenService = DependencyService.Get<CanteenDemoService>();
+
             DayMenu = dayMenu;
             var dList = DayMenu.Dishes;
             var sorted = from item in dList

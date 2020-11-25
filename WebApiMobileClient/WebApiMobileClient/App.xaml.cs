@@ -22,10 +22,16 @@ namespace WebApiMobileClient
 
         protected override void OnSleep()
         {
+            // Сохранение существующих заказов в локальном файле
+            var _canteenService = DependencyService.Get<CanteenDemoService>();
+            _canteenService.SaveOrdersAsync();
         }
 
         protected override void OnResume()
         {
+            // Загрузка существующих заказов из локального файла
+            var _canteenService = DependencyService.Get<CanteenDemoService>();
+            _canteenService.ReadOrdersAsync();
         }
     }
 }

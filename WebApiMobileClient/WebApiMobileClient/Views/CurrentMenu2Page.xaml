@@ -33,12 +33,12 @@
                             </StackLayout>
                                 <StackLayout Grid.Column="1" BackgroundColor="LightGreen"
                                              Padding="10">
-                                    <Label Text="Заказ" >
-                                    <Label.GestureRecognizers>
+                                    <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding Source={x:Reference CurrentMenu2}, Path=BindingContext.TapOrderCommand}"
                                             CommandParameter="{Binding .}"/>
-                                    </Label.GestureRecognizers>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="Заказ" >
                                     </Label>
                                 </StackLayout>
                             </Grid>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using WebApiMobileClient.Models;
 //using KeyType = System.Int16;
 
@@ -12,6 +14,9 @@ namespace WebApiMobileClient.Services
     /// </summary>
     public class CanteenDemoService : ICanteenService
     {
+        // Имя файла для сохранений заказов
+        const string FileName = @"orders.json";
+
         // Список типов (видов) блюд
         List<DishType> DishTypeList;
         // Список всех блюд
@@ -20,6 +25,8 @@ namespace WebApiMobileClient.Services
         List<DayMenuDTO> DayMenuList;
         // Список детальной информации дневного меню
         List<DayMenuDetails> DayMenuDetailsList;
+        // Список заказов
+        List<Order> OrderList;
 
         /// <summary>
         /// Конструктор класса
@@ -650,5 +657,38 @@ namespace WebApiMobileClient.Services
             }
             return result;
         }
+
+        public void SaveOrdersAsync()
+        {
+            string filePath = Path.Combine(
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
+                FileName);
+            var json = JsonSerializer.Serialize<List<Order>>(OrderList);
+            File.WriteAllText(filePath, json);
+        }
+
+        public void ReadOrdersAsync()
+        {
+            OrderList = null;
+            string filePath = Path.Combine(
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
+                FileName);
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                var orderList = JsonSerializer.Deserialize<IList<Order>>(json);
+                if (orderList != null)
+                {
+                    OrderList = new List<Order>(orderList);
+                }
+            }
+        }
+        public void AddDistToOrderAsync(DayMenu dayMenu, Dish param)
+        {
+
+        }
+
     }
 }

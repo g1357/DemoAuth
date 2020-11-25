@@ -9,6 +9,6 @@ namespace WebApiMobileClient.Models
     /// </summary>
     public  class Order : OrderDTO
     {
-        public int MyProperty { get; set; }
+        public List<Dish> Dishes { get; set; }
     }
 }
