@@ -11,9 +11,10 @@ namespace DataModel.Models
     {
         public OrderStatus OrderStatus
         {
-            get => default;
+            get => (OrderStatus) OrderStatusId;
             set
             {
+                OrderStatusId = (int)value;
             }
         }
 
@@ -28,6 +29,7 @@ namespace DataModel.Models
         public EatingZone EatingZone
         {
             get => default;
+            // EatingZoneList.Find(x => x.Id == EatingZoneId);
             set
             {
             }

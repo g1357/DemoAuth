@@ -48,7 +48,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="DataModel.Models.OrderDTO">
-    <Position X="8.75" Y="3.5" Width="1.5" />
+    <Position X="8.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAIQAABAAAAAAAAAAA=</HashCode>
       <FileName>Models\OrderDTO.cs</FileName>
@@ -56,6 +56,12 @@
   </Class>
   <Class Name="DataModel.Models.Order">
     <Position X="8.75" Y="2.25" Width="1.5" />
+    <AssociationLine Name="OrderStatus" Type="DataModel.Models.OrderStatus" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="2.625" />
+        <Point X="7.5" Y="2.625" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAABAAAAAAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Models\Order.cs</FileName>
@@ -131,7 +137,7 @@
   <Enum Name="DataModel.Models.OrderStatus">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAQAAAQAIAAAQAAAAgAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAQAAAQAIAAAQAAAAgAgCAAAA=</HashCode>
       <FileName>Models\OrderStatus.cs</FileName>
     </TypeIdentifier>
   </Enum>

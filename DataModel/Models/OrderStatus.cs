@@ -9,6 +9,7 @@ namespace DataModel.Models
     /// </summary>
     public enum OrderStatus
     {
+        NotDefined, // Не определено
         Created,    // Создан
         Sent,       // Отправлен
         Acepted,    // Принят

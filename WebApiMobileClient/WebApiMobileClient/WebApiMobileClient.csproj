@@ -52,6 +52,7 @@
     <None Remove="Images\photo38.png" />
     <None Remove="Images\photo39.png" />
     <None Remove="Images\photo40.png" />
+    <None Remove="Images\shopping-cart.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -95,6 +96,7 @@
     <EmbeddedResource Include="Images\photo38.png" />
     <EmbeddedResource Include="Images\photo39.png" />
     <EmbeddedResource Include="Images\photo40.png" />
+    <EmbeddedResource Include="Images\shopping-cart.png" />
   </ItemGroup>
 
   <ItemGroup>
