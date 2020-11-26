@@ -4,6 +4,7 @@
              xmlns:viewModels="clr-namespace:WebApiMobileClient.ViewModels"
              x:Class="WebApiMobileClient.Views.MainMenuPage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical" WidthRequest="500" 
                      VerticalOptions="Center" HorizontalOptions="Center"
                      Spacing="20" Padding="20">
@@ -16,7 +17,10 @@
                     FontSize="20" TextColor="White" BackgroundColor="DeepSkyBlue" />
             <Button Text="ТЕКУЩЕЕ МЕНЮ" Command="{Binding CurrentMenuCommand}"
                     FontSize="20" TextColor="White" BackgroundColor="DeepSkyBlue" WidthRequest="400" />
+            <Button Text="НАТРОЙКИ ПРИЛОЖЕНИЯ" Command="{Binding SettingsCommand}"
+                    FontSize="20" TextColor="White" BackgroundColor="DeepSkyBlue" WidthRequest="400" />
             <Label Text="{Binding Message}" />
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

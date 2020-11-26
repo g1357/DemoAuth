@@ -4,7 +4,8 @@
              xmlns:helper="clr-namespace:WebApiMobileClient.Helpers;assembly=WebApiMobileClient"
              x:Class="WebApiMobileClient.MainPage">
 
-    <StackLayout>
+    <ScrollView>
+        <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
@@ -27,4 +28,5 @@
         <Label Text="{Binding PhotoSource}"/>
         <Image Source="{Binding PhotoSource}"/>-->
     </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -38,6 +38,14 @@ namespace WebApiMobileClient.ViewModels
             await _page.Navigation.PushAsync(new FullMenuGroupedPage());
             Message = "Было выбрано полное меню с группировкой.";
         });
+        public ICommand SettingsCommand => new Command(async () =>
+        {
+            var vm = new SettingsViewModel();
+            var page = new SettingsPage();
+            page.BindingContext = vm;
+            await _page.Navigation.PushAsync(page);
+            Message = "Было выбрано: Настройки приложения.";
+        });
 
         public MainMenuViewModel(ContentPage page)
         {
