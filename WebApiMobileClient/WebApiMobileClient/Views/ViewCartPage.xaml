@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebApiMobileClient.Views.ViewCartPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding DishList}" 
+                      HasUnevenRows="True" 
+                      SeparatorColor="DarkRed" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding PhotoSource}" Aspect="AspectFill"
+                                       VerticalOptions="CenterAndExpand"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       WidthRequest="200" HeightRequest="200" />
+                                <StackLayout Grid.Column="1"> 
+                                <Label Text="{Binding Name}" 
+                                    Style="{DynamicResource ListItemTextStyle}" />
+                                <Label Text="{Binding Description}" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"/>
+                                <StackLayout Orientation="Horizontal" Padding="10">
+                                    <Label Text="Вес:" />
+                                    <Label Text="{Binding Weight}"/>
+                                    <Label Text="гр." />
+                                    <Label Text="Цена:" />
+                                    <Label Text="{Binding Price}"/>
+                                    <Label Text="руб." />
+                                </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

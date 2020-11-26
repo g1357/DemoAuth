@@ -562,6 +562,8 @@ namespace WebApiMobileClient.Services
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 34 });
             DayMenuDetailsList.Add(new DayMenuDetails { DayMenuId = 5, DishId = 35 });
             #endregion Пятидневное меню
+
+            OrderList = new List<Order>();
         }
 
         /// <summary>
@@ -685,9 +687,44 @@ namespace WebApiMobileClient.Services
                 }
             }
         }
-        public void AddDistToOrderAsync(DayMenu dayMenu, Dish param)
+        public void AddDistToOrderAsync(DayMenu dayMenu, Dish dish)
         {
+            DateTime date = dayMenu.Date;
+            Order order = OrderList.Find(o => o.Date == date);
+            if (order == null)
+            {
+                int maxId;
+                if (OrderList.Count == 0)
+                {
+                    maxId = 0;
+                }
+                else
+                {
+                    maxId = OrderList.Max(order => order.Id);
+                }
+                order = new Order
+                {
+                    Id = maxId + 1,
+                    Date = date,
+                    UserId = "demo_user",
+                    Total = dish.Price,
+                    EatingAreaId = 0,
+                    Dishes = new List<Dish>()
+                };
+                order.Dishes.Add(dish);
+                OrderList.Add(order);
+            }
+            else
+            {
+                order.Dishes.Add(dish);
+                order.Total += dish.Price;
+            }
+        }
 
+        public Order GetOrderAsync(DateTime date)
+        {
+            var order = OrderList.Find(o => o.Date.Date == date.Date);
+            return order;
         }
 
     }

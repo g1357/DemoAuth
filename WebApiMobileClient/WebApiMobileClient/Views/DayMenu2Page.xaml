@@ -17,8 +17,11 @@
                     <Label Text="{Binding DayMenu.Comment}" />
                 </StackLayout>
                 <StackLayout Grid.Column="1" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding OpenCartCommand}" />
+                    </StackLayout.GestureRecognizers>
                     <Image Source="{helper:ImageResource WebApiMobileClient.Images.shopping-cart.png}" />
-                    <Label Text="0" VerticalOptions="CenterAndExpand" Margin="5" FontSize="Large"/>
+                    <Label Text="{Binding DishQty}" VerticalOptions="CenterAndExpand" Margin="5" FontSize="Large"/>
                 </StackLayout>
             </Grid>
             <ListView ItemsSource="{Binding ItemsGrouped}" 

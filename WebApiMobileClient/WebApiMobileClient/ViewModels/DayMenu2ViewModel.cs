@@ -27,17 +27,34 @@ namespace WebApiMobileClient.ViewModels
 
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
 
+        private int _dishQty;
+        public int DishQty
+        {
+            get => _dishQty;
+            set => SetProperty(ref _dishQty, value);
+        }
         public ICommand OrderDishCommand => new Command<Dish>(async (param) =>
         {
             // Добавить блюдо в заказ
             _canteenService.AddDistToOrderAsync(DayMenu, param);
+            DishQty++;
             await _page.DisplayAlert("Alert", $"Блюдо {param.Name} добавлено в заказ!", "Ok");
+        });
+        public ICommand OpenCartCommand => new Command(async () =>
+        {
+            // Открыть страницу с корзиной заказа
+            var page = new ViewCartPage();
+            var vm = new ViewCartViewModel(page, _dayMenu);
+            page.BindingContext = vm;
+            await _page.Navigation.PushAsync(page);
+            await _page.DisplayAlert("Alert", $"Открыть карзину!", "Ok");
         });
 
         public DayMenu2ViewModel(DayMenu2Page page, DayMenu dayMenu)
         {
             _page = page;
             _canteenService = DependencyService.Get<CanteenDemoService>();
+            DishQty = 0;
 
             DayMenu = dayMenu;
             var dList = DayMenu.Dishes;

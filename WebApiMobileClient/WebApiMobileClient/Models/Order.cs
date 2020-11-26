@@ -10,5 +10,13 @@ namespace WebApiMobileClient.Models
     public  class Order : OrderDTO
     {
         public List<Dish> Dishes { get; set; }
+
+        public EatingArea EatingArea
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

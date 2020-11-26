@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="WebApiMobileClient.Models.Dish">
-    <Position X="3.25" Y="3.75" Width="1.5" />
+    <Position X="3.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAACAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Models\Dish.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WebApiMobileClient.Models.DishDTO">
-    <Position X="3.25" Y="6.25" Width="1.5" />
+    <Position X="3.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAQAgAAAAABABAAQAACAAAAEgAAAAAAAAAAA=</HashCode>
       <FileName>Models\DishDTO.cs</FileName>
@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WebApiMobileClient.Models.OrderDTO">
-    <Position X="6" Y="2.75" Width="1.5" />
+    <Position X="6.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAQAgAAAAAQAABAAAAAAAAAAA=</HashCode>
       <FileName>Models\OrderDTO.cs</FileName>
@@ -43,11 +43,11 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WebApiMobileClient.Models.DayMenuDTO">
-    <Position X="3.25" Y="2" Width="1.5" />
+    <Position X="3.25" Y="2.5" Width="1.5" />
     <AssociationLine Name="MenuStatus" Type="WebApiMobileClient.Models.MenuStatus" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="3.25" Y="2.312" />
-        <Point X="2.875" Y="2.312" />
+        <Point X="3.25" Y="2.812" />
+        <Point X="2.875" Y="2.812" />
         <Point X="2.875" Y="1.215" />
         <Point X="2" Y="1.215" />
       </Path>
@@ -72,6 +72,23 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Models\DayMenuDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApiMobileClient.Models.Order">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EatingArea" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebApiMobileClient.Models.EatingArea">
+    <Position X="9.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EatingArea.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="WebApiMobileClient.Models.MenuStatus">

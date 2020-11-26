@@ -18,6 +18,7 @@ namespace WebApiMobileClient
 
         protected override void OnStart()
         {
+            LoadLocalData();
         }
 
         protected override void OnSleep()
@@ -29,9 +30,15 @@ namespace WebApiMobileClient
 
         protected override void OnResume()
         {
+            LoadLocalData();
+        }
+        
+        void LoadLocalData()
+        {
             // Загрузка существующих заказов из локального файла
             var _canteenService = DependencyService.Get<CanteenDemoService>();
             _canteenService.ReadOrdersAsync();
+
         }
     }
 }
