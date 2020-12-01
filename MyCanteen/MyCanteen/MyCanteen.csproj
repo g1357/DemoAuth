@@ -7,16 +7,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\burger.png" />
     <None Remove="Images\canteen01.jpeg" />
     <None Remove="Images\canteen01.png" />
+    <None Remove="Images\choices.png" />
+    <None Remove="Images\clock.png" />
+    <None Remove="Images\feedback.png" />
+    <None Remove="Images\food-tray.png" />
+    <None Remove="Images\menu.png" />
+    <None Remove="Images\order-history.png" />
+    <None Remove="Images\setting-lines.png" />
+    <None Remove="Images\shopping-bag.png" />
     <None Remove="Images\tab_about.png" />
     <None Remove="Images\tab_feed.png" />
     <None Remove="Images\xamarin_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\burger.png" />
     <EmbeddedResource Include="Images\canteen01.jpeg" />
     <EmbeddedResource Include="Images\canteen01.png" />
+    <EmbeddedResource Include="Images\choices.png" />
+    <EmbeddedResource Include="Images\clock.png" />
+    <EmbeddedResource Include="Images\feedback.png" />
+    <EmbeddedResource Include="Images\food-tray.png" />
+    <EmbeddedResource Include="Images\menu.png" />
+    <EmbeddedResource Include="Images\order-history.png" />
+    <EmbeddedResource Include="Images\setting-lines.png" />
+    <EmbeddedResource Include="Images\shopping-bag.png" />
     <EmbeddedResource Include="Images\tab_about.png" />
     <EmbeddedResource Include="Images\tab_feed.png" />
     <EmbeddedResource Include="Images\xamarin_logo.png" />
