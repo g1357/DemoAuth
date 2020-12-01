@@ -86,24 +86,24 @@
     </FlyoutItem>
     -->
 
-    <FlyoutItem Title="Текущее меню" Icon="{helpers:IconResource Images.tab_feed.png}">
+    <FlyoutItem Title="Текущее меню" Icon="{helpers:IconResource Images.choices.png}">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Мои заказы" Icon="tab_feed.png">
+    <FlyoutItem Title="Мои заказы" Icon="{helpers:IconResource Images.shopping-bag.png}">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Полное меню" Icon="tab_feed.png">
+    <FlyoutItem Title="Полное меню" Icon="{helpers:IconResource Images.menu.png}">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="История заказов" Icon="tab_feed.png">
+    <FlyoutItem Title="История заказов" Icon="{helpers:IconResource Images.clock.png}">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Отзывы" Icon="tab_feed.png">
+    <FlyoutItem Title="Отзывы" Icon="{helpers:IconResource Images.feedback.png}">
         <ShellContent Title="Мои отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
         <ShellContent Title="Написать отзыв" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
         <ShellContent Title="Все отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Настройки" Icon="tab_feed.png">
+    <FlyoutItem Title="Настройки" Icon="{helpers:IconResource Images.setting-lines.png}">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="О приложении" Icon="{helpers:IconResource Images.tab_about.png}">
