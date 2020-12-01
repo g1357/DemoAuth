@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MyCanteen.Helpers"
              x:Class="MyCanteen.Views.AboutPage"
              xmlns:vm="clr-namespace:MyCanteen.ViewModels"
              Title="{Binding Title}">
@@ -22,8 +23,14 @@
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                <ContentView VerticalOptions="FillAndExpand">
+                    <!-- Padding="0,40,0,40"
                     <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    -->
+                    <Image Source="{helpers:ImageResource Images.canteen01.png}" />
+                    <!--
+                    VerticalOptions="Center" HeightRequest="64" />
+                    -->
                 </ContentView>
             </StackLayout>
         </StackLayout>
