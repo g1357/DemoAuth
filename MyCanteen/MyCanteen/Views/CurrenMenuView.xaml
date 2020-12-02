@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MyCanteen.Helpers"
+             x:Class="MyCanteen.Views.CurrenMenuView"
+             x:Name="CurrentMenu">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Меню на текущую пятидневку."
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding CurrentList}" SelectionMode="None" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0" BackgroundColor="LightSteelBlue"
+                                         Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding Source={x:Reference CurrentMenu2}, Path=BindingContext.TapMenuCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="{Binding DMenu.Date, StringFormat='{0:D}'}" />
+                                    <Label Text="{Binding DMenu.Comment}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" BackgroundColor="LightGreen"
+                                             Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference CurrentMenu2}, Path=BindingContext.TapOrderCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="Заказ" >
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

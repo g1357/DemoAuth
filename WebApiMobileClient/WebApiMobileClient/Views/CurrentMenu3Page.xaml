@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebApiMobileClient.Views.CurrentMenu3Page"
+             x:Name="CurrentMenu3">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <CarouselView ItemsSource="{Binding CurrentList}" 
+                          PeekAreaInsets="20" >
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="На этот период меню ещё не доступно!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                                   IsVisible="False"/>
+                            <ListView ItemsSource="{Binding .}" SelectionMode="None" 
+                          IsVisible="True">
+                    <!--SelectedItem="{Binding SelectedItem}">-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Column="0" BackgroundColor="LightSteelBlue"
+                                         Padding="10">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                            Command="{Binding Source={x:Reference CurrentMenu3}, Path=BindingContext.TapMenuCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="{Binding DMenu.Date, StringFormat='{0:D}'}" />
+                                        <Label Text="{Binding DMenu.Comment}"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" BackgroundColor="LightGreen"
+                                             Padding="10">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference CurrentMenu3}, Path=BindingContext.TapOrderCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="Заказ" >
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
