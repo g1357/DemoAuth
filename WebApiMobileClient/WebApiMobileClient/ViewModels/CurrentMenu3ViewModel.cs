@@ -21,7 +21,7 @@ namespace WebApiMobileClient.ViewModels
         CanteenDemoService _canteenService;
 
         private List<List<MenuOrder>> _currentList;
-        public ObservableCollection<ObservableCollection<MenuOrder>> CurrentList { get; set; }
+        public ObservableCollection<MenuOrderList> CurrentList { get; set; }
         public ICommand TapMenuCommand => new Command<MenuOrder>(async (param) =>
         {
             //wait _page.DisplayAlert("Alert", $"You Tap {param.DMenu.Comment}!", "Ok");
@@ -49,9 +49,10 @@ namespace WebApiMobileClient.ViewModels
 
             var list1 = _canteenService.GetMenuOrderListAsync();
             var list2 = _canteenService.GetMenuOrderListAsync();
-            CurrentList = new ObservableCollection<ObservableCollection<MenuOrder>>();
-            CurrentList.Add(new ObservableCollection<MenuOrder>(list1));
-            CurrentList.Add(new ObservableCollection<MenuOrder>(list2));
+            CurrentList = new ObservableCollection<MenuOrderList>();
+            CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list1) });
+            CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list2) });
+            CurrentList.Add(new MenuOrderList { WeekList = null });
         }
     }
 }

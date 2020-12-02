@@ -9,16 +9,38 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <CarouselView ItemsSource="{Binding CurrentList}" 
-                          PeekAreaInsets="20" >
+                          PeekAreaInsets="20" 
+                          IndicatorView="indicatorView">
+                <!--
+                EmptyView="Меню еа этот период ещё не доступно"
+                -->
+                <CarouselView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                            <Label Text="No results matched your filter."
+                           Margin="10,25,10,10"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           HorizontalOptions="Fill"
+                           HorizontalTextAlignment="Center" />
+                            <Label Text="Try a broader filter?"
+                           FontAttributes="Italic"
+                           FontSize="12"
+                           HorizontalOptions="Fill"
+                           HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </ContentView>
+                </CarouselView.EmptyView>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
                             <Label Text="На этот период меню ещё не доступно!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
-                                   IsVisible="False"/>
-                            <ListView ItemsSource="{Binding .}" SelectionMode="None" 
-                          IsVisible="True">
+                                   IsVisible="{Binding MsgVisible}"/>
+                            <ListView ItemsSource="{Binding WeekList}" SelectionMode="None" 
+                          IsVisible="{Binding MenuVisible}">
                     <!--SelectedItem="{Binding SelectedItem}">-->
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -60,6 +82,9 @@
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
+            <IndicatorView x:Name="indicatorView" IndicatorColor="LightGray"
+                           SelectedIndicatorColor="DarkGray"
+                           HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
