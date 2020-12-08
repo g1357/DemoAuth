@@ -4,9 +4,10 @@
        xmlns:views="clr-namespace:MyCanteen.Views"
        xmlns:helpers="clr-namespace:MyCanteen.Helpers"
        Title="MyCanteen"
-       x:Class="MyCanteen.AppShell"
-       FlyoutIcon="{helpers:FlyoutIconResource Images.burger.png}">
-
+       x:Class="MyCanteen.AppShell" >
+    <!--
+    FlyoutIcon="{helpers:FlyoutIconResource Images.burger.png}">
+    -->
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
     
@@ -87,7 +88,7 @@
     -->
 
     <FlyoutItem Title="Текущее меню" Icon="{helpers:IconResource Images.choices.png}">
-        <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:ItemsPage}" />
+        <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:CurrenMenuPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Мои заказы" Icon="{helpers:IconResource Images.shopping-bag.png}">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:ItemsPage}" />

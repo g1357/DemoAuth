@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:helpers="clr-namespace:MyCanteen.Helpers"
-             x:Class="MyCanteen.Views.CurrenMenuView"
+             x:Class="MyCanteen.Views.CurrenMenuPage"
              x:Name="CurrentMenu">
     <ContentPage.Content>
         <StackLayout>

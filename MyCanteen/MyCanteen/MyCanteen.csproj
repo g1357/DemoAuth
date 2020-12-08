@@ -47,7 +47,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Update="Views\CurrenMenuView.xaml">
+    <Compile Update="Views\CurrenMenuPage.xaml.cs">
+      <DependentUpon>CurrenMenuPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Update="Views\CurrenMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

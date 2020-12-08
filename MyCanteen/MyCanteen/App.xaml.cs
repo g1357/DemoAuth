@@ -14,6 +14,9 @@ namespace MyCanteen
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+
+            DependencyService.Register<CanteenHeavyService>();
+
             MainPage = new AppShell();
         }
 

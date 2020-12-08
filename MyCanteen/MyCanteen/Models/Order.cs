@@ -5,9 +5,18 @@ using System.Text;
 namespace MyCanteen.Models
 {
     /// <summary>
-    /// Заказ клиента на день.
+    /// Заказ клиента
     /// </summary>
-    public class Order
+    public class Order : OrderDTO
     {
+        public List<Dish> Dishes { get; set; }
+
+        public EatingArea EatingArea
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

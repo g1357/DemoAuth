@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace MyCanteen.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CurrenMenuView : ContentPage
+    public partial class CurrenMenuPage : ContentPage
     {
-        public CurrenMenuView()
+        public CurrenMenuPage()
         {
             InitializeComponent();
         }
