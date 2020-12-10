@@ -15,7 +15,7 @@ namespace WebApiMobileClient.ViewModels
     /// с использованием CarouselView.
     /// (Вариант 3)
     /// </summary>
-    public class CurrentMenu3ViewModel
+    public class CurrentMenu3ViewModel : BaseViewModel
     {
         Page _page;
         CanteenDemoService _canteenService;
