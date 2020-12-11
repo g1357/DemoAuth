@@ -68,7 +68,7 @@
                                                             Command="{Binding Source={x:Reference CurrentMenu}, Path=BindingContext.TapOrderCommand}"
                                                             CommandParameter="{Binding .}"/>
                                                     </StackLayout.GestureRecognizers>
-                                                    <Label Text="Заказ" />
+                                                    <Label Text="{Binding DOrder.StatusName}" />
                                                     <Label Text="Заказ" />
                                                 </StackLayout>
                                             </Grid>

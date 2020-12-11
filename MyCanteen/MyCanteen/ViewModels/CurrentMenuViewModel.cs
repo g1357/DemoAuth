@@ -61,8 +61,8 @@ namespace MyCanteen.ViewModels
             _page = page;
             _canteenService = DependencyService.Get<CanteenDemoService>();
 
-            var list1 = _canteenService.GetMenuOrderListAsync();
-            var list2 = _canteenService.GetMenuOrderListAsync();
+            var list1 = _canteenService.GetMenuOrderListCurrentAsync();
+            var list2 = _canteenService.GetMenuOrderListNextAsync();
             CurrentList = new ObservableCollection<MenuOrderList>();
             CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list1) });
             CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list2) });

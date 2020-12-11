@@ -20,8 +20,10 @@ namespace MyCanteen.Services
         List<DishType> DishTypeList;
         // Список всех блюд
         List<Dish> DishList;
-        // Список дневных меню на 5-дневку
+        // Список дневных меню на текущую 5-дневку
         List<DayMenuDTO> DayMenuList;
+        // Список дневных меню на следующую 5-дневку
+        List<DayMenuDTO> DayMenuListNext;
         // Список детальной информации дневного меню
         List<DayMenuDetails> DayMenuDetailsList;
         // Список заказов
@@ -502,7 +504,7 @@ namespace MyCanteen.Services
             });
             #endregion Список всех блюд
 
-            #region Пятидневное меню
+            #region Пятидневное меню на текущую неделю
             // Определяемся с датами текущего мень
             // (на текущую или следующую неделю)
             var dayOfWeek = (int)DateTime.Today.DayOfWeek;
@@ -673,15 +675,20 @@ namespace MyCanteen.Services
 
         /// <summary>
         /// Получить текущий список меню и заказов
+        /// (на теущую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListAsync()
+        public List<MenuOrder> GetMenuOrderListCurrentAsync()
         {
             var result = new List<MenuOrder>();
             DayMenu dayMenu;
+            Order dayOrder;
+            DateTime date;
+            int maxId;
             foreach (var item in DayMenuList)
             {
                 dayMenu = new DayMenu(item);
+                date = dayMenu.Date.Date;
                 var dishIdList = from record in DayMenuDetailsList
                                  where record.DayMenuId == dayMenu.Id
                                  select (record.DishId);
@@ -696,45 +703,112 @@ namespace MyCanteen.Services
                     dayMenu.Dishes.Add(dish);
                 }
 
+                dayOrder = OrderList.Find(o => o.Date.Date == date.Date);
+                if (dayOrder == null)
+                {
+                    if (OrderList == null || OrderList.Count == 0)
+                    {
+                        maxId = 0;
+                    }
+                    else
+                    {
+                        maxId = OrderList.Max(order => order.Id);
+                    }
+                    dayOrder = new Order
+                    {
+                        // OrderDTO
+                        Id = maxId! + 1,
+                        Date = date,
+                        UserId = "demo user",
+                        Total = 0L,
+                        EatingAreaId = 0,
+                        OrderStatusId = 0,
+                        // Order
+                        UserName = "Demo User",
+                        EatingArea = null,
+                        Status = OrderStatus.NotDefined,
+                        Dishes = null
+                    };
+                    OrderList.Add(dayOrder);
+                }
                 result.Add(new MenuOrder
                 {
                     DMenu = dayMenu,
-                    DOrder = null
+                    DOrder = dayOrder
                 });
             }
             return result;
         }
 
-        public void SaveOrdersAsync()
+        /// <summary>
+        /// Получить следующий список меню и заказов
+        /// (на следующую неделю)
+        /// </summary>
+        /// <returns>Подневный список пар менюБ заказ.</returns>
+        public List<MenuOrder> GetMenuOrderListNextAsync()
         {
-            string filePath = Path.Combine(
-                Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData),
-                FileName);
-            var json = JsonSerializer.Serialize<List<Order>>(OrderList);
-            File.WriteAllText(filePath, json);
+            var result = new List<MenuOrder>();
+            DayMenu dayMenu;
+            Order dayOrder;
+            DateTime date;
+            foreach (var item in DayMenuList)
+            {
+                dayMenu = new DayMenu(item);
+                date = dayMenu.Date.Date;
+                var dishIdList = from record in DayMenuDetailsList
+                                 where record.DayMenuId == dayMenu.Id
+                                 select (record.DishId);
+                dayMenu.Dishes = new List<Dish>();
+                foreach (var dishId in dishIdList)
+                {
+                    var dishDTO = from d in DishList
+                                  where d.Id == dishId
+                                  select d;
+                    Dish dish = dishDTO.FirstOrDefault();
+                    dish.Type = DishTypeList[dish.TypeId];
+                    dayMenu.Dishes.Add(dish);
+                }
+
+                dayOrder = OrderList.Find(o => o.Date.Date == date.Date);
+
+                result.Add(new MenuOrder
+                {
+                    DMenu = dayMenu,
+                    DOrder = dayOrder
+                });
+            }
+            return result;
         }
 
-        public void ReadOrdersAsync()
+
+        #region Операции с заказами
+        /// <summary>
+        /// Получмить состояние заказа на указанную ждату
+        /// </summary>
+        /// <param name="date">дата</param>
+        public OrderStatus GetOrderStatusAsync(DateTime date)
         {
-            OrderList = null;
-            string filePath = Path.Combine(
-                Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData),
-                FileName);
-            if (File.Exists(filePath))
-            {
-                string json = File.ReadAllText(filePath);
-                var orderList = JsonSerializer.Deserialize<IList<Order>>(json);
-                if (orderList != null)
-                {
-                    OrderList = new List<Order>(orderList);
-                }
-            }
+            return OrderStatus.NotDefined;
         }
-        public void AddDistToOrderAsync(DayMenu dayMenu, Dish dish)
+
+        /// <summary>
+        /// Получить детальную информацию о заказе на заданную дату
+        /// </summary>
+        /// <param name="date">Дата</param>
+        /// <returns>Заказ</returns>
+        public Order GetOrderAsync(DateTime date)
         {
-            DateTime date = dayMenu.Date;
+            var order = OrderList.Find(o => o.Date.Date == date.Date);
+            return order;
+        }
+
+        /// <summary>
+        /// Добавить блюдо к заказу на указанную дату.
+        /// </summary>
+        /// <param name="dayMenu"></param>
+        /// <param name="dish"></param>
+        public void AddDishToOrderAsync(DateTime date, Dish dish)
+        {
             Order order = OrderList.Find(o => o.Date == date);
             if (order == null)
             {
@@ -766,11 +840,40 @@ namespace MyCanteen.Services
             }
         }
 
-        public Order GetOrderAsync(DateTime date)
+        /// <summary>
+        /// Сохранить заказы в файле.
+        /// </summary>
+        public void SaveOrdersAsync()
         {
-            var order = OrderList.Find(o => o.Date.Date == date.Date);
-            return order;
+            string filePath = Path.Combine(
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
+                FileName);
+            var json = JsonSerializer.Serialize<List<Order>>(OrderList);
+            File.WriteAllText(filePath, json);
         }
 
+        /// <summary>
+        /// Загрузить заказы из файла.
+        /// </summary>
+        public void LoadOrdersAsync()
+        {
+            OrderList = null;
+            string filePath = Path.Combine(
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
+                FileName);
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                var orderList = JsonSerializer.Deserialize<IList<Order>>(json);
+                if (orderList != null)
+                {
+                    OrderList = new List<Order>(orderList);
+                }
+            }
+        }
+
+        #endregion Операции с заказами
     }
 }

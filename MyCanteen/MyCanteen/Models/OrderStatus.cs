@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataModel.Models
+namespace MyCanteen.Models
 {
     /// <summary>
     /// Состояние заказа
@@ -21,29 +21,41 @@ namespace DataModel.Models
     /// <summary>
     /// Определяем метод расширения перечисления 
     /// </summary>
-    public static class Extensions
+    public static class OrderStatusExtensions
     {
         /// <summary>
         /// Название состояния меню на русском языке
         /// </summary>
         /// <param name="status">статус</param>
         /// <returns>Название состояния</returns>
-        public static string Name(this MenuStatus status)
+        public static string Name(this OrderStatus status)
         {
             string name;
             switch (status)
             {
-                case MenuStatus.NotDefined:
-                    name = "Не определено";
+                case OrderStatus.NotDefined:
+                    name = "Не создан";
                     break;
-                case MenuStatus.Draft:
-                    name = "Черновик";
+                case OrderStatus.Created:
+                    name = "Создан";
                     break;
-                case MenuStatus.Active:
-                    name = "Активно";
+                case OrderStatus.Sent:
+                    name = "Отправлен";
                     break;
-                case MenuStatus.Archive:
-                    name = "В архиве";
+                case OrderStatus.Acepted:
+                    name = "Принят";
+                    break;
+                case OrderStatus.Paid:
+                    name = "Оплачен";
+                    break;
+                case OrderStatus.Confirmed:
+                    name = "Подтверждён";
+                    break;
+                case OrderStatus.Delivered:
+                    name = "Доставлен";
+                    break;
+                case OrderStatus.Closed:
+                    name = "выполнен";
                     break;
                 default:
                     name = "ОШИБКА";

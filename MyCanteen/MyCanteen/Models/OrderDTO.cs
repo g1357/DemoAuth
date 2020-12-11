@@ -29,5 +29,9 @@ namespace MyCanteen.Models
         /// Идентификатор места приёма пищи
         /// </summary>
         public int EatingAreaId { get; set; }
+        /// <summary>
+        /// Идентификатор состояния заказа
+        /// </summary>
+        public int OrderStatusId { get; set; }
     }
 }

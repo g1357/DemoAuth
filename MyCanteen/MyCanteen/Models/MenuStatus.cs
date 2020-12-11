@@ -18,7 +18,7 @@ namespace MyCanteen.Models
     /// <summary>
     /// Определяем метод расширения перечисления 
     /// </summary>
-    public static class Extensions
+    public static class MenuStatusExtensions
     {
         /// <summary>
         /// Название состояния меню на русском языке
