@@ -37,7 +37,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 IsVisible="{Binding MsgVisible}"/>
                             <ListView ItemsSource="{Binding WeekList}" SelectionMode="None" 
-                                IsVisible="{Binding MenuVisible}">
+                                IsVisible="{Binding MenuVisible}" HasUnevenRows="True">
                                 <!--SelectedItem="{Binding SelectedItem}">-->
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -48,7 +48,7 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="500" />
+                                                    <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
                                                 <StackLayout Grid.Column="0" BackgroundColor="LightSteelBlue"
