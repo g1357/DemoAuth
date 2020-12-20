@@ -1,6 +1,7 @@
 ﻿using MyCanteen.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,13 @@ namespace MyCanteen.Views
             InitializeComponent();
 
             BindingContext = new CurrentMenuViewModel(this);
+        }
+
+        // Вызывается перед тем, как страница становится видимой.
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Debug.WriteLine("On Appearing!");
         }
     }
 }
