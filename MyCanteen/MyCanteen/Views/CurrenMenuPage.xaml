@@ -13,7 +13,7 @@
                           PeekAreaInsets="20" 
                           IndicatorView="indicatorView">
                 <!--
-                EmptyView="Меню еа этот период ещё не доступно"
+                EmptyView="Меню на этот период ещё не доступно"
                 -->
                 <CarouselView.EmptyView>
                     <ContentView>

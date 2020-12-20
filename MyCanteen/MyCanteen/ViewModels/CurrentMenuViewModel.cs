@@ -1,5 +1,6 @@
 ﻿using MyCanteen.Models;
 using MyCanteen.Services;
+using MyCanteen.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,7 +32,7 @@ namespace MyCanteen.ViewModels
         public ICommand TapMenuCommand => new Command<MenuOrder>(async (param) =>
         {
             await _page.DisplayAlert("Alert", $"You Tap {param.DMenu.Comment}!", "Ok");
-            //await _page.Navigation.PushAsync(new DayMenu2Page(param.DMenu));
+            await _page.Navigation.PushAsync(new DayMenuPage(param.DMenu));
         });
 
         /// <summary>

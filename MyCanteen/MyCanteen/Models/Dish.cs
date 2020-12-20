@@ -15,7 +15,7 @@ namespace MyCanteen.Models
         public ImageSource PhotoSource
         {
             get =>
-               ImageSource.FromResource($"WebApiMobileClient.Images.{PhotoFileName}",
+               ImageSource.FromResource($"MyCanteen.DImages.{PhotoFileName}",
                  typeof(Dish).GetTypeInfo().Assembly);
         }
         ///// <summary>

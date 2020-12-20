@@ -7,6 +7,47 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DImages\photo01.png" />
+    <None Remove="DImages\photo02.png" />
+    <None Remove="DImages\photo03.png" />
+    <None Remove="DImages\photo04.png" />
+    <None Remove="DImages\photo05.png" />
+    <None Remove="DImages\photo06.png" />
+    <None Remove="DImages\photo07.png" />
+    <None Remove="DImages\photo08.png" />
+    <None Remove="DImages\photo09.png" />
+    <None Remove="DImages\photo10.png" />
+    <None Remove="DImages\photo11.png" />
+    <None Remove="DImages\photo12.png" />
+    <None Remove="DImages\photo13.png" />
+    <None Remove="DImages\photo14.png" />
+    <None Remove="DImages\photo15.png" />
+    <None Remove="DImages\photo16.png" />
+    <None Remove="DImages\photo17.png" />
+    <None Remove="DImages\photo18.png" />
+    <None Remove="DImages\photo19.png" />
+    <None Remove="DImages\photo20.png" />
+    <None Remove="DImages\photo21.png" />
+    <None Remove="DImages\photo22.png" />
+    <None Remove="DImages\photo23.png" />
+    <None Remove="DImages\photo24.png" />
+    <None Remove="DImages\photo25.png" />
+    <None Remove="DImages\photo26.png" />
+    <None Remove="DImages\photo27.png" />
+    <None Remove="DImages\photo28.png" />
+    <None Remove="DImages\photo29.png" />
+    <None Remove="DImages\photo30.png" />
+    <None Remove="DImages\photo31.png" />
+    <None Remove="DImages\photo32.png" />
+    <None Remove="DImages\photo33.png" />
+    <None Remove="DImages\photo34.png" />
+    <None Remove="DImages\photo35.png" />
+    <None Remove="DImages\photo36.png" />
+    <None Remove="DImages\photo37.png" />
+    <None Remove="DImages\photo38.png" />
+    <None Remove="DImages\photo39.png" />
+    <None Remove="DImages\photo40.png" />
+    <None Remove="DImages\shopping-cart.png" />
     <None Remove="Images\burger.png" />
     <None Remove="Images\canteen01.jpeg" />
     <None Remove="Images\canteen01.png" />
@@ -24,6 +65,47 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="DImages\photo01.png" />
+    <EmbeddedResource Include="DImages\photo02.png" />
+    <EmbeddedResource Include="DImages\photo03.png" />
+    <EmbeddedResource Include="DImages\photo04.png" />
+    <EmbeddedResource Include="DImages\photo05.png" />
+    <EmbeddedResource Include="DImages\photo06.png" />
+    <EmbeddedResource Include="DImages\photo07.png" />
+    <EmbeddedResource Include="DImages\photo08.png" />
+    <EmbeddedResource Include="DImages\photo09.png" />
+    <EmbeddedResource Include="DImages\photo10.png" />
+    <EmbeddedResource Include="DImages\photo11.png" />
+    <EmbeddedResource Include="DImages\photo12.png" />
+    <EmbeddedResource Include="DImages\photo13.png" />
+    <EmbeddedResource Include="DImages\photo14.png" />
+    <EmbeddedResource Include="DImages\photo15.png" />
+    <EmbeddedResource Include="DImages\photo16.png" />
+    <EmbeddedResource Include="DImages\photo17.png" />
+    <EmbeddedResource Include="DImages\photo18.png" />
+    <EmbeddedResource Include="DImages\photo19.png" />
+    <EmbeddedResource Include="DImages\photo20.png" />
+    <EmbeddedResource Include="DImages\photo21.png" />
+    <EmbeddedResource Include="DImages\photo22.png" />
+    <EmbeddedResource Include="DImages\photo23.png" />
+    <EmbeddedResource Include="DImages\photo24.png" />
+    <EmbeddedResource Include="DImages\photo25.png" />
+    <EmbeddedResource Include="DImages\photo26.png" />
+    <EmbeddedResource Include="DImages\photo27.png" />
+    <EmbeddedResource Include="DImages\photo28.png" />
+    <EmbeddedResource Include="DImages\photo29.png" />
+    <EmbeddedResource Include="DImages\photo30.png" />
+    <EmbeddedResource Include="DImages\photo31.png" />
+    <EmbeddedResource Include="DImages\photo32.png" />
+    <EmbeddedResource Include="DImages\photo33.png" />
+    <EmbeddedResource Include="DImages\photo34.png" />
+    <EmbeddedResource Include="DImages\photo35.png" />
+    <EmbeddedResource Include="DImages\photo36.png" />
+    <EmbeddedResource Include="DImages\photo37.png" />
+    <EmbeddedResource Include="DImages\photo38.png" />
+    <EmbeddedResource Include="DImages\photo39.png" />
+    <EmbeddedResource Include="DImages\photo40.png" />
+    <EmbeddedResource Include="DImages\shopping-cart.png" />
     <EmbeddedResource Include="Images\burger.png" />
     <EmbeddedResource Include="Images\canteen01.jpeg" />
     <EmbeddedResource Include="Images\canteen01.png" />
@@ -54,6 +136,9 @@
   
   <ItemGroup>
     <EmbeddedResource Update="Views\CurrenMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DayMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
