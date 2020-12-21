@@ -39,7 +39,7 @@ namespace MyCanteen.ViewModels
         public ICommand OrderDishCommand => new Command<Dish>(async (param) =>
         {
             // Добавить блюдо в заказ
-            //_canteenService.AddDistToOrderAsync(DayMenu, param);
+            _canteenService.AddDishToOrderAsync(DayMenu.Date, param);
             DishQty++;
             await _page.DisplayAlert("Alert", $"Блюдо {param.Name} добавлено в заказ!", "Ok");
         });

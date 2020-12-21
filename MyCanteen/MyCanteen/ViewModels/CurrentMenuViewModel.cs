@@ -4,7 +4,9 @@ using MyCanteen.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -52,6 +54,14 @@ namespace MyCanteen.ViewModels
             await _page.DisplayAlert("Alert", $"You Tap {msg}!", "Ok");
             //await _page.Navigation.PushAsync(new CurrentMenuPage());
         });
+        public ICommand LoadItemsCommand => new Command(async () => await ExecuteLoadItemsCommand());
+
+        bool isBusy = false;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { SetProperty(ref isBusy, value); }
+        }
 
         /// <summary>
         /// Конструктор модели представления Текущего меню
@@ -61,13 +71,32 @@ namespace MyCanteen.ViewModels
         {
             _page = page;
             _canteenService = DependencyService.Get<CanteenDemoService>();
-
-            var list1 = _canteenService.GetMenuOrderListCurrentAsync();
-            var list2 = _canteenService.GetMenuOrderListNextAsync();
+            
             CurrentList = new ObservableCollection<MenuOrderList>();
-            CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list1) });
-            CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list2) });
-            CurrentList.Add(new MenuOrderList { WeekList = null });
+            ExecuteLoadItemsCommand().Wait();
+        }
+        
+        public async Task ExecuteLoadItemsCommand()
+        {
+            IsBusy = true;
+
+            try
+            {
+                var list1 = _canteenService.GetMenuOrderListCurrentAsync();
+                var list2 = _canteenService.GetMenuOrderListNextAsync();
+                CurrentList.Clear();
+                CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list1) });
+                CurrentList.Add(new MenuOrderList { WeekList = new ObservableCollection<MenuOrder>(list2) });
+                CurrentList.Add(new MenuOrderList { WeekList = null });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
 
         }
     }

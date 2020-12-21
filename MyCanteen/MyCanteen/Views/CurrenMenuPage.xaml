@@ -5,6 +5,8 @@
              x:Class="MyCanteen.Views.CurrenMenuPage"
              x:Name="CurrentMenu">
     <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            Command="{Binding LoadItemsCommand}" >
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
@@ -68,8 +70,8 @@
                                                             Command="{Binding Source={x:Reference CurrentMenu}, Path=BindingContext.TapOrderCommand}"
                                                             CommandParameter="{Binding .}"/>
                                                     </StackLayout.GestureRecognizers>
-                                                    <Label Text="{Binding DOrder.StatusName}" />
-                                                    <Label Text="Заказ" />
+                                                        <Label Text="Заказ" />
+                                                        <Label Text="{Binding DOrder.StatusName}" />
                                                 </StackLayout>
                                             </Grid>
                                         </ViewCell>
@@ -85,5 +87,6 @@
                            HorizontalOptions="Center"
                            VerticalOptions="Start"/>
         </StackLayout>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

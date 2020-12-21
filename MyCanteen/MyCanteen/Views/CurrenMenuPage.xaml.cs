@@ -14,8 +14,10 @@ namespace MyCanteen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CurrenMenuPage : ContentPage
     {
+        bool creation;
         public CurrenMenuPage()
         {
+            creation = true;
             InitializeComponent();
 
             BindingContext = new CurrentMenuViewModel(this);
@@ -26,6 +28,15 @@ namespace MyCanteen.Views
         {
             base.OnAppearing();
             Debug.WriteLine("On Appearing!");
+            if (creation)
+            {
+                creation = false;
+            }
+            else
+            {
+                Debug.WriteLine("On Appearing! Return!");
+                ((CurrentMenuViewModel)BindingContext).ExecuteLoadItemsCommand().Wait();
+            }
         }
     }
 }

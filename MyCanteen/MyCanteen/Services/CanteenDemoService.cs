@@ -831,11 +831,17 @@ namespace MyCanteen.Services
                     Dishes = new List<Dish>()
                 };
                 order.Dishes.Add(dish);
+                order.Status = OrderStatus.Created;
                 OrderList.Add(order);
             }
             else
             {
+                if (order.Dishes == null)
+                {
+                    order.Dishes = new List<Dish>();
+                }
                 order.Dishes.Add(dish);
+                order.Status = OrderStatus.Created;
                 order.Total += dish.Price;
             }
         }
