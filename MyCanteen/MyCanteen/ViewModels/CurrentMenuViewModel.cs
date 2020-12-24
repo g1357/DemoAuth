@@ -63,6 +63,8 @@ namespace MyCanteen.ViewModels
             set { SetProperty(ref isBusy, value); }
         }
 
+        bool _refreshOrders;
+
         /// <summary>
         /// Конструктор модели представления Текущего меню
         /// </summary>
@@ -71,7 +73,17 @@ namespace MyCanteen.ViewModels
         {
             _page = page;
             _canteenService = DependencyService.Get<CanteenDemoService>();
-            
+
+            _refreshOrders = false;
+            MessagingCenter.Subscribe<DayMenuViewModel, DateTime>(
+                this, "Refresh Order",
+                async (sender, arg) =>
+                {
+                    await _page.DisplayAlert("Message received", "arg=" + arg, "OK");
+                    _refreshOrders = true;
+                }
+            );
+
             CurrentList = new ObservableCollection<MenuOrderList>();
             ExecuteLoadItemsCommand().Wait();
         }
@@ -97,7 +109,15 @@ namespace MyCanteen.ViewModels
             {
                 IsBusy = false;
             }
+        }
 
+        public async void RefreshItems()
+        {
+            if (_refreshOrders)
+            {
+                await ExecuteLoadItemsCommand();
+                _refreshOrders = false;
+            }
         }
     }
 

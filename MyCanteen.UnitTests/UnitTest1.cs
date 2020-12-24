@@ -12,18 +12,13 @@ namespace MyCanteen.UnitTests
         {
             // Arrange
             //DependencyService.Register<CanteenDemoService>();
-            //var vm = new CurrentMenuViewModel(new MockPage());
+            var vm = new CurrentMenuViewModel(null);
 
             // Act
 
 
             // Assert
         }
-    }
-
-    class MockPage : Page
-    {
-
     }
 
     class CanteenDemoService

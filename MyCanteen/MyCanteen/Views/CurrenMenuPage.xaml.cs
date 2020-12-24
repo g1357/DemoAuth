@@ -14,13 +14,14 @@ namespace MyCanteen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CurrenMenuPage : ContentPage
     {
+        CurrentMenuViewModel vm;
         bool creation;
         public CurrenMenuPage()
         {
             creation = true;
             InitializeComponent();
 
-            BindingContext = new CurrentMenuViewModel(this);
+            BindingContext = vm = new CurrentMenuViewModel(this);
         }
 
         // Вызывается перед тем, как страница становится видимой.
@@ -35,7 +36,7 @@ namespace MyCanteen.Views
             else
             {
                 Debug.WriteLine("On Appearing! Return!");
-                ((CurrentMenuViewModel)BindingContext).ExecuteLoadItemsCommand().Wait();
+                vm.RefreshItems();
             }
         }
     }

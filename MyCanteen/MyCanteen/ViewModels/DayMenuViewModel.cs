@@ -20,7 +20,7 @@ namespace MyCanteen.ViewModels
         CanteenDemoService _canteenService;
         // Дневное меню
         DayMenu _dayMenu;
-        public DayMenu DayMenu
+        public DayMenu _DayMenu
         {
             get => _dayMenu;
             set => SetProperty(ref _dayMenu, value);
@@ -39,9 +39,10 @@ namespace MyCanteen.ViewModels
         public ICommand OrderDishCommand => new Command<Dish>(async (param) =>
         {
             // Добавить блюдо в заказ
-            _canteenService.AddDishToOrderAsync(DayMenu.Date, param);
+            _canteenService.AddDishToOrderAsync(_DayMenu.Date, param);
             DishQty++;
             await _page.DisplayAlert("Alert", $"Блюдо {param.Name} добавлено в заказ!", "Ok");
+            MessagingCenter.Send<DayMenuViewModel, DateTime>(this, "Refresh Order", _DayMenu.Date);
         });
         public ICommand OpenCartCommand => new Command(async () =>
         {
@@ -56,11 +57,11 @@ namespace MyCanteen.ViewModels
         public DayMenuViewModel(DayMenuPage page, DayMenu dayMenu)
         {
             _page = page;
-            DayMenu = dayMenu;
+            _DayMenu = dayMenu;
 
             _canteenService = DependencyService.Get<CanteenDemoService>();
             DishQty = 0;
-            var dList = DayMenu.Dishes;
+            var dList = _DayMenu.Dishes;
             var sorted = from item in dList
                          orderby item.TypeId
                          group item by item.Type.Plurals into itemGroup

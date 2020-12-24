@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace MyCanteen.Services
 {
@@ -862,9 +863,8 @@ namespace MyCanteen.Services
         /// <summary>
         /// Загрузить заказы из файла.
         /// </summary>
-        public void LoadOrdersAsync()
+        public async Task LoadOrdersAsync()
         {
-            OrderList = null;
             string filePath = Path.Combine(
                 Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
@@ -878,6 +878,7 @@ namespace MyCanteen.Services
                     OrderList = new List<Order>(orderList);
                 }
             }
+            return;
         }
 
         #endregion Операции с заказами
