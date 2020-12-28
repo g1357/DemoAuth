@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCanteen.Views.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Настройки приложения"
+                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" 
+                FontAttributes="Bold" FontSize="Medium" />
+            <Button Text="Удалить историю заказов"
+                    Command="{Binding ClearOrderHistoryCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

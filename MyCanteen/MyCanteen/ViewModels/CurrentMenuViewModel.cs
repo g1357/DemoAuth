@@ -79,8 +79,16 @@ namespace MyCanteen.ViewModels
                 this, "Refresh Order",
                 async (sender, arg) =>
                 {
-                    await _page.DisplayAlert("Message received", "arg=" + arg, "OK");
                     _refreshOrders = true;
+                    await _page.DisplayAlert("Message received", "arg=" + arg, "OK");
+                }
+            );
+            MessagingCenter.Subscribe<SettingsViewModel>(
+                this, "Refresh Order",
+                async (sender) =>
+                {
+                    _refreshOrders = true;
+                    await _page.DisplayAlert("Message received", "From Settings Page", "OK");
                 }
             );
 

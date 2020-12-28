@@ -881,6 +881,14 @@ namespace MyCanteen.Services
             return;
         }
 
+        /// <summary>
+        /// Очистить историю заказов
+        /// </summary>
+        /// <returns>нет</returns>
+        public async Task ClearOrderHistoryAsync()
+        {
+            OrderList.Clear();
+        }
         #endregion Операции с заказами
     }
 }
