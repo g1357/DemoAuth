@@ -43,16 +43,16 @@ namespace MyCanteen.ViewModels
         public ICommand TapOrderCommand => new Command<MenuOrder>(async (param) =>
         {
             string msg = "";
-            if (param.DOrder == null)
+            if (param.DOrder.Status == OrderStatus.NotDefined)
             {
                 msg = "Заказа нет.";
+                await _page.DisplayAlert("Alert", $"You Tap {msg}!", "Ok");
             }
             else
             {
                 msg = "Заказ есть!";
+                await _page.Navigation.PushAsync(new OrderPage());
             }
-            await _page.DisplayAlert("Alert", $"You Tap {msg}!", "Ok");
-            //await _page.Navigation.PushAsync(new CurrentMenuPage());
         });
         public ICommand LoadItemsCommand => new Command(async () => await ExecuteLoadItemsCommand());
 

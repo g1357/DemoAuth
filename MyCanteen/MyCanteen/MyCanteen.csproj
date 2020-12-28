@@ -129,13 +129,16 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Compile Update="Views\AllFeedbacksPage.xaml.cs">
+      <DependentUpon>AllFeedbacksPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\CurrenMenuPage.xaml.cs">
       <DependentUpon>CurrenMenuPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Update="Views\AllFeedbackPage.xaml">
+    <EmbeddedResource Update="Views\AllFeedbacksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CurrenMenuPage.xaml">
@@ -150,10 +153,16 @@
     <EmbeddedResource Update="Views\MyFeedbacksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\MyOrdersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\OrderHistoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OrderPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingsPage.xaml">

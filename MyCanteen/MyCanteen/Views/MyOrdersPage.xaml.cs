@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCanteen.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace MyCanteen.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllFeedbackPage : ContentPage
+    public partial class MyOrdersPage : ContentPage
     {
-        public AllFeedbackPage()
+        MyOrdersViewModel vm;
+
+        public MyOrdersPage()
         {
             InitializeComponent();
+
+            BindingContext = vm = new MyOrdersViewModel(this);
         }
     }
 }

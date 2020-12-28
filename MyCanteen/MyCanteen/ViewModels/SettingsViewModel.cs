@@ -32,6 +32,7 @@ namespace MyCanteen.ViewModels
                 MessagingCenter.Send<SettingsViewModel>(this, "Refresh Order");
             }
         });
+
         /// <summary>
         /// Конструктор модели представления Текущего меню
         /// </summary>

@@ -6,9 +6,9 @@
              xmlns:vm="clr-namespace:MyCanteen.ViewModels"
              Title="{Binding Title}">
     
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <vm:AboutViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
     
     <ContentPage.Resources>
         <ResourceDictionary>

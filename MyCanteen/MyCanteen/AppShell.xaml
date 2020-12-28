@@ -91,7 +91,7 @@
         <ShellContent Title="Текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:CurrenMenuPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Мои заказы" Icon="{helpers:IconResource Images.shopping-bag.png}">
-        <ShellContent Title="Мои заказы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:ItemsPage}" />
+        <ShellContent Title="Мои заказы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:MyOrdersPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Полное меню" Icon="{helpers:IconResource Images.menu.png}">
         <ShellContent Title="Полное меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:FullMenuPage}" />
@@ -100,7 +100,7 @@
         <ShellContent Title="История заказов" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:OrderHistoryPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Отзывы" Icon="{helpers:IconResource Images.feedback.png}">
-        <ShellContent Title="Все отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:AllFeedbackPage}" />
+        <ShellContent Title="Все отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:AllFeedbacksPage}" />
         <ShellContent Title="Мои отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:MyFeedbacksPage}" />
         <ShellContent Title="Написать отзыв" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:WriteFeedbackPage}" />
     </FlyoutItem>

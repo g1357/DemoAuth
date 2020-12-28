@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MyCanteen.Models"  
+             xmlns:viewmodels="clr-namespace:MyCanteen.ViewModels"  
+             x:Class="MyCanteen.Views.MyOrdersPage"
+             x:Name="MyOrders">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Мои заказы"
+                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" 
+                FontSize="Large"   />
+            <RefreshView x:DataType="viewmodels:MyOrdersViewModel" 
+                         Command="{Binding LoadItemsCommand}" 
+                         IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="ItemsListView"
+                    ItemsSource="{Binding Items}"
+                    EmptyView="Заказы отсутствуют :-("
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" x:DataType="model:Order">
+                                <Label Text="{Binding Date, StringFormat='{0:D}'}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding StatusName}" 
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="13" />
+                                    <Label Text="{Binding Total}" 
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="13" />
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={x:Reference MyOrders}, Path=BindingContext.TapOrderCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

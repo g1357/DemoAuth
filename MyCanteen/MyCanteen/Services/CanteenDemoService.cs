@@ -889,6 +889,11 @@ namespace MyCanteen.Services
         {
             OrderList.Clear();
         }
+
+        public async Task<List<Order>> GetOrdersAsync()
+        {
+            return OrderList;
+        }
         #endregion Операции с заказами
     }
 }

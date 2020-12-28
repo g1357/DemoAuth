@@ -6,13 +6,13 @@ using System.Text;
 namespace MyCanteen.ViewModels
 {
     /// <summary>
-    /// Модель представления моих отзывов
+    /// Модель представления истории заказов
     /// </summary>
-    public class MyFeedbacksViewModel : BaseViewModel
+    public class OrderHistoryViewModel : BaseViewModel
     {
-        MyFeedbacksPage _page;
+        OrderHistoryPage _page;
 
-        public MyFeedbacksViewModel(MyFeedbacksPage page)
+        public OrderHistoryViewModel(OrderHistoryPage page)
         {
             _page = page;
         }

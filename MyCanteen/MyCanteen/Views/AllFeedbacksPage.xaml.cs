@@ -11,15 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace MyCanteen.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderHistoryPage : ContentPage
+    public partial class AllFeedbacksPage : ContentPage
     {
-        OrderHistoryViewModel vm;
+        AllFeedbacksViewModel vm;
 
-        public OrderHistoryPage()
+        public AllFeedbacksPage()
         {
             InitializeComponent();
 
-            BindingContext = vm = new OrderHistoryViewModel(this);
+            BindingContext = vm = new AllFeedbacksViewModel(this);
         }
     }
 }
