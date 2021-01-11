@@ -506,7 +506,7 @@ namespace MyCanteen.Services
             #endregion Список всех блюд
 
             #region Пятидневное меню на текущую неделю
-            // Определяемся с датами текущего мень
+            // Определяемся с датами текущего меню
             // (на текущую или следующую неделю)
             var dayOfWeek = (int)DateTime.Today.DayOfWeek;
             var offset = dayOfWeek < 5 ? -dayOfWeek + 1 : -dayOfWeek + 8;
@@ -890,7 +890,16 @@ namespace MyCanteen.Services
             OrderList.Clear();
         }
 
-        public async Task<List<Order>> GetOrdersAsync()
+        /// <summary>
+        /// Получить текущие заказы пользователя
+        /// </summary>
+        /// <returns>Списрок текущих заказов пользователя</returns>
+        public async Task<List<Order>> GetOrdersAsync(int userId = 1)
+        {
+            return OrderList;
+        }
+
+        public async Task<List<Order>> GetAllOrdersAsync(int userID = 1)
         {
             return OrderList;
         }
