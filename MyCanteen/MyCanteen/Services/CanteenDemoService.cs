@@ -627,9 +627,16 @@ namespace MyCanteen.Services
         /// Получение полного меню.
         /// </summary>
         /// <returns>Полный список блюд</returns>
-        public IList<Dish> GetFullMenuAsync()
+        public List<Dish> GetFullMenuAsync()
         {
-            return DishList;
+            var dishList = new List<Dish>();
+            foreach(var dish in DishList)
+            {
+                //dish.Type = DishTypeList[dish.TypeId];
+                dish.Type = DishTypeList.Find(t => t.Id == dish.TypeId);
+                dishList.Add(dish);
+            }
+            return dishList;
         }
 
         /// <summary>
@@ -894,9 +901,12 @@ namespace MyCanteen.Services
         /// Получить текущие заказы пользователя
         /// </summary>
         /// <returns>Списрок текущих заказов пользователя</returns>
-        public async Task<List<Order>> GetOrdersAsync(int userId = 1)
+        public async Task<List<Order>> GetOrdersAsync(DateTime startDate, int userId = 1)
         {
-            return OrderList;
+            var orders = OrderList
+                .Where(it => it.Date.Date >= startDate.Date)
+                .ToList();
+            return orders;
         }
 
         public async Task<List<Order>> GetAllOrdersAsync(int userID = 1)

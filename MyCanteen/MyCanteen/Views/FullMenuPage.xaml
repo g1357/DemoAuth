@@ -1,12 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyCanteen.Views.FullMenuPage">
+             xmlns:models="clr-namespace:MyCanteen.Models"
+             xmlns:helpers="clr-namespace:MyCanteen.Helpers"
+             x:Class="MyCanteen.Views.FullMenuPage"
+             x:Name="FullMenuList">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Полное меню"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding ItemsGrouped}" 
+                      SelectedItem="{Binding ItemSelected}"
+                      HasUnevenRows="True" 
+                      IsGroupingEnabled="true"
+                      GroupDisplayBinding="{Binding Key}"
+                      GroupShortNameBinding="{Binding Key}"
+                      SeparatorColor="DarkRed" >
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Dish" >
+                        <ViewCell>
+                            <StackLayout Spacing="5" Padding="10">
+                                <Image Source="{Binding PhotoSource}" Aspect="AspectFill"
+                                       VerticalOptions="CenterAndExpand"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       WidthRequest="200" HeightRequest="200" />
+                                <Label Text="{Binding Name}" 
+                                    Style="{DynamicResource ListItemTextStyle}" />
+                                <Label Text="{Binding Description}" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"/>
+                                <StackLayout Orientation="Horizontal" Padding="10">
+                                    <Label Text="Вес:" />
+                                    <Label Text="{Binding Weight}"/>
+                                    <Label Text="гр." />
+                                    <Label Text="Цена:" />
+                                    <Label Text="{Binding Price}"/>
+                                    <Label Text="руб." />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Key}" HorizontalTextAlignment="Center"
+                               BackgroundColor="DarkGray"
+                               TextColor="White"
+                               FontSize="Medium" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

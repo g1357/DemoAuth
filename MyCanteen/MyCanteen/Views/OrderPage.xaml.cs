@@ -1,4 +1,5 @@
-﻿using MyCanteen.ViewModels;
+﻿using MyCanteen.Models;
+using MyCanteen.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,11 @@ namespace MyCanteen.Views
     public partial class OrderPage : ContentPage
     {
         OrderVideModel vm;
-        public OrderPage()
+        public OrderPage(Order order)
         {
             InitializeComponent();
 
-            BindingContext = vm = new OrderVideModel(this);
+            BindingContext = vm = new OrderVideModel(this, order);
         }
     }
 }

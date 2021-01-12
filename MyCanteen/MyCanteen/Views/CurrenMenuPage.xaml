@@ -8,9 +8,10 @@
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
             Command="{Binding LoadItemsCommand}" >
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Текущие меню и заказы"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Large"   />
             <CarouselView ItemsSource="{Binding CurrentList}" 
                           PeekAreaInsets="20" 
                           IndicatorView="indicatorView">
@@ -60,7 +61,7 @@
                                                             Command="{Binding Source={x:Reference CurrentMenu}, Path=BindingContext.TapMenuCommand}"
                                                             CommandParameter="{Binding .}"/>
                                                     </StackLayout.GestureRecognizers>
-                                                    <Label Text="{Binding DMenu.Date, StringFormat='{0:D}'}" />
+                                                    <Label Text="{Binding DMenu.Date, StringFormat='{0:dddd} {0:D}'}" />
                                                     <Label Text="{Binding DMenu.Comment}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Column="1" BackgroundColor="LightGreen"

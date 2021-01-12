@@ -4,9 +4,15 @@
              x:Class="MyCanteen.Views.OrderPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Заказ"
-                VerticalOptions="Start" HorizontalOptions="CenterAndExpand" 
-                FontSize="Large"/>
+            <Label FontSize="Large"
+                   VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Заказ на " />
+                        <Span Text="{Binding ThisOrder.Date, StringFormat='{0:ddd}. {0:D}'}" Style="{DynamicResource BodyStyle}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

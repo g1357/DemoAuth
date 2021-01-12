@@ -33,7 +33,7 @@ namespace MyCanteen.ViewModels
         /// </summary>
         public ICommand TapMenuCommand => new Command<MenuOrder>(async (param) =>
         {
-            await _page.DisplayAlert("Alert", $"You Tap {param.DMenu.Comment}!", "Ok");
+            //await _page.DisplayAlert("Alert", $"You Tap {param.DMenu.Comment}!", "Ok");
             await _page.Navigation.PushAsync(new DayMenuPage(param.DMenu));
         });
 
@@ -46,15 +46,19 @@ namespace MyCanteen.ViewModels
             if (param.DOrder.Status == OrderStatus.NotDefined)
             {
                 msg = "Заказа нет.";
-                await _page.DisplayAlert("Alert", $"You Tap {msg}!", "Ok");
+                await _page.DisplayAlert("Заказза НЕТ!", 
+                    "Для создания заказа нажмите на меню соответсвующего дня слева!",
+                    "Ok");
             }
             else
             {
                 msg = "Заказ есть!";
-                await _page.Navigation.PushAsync(new OrderPage());
+                await _page.Navigation.PushAsync(new OrderPage(param.DOrder));
             }
         });
-        public ICommand LoadItemsCommand => new Command(async () => await ExecuteLoadItemsCommand());
+        public ICommand LoadItemsCommand => new Command(async () => 
+            await ExecuteLoadItemsCommand()
+        );
 
         bool isBusy = false;
         public bool IsBusy
@@ -80,7 +84,7 @@ namespace MyCanteen.ViewModels
                 async (sender, arg) =>
                 {
                     _refreshOrders = true;
-                    await _page.DisplayAlert("Message received", "arg=" + arg, "OK");
+                    //await _page.DisplayAlert("Message received", "arg=" + arg, "OK");
                 }
             );
             MessagingCenter.Subscribe<SettingsViewModel>(
@@ -88,7 +92,7 @@ namespace MyCanteen.ViewModels
                 async (sender) =>
                 {
                     _refreshOrders = true;
-                    await _page.DisplayAlert("Message received", "From Settings Page", "OK");
+                    //await _page.DisplayAlert("Message received", "From Settings Page", "OK");
                 }
             );
 

@@ -14,11 +14,15 @@ namespace MyCanteen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CurrenMenuPage : ContentPage
     {
+        // Модель представления данной страницы
         CurrentMenuViewModel vm;
+        // Флаг создания страницы
         bool creation;
         public CurrenMenuPage()
         {
+            // Установка начального создания 
             creation = true;
+
             InitializeComponent();
 
             BindingContext = vm = new CurrentMenuViewModel(this);
@@ -28,14 +32,13 @@ namespace MyCanteen.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Debug.WriteLine("On Appearing!");
+
             if (creation)
             {
                 creation = false;
             }
             else
             {
-                Debug.WriteLine("On Appearing! Return!");
                 vm.RefreshItems();
             }
         }

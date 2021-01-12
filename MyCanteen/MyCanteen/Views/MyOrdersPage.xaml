@@ -20,7 +20,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Padding="10" x:DataType="model:Order">
-                                <Label Text="{Binding Date, StringFormat='{0:D}'}" 
+                                <Label Text="{Binding Date, StringFormat='{0:dddd} {0:D}'}" 
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />

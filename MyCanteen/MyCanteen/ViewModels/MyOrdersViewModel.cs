@@ -1,4 +1,5 @@
-﻿using MyCanteen.Models;
+﻿using MyCanteen.Helpers;
+using MyCanteen.Models;
 using MyCanteen.Services;
 using MyCanteen.Views;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -33,7 +35,7 @@ namespace MyCanteen.ViewModels
         }
         public ICommand TapOrderCommand => new Command<Order>(async (param) =>
         {
-            await _page.Navigation.PushAsync(new OrderPage());
+            await _page.Navigation.PushAsync(new OrderPage(param));
         });
 
         /// <summary>
@@ -41,12 +43,52 @@ namespace MyCanteen.ViewModels
         /// </summary>
         public ICommand LoadItemsCommand => new Command(async () =>
         {
+            await ExecuteLoadItemsCommand();
+        });
+
+        bool _refreshOrders;
+
+        /// <summary>
+        /// Конструктор модели представления Моих заказов
+        /// </summary>
+        /// <param name="page">Связанная страница (представление)</param>
+        public MyOrdersViewModel(MyOrdersPage page)
+        {
+            _page = page;
+            _canteenService = DependencyService.Get<CanteenDemoService>();
+
+            _refreshOrders = false;
+            MessagingCenter.Subscribe<DayMenuViewModel, DateTime>(
+                this, "Refresh Order",
+                async (sender, arg) =>
+                {
+                    _refreshOrders = true;
+                    await _page.DisplayAlert("Message received", "arg=" + arg, "OK");
+                }
+            );
+            MessagingCenter.Subscribe<SettingsViewModel>(
+                this, "Refresh Order",
+                async (sender) =>
+                {
+                    _refreshOrders = true;
+                    await _page.DisplayAlert("Message received", "From Settings Page", "OK");
+                }
+            );
+
+            Items = new ObservableCollection<Order>();
+
+            ExecuteLoadItemsCommand().Wait();
+        }
+
+        public async Task ExecuteLoadItemsCommand()
+        {
             IsBusy = true;
 
             try
             {
                 Items.Clear();
-                var items = await _canteenService.GetOrdersAsync();
+                DateTime startOfWeek = DateTime.Now.StartOfWeek();
+                var items = await _canteenService.GetOrdersAsync(startOfWeek);
                 //Items = new ObservableCollection<Order>(Items);
                 foreach (var item in items)
                 {
@@ -64,20 +106,14 @@ namespace MyCanteen.ViewModels
             {
                 IsBusy = false;
             }
-        });
-
-        /// <summary>
-        /// Конструктор модели представления Моих заказов
-        /// </summary>
-        /// <param name="page">Связанная страница (представление)</param>
-        public MyOrdersViewModel(MyOrdersPage page)
+        }
+        public async void RefreshItems()
         {
-            _page = page;
-            _canteenService = DependencyService.Get<CanteenDemoService>();
-
-            Items = new ObservableCollection<Order>();
-
-            LoadItemsCommand.Execute(null);
+            if (_refreshOrders)
+            {
+                await ExecuteLoadItemsCommand();
+                _refreshOrders = false;
+            }
         }
     }
 }
