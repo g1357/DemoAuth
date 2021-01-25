@@ -14,12 +14,12 @@ namespace MyCanteen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrderPage : ContentPage
     {
-        OrderVideModel vm;
+        OrderViewModel vm;
         public OrderPage(Order order)
         {
             InitializeComponent();
 
-            BindingContext = vm = new OrderVideModel(this, order);
+            BindingContext = vm = new OrderViewModel(this, order);
         }
     }
 }
