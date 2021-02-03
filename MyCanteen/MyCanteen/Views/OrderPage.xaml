@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyCanteen.Views.OrderPage">
+             xmlns:models="clr-namespace:MyCanteen.Models"  
+             xmlns:viewmodels="clr-namespace:MyCanteen.ViewModels"  
+             x:Class="MyCanteen.Views.OrderPage"
+             x:Name="OrderContent">
     <ContentPage.Content>
         <StackLayout>
             <Label FontSize="Large"
@@ -13,6 +16,63 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <RefreshView x:DataType="viewmodels:OrderViewModel" 
+                        Command="{Binding LoadItemsCommand}" 
+                        IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="ItemsListView"
+                    ItemsSource="{Binding Items}"
+                    EmptyView="Заказ отсутствуют :-("
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate  x:DataType="models:Dish">
+                            <StackLayout Orientation="Horizontal"
+                                Spacing="5" Padding="10">
+                                <Image Source="{Binding PhotoSource}" Aspect="AspectFill"
+                                       VerticalOptions="CenterAndExpand"  
+                                       HorizontalOptions="Start"
+                                       WidthRequest="50" HeightRequest="50" />
+                                <StackLayout>
+                                <Label Text="{Binding Name}" Padding="10,0,0,0"
+                                    Style="{DynamicResource ListItemTextStyle}" />
+                                <!--<Label Text="{Binding Description}" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"/>-->
+                                <StackLayout Orientation="Horizontal" Padding="10">
+                                    <Label Text="Вес:" />
+                                    <Label Text="{Binding Weight}"/>
+                                    <Label Text="гр." />
+                                    <Label Text="Цена:" />
+                                    <Label Text="{Binding Price}"/>
+                                    <Label Text="руб." />
+                                </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                            <!--<StackLayout Padding="10" x:DataType="model:Dish">
+                                <Label Text="{Binding Type}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" 
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                    <Label Text="{Binding Price}" 
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={x:Reference OrderContent}, Path=BindingContext.TapOrderCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>-->
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            <Label Text="{Binding ThisOrder.Total, StringFormat='Общая сумма: {0} руб.'}"
+                   FontSize="Large"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
