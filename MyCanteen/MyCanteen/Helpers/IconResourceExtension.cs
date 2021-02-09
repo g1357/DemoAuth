@@ -12,7 +12,7 @@ namespace MyCanteen.Helpers
     // Creating XAML Markup Extensions
     // https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/markup-extensions/creating
 
-    [ContentProperty("Icon")]
+    [ContentProperty(nameof(Icon))]
     public class IconResourceExtension : IMarkupExtension<ImageSource>
     {
         public string Icon { get; set; }
@@ -30,7 +30,7 @@ namespace MyCanteen.Helpers
             }
             string assemblyName = GetType().GetTypeInfo().Assembly.GetName().Name;
             var imageSource = ImageSource.FromResource(assemblyName + "." + Icon,
-                typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+                typeof(IconResourceExtension).GetTypeInfo().Assembly);
             //var imageSource = ImageSource.FromResource(Source);
 
             return imageSource;

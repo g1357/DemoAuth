@@ -12,7 +12,7 @@ namespace MyCanteen.Helpers
     // Creating XAML Markup Extensions
     // https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/markup-extensions/creating
 
-    [ContentProperty("Source")]
+    [ContentProperty(nameof(Source))]
     public class ImageResourceExtension : IMarkupExtension<ImageSource>
     {
         public string Source { get; set; }

@@ -15,7 +15,7 @@
             <Color x:Key="Accent">#96d1ff</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-
+    <ScrollView>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -36,7 +36,7 @@
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Alpha-3 1.01.45 для внутреннего тестирования." FontSize="Title"/>
+                <Label Text="Alpha-3 1.01.47 для внутреннего тестирования." FontSize="Title"/>
                 <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
@@ -55,5 +55,5 @@
             </StackLayout>
         </ScrollView>
     </Grid>
-
+    </ScrollView>
 </ContentPage>

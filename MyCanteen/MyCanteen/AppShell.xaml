@@ -87,28 +87,28 @@
     </FlyoutItem>
     -->
 
-    <FlyoutItem Title="Текущее меню" Icon="{helpers:IconResource Images.choices.png}">
+    <FlyoutItem Title="Текущее меню" Icon="choices.png">
         <ShellContent Title="Текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:CurrenMenuPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Мои заказы" Icon="{helpers:IconResource Images.shopping-bag.png}">
+    <FlyoutItem Title="Мои заказы" Icon="shopping_bag.png">
         <ShellContent Title="Мои заказы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:MyOrdersPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Полное меню" Icon="{helpers:IconResource Images.menu.png}">
+    <FlyoutItem Title="Полное меню" Icon="menu.png">
         <ShellContent Title="Полное меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:FullMenuPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="История заказов" Icon="{helpers:IconResource Images.clock.png}">
+    <FlyoutItem Title="История заказов" Icon="clock.png">
         <ShellContent Title="История заказов" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:OrderHistoryPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Отзывы" Icon="{helpers:IconResource Images.feedback.png}">
+    <FlyoutItem Title="Отзывы" Icon="feedback.png">
         <ShellContent Title="Все отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:AllFeedbacksPage}" />
         <ShellContent Title="Мои отзывы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:MyFeedbacksPage}" />
         <ShellContent Title="Написать отзыв" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:WriteFeedbackPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Настройки" Icon="{helpers:IconResource Images.setting-lines.png}">
+    <FlyoutItem Title="Настройки" Icon="setting_lines.png">
         <ShellContent Title="текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:SettingsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="О приложении" Icon="{helpers:IconResource Images.tab_about.png}">
-        <ShellContent Title="О приложении" Icon="{helpers:IconResource Images.tab_about.png}" ContentTemplate="{DataTemplate views:AboutPage}" />
+    <FlyoutItem Title="О приложении" Icon="tab_about.png">
+        <ShellContent Title="О приложении" Icon="tab_about.png" ContentTemplate="{DataTemplate views:AboutPage}" />
         <ShellContent Title="Новости" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:NewsPage}" />
     </FlyoutItem>
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
