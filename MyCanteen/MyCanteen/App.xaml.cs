@@ -16,6 +16,8 @@ namespace MyCanteen
             DependencyService.Register<MockDataStore>();
 
             DependencyService.Register<CanteenDemoService>();
+
+            DependencyService.Register<IUsersService, UsersService>();
             
             LoadLocalData();
 

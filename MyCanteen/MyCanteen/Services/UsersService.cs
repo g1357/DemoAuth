@@ -3,6 +3,7 @@ using MyCanteen.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,12 +26,24 @@ namespace MyCanteen.Services
             {
                 try
                 {
-                    httpClient.BaseAddress = new Uri(
-                        Constants.GetBaseWebApiAddress() + "/api/users/");
+                    //httpClient.BaseAddress = new Uri(
+                    //    Constants.GetBaseWebApiAddress() + "/api/users/");
                     var content = JsonSerializer.Serialize(loginModel);
-                    HttpContent contentPost = new StringContent(
-                        content, Encoding.UTF8, "application/json");
-                    var response = await httpClient.PostAsync("login", contentPost);
+                    //HttpContent contentPost = new StringContent(
+                    //    content, Encoding.UTF8, "application/json");
+                    //var response = await httpClient.PostAsync("login", contentPost);
+
+                    var request = new HttpRequestMessage(HttpMethod.Post,
+                        Constants.GetBaseWebApiAddress() + "/api/users/login");
+                    // Добавляем в запрос тело, как ответ формы
+                    //request.Content = new FormUrlEncodedContent(keyValues);
+                    request.Content = new StringContent(content);
+                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    HttpResponseMessage response = null;
+                    response = await httpClient.SendAsync(request);
+
+
+
                     if (!response.IsSuccessStatusCode)
                     {
                         throw new HttpRequestException();
