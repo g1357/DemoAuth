@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
@@ -14,6 +15,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -35,6 +37,7 @@ namespace WebAPI.Controllers
         // POST: api/account/login
         [HttpPost]
         [Route("login")]
+        [AllowAnonymous]
         public async Task<ActionResult<User>> PostLoginAsync(Login login)
         {
             // Ищем пользователя в системе по адресу эл. почты
@@ -62,7 +65,17 @@ namespace WebAPI.Controllers
 
         // GET: api/<AccountController>
         [HttpGet]
+        [Route("read")]
+        [AllowAnonymous]
         public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET: api/<AccountController>
+        [HttpGet]
+        [Route("read2")]
+        public IEnumerable<string> Get2()
         {
             return new string[] { "value1", "value2" };
         }

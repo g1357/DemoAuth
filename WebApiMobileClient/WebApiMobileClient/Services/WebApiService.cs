@@ -87,7 +87,9 @@ namespace WebApiMobileClient.Services
             var hasExpir = pairs.TryGetValue(".expires", out string expir);
             // Получаем токен доступа
             var hasToken = pairs.TryGetValue("jwtToken", out string token);
+
             return token;
         }
+
     }
 }
