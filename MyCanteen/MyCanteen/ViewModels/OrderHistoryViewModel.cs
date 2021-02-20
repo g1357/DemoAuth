@@ -24,16 +24,10 @@ namespace MyCanteen.ViewModels
         // Сервис
         CanteenDemoService _canteenService;
 
-        private Item _selectedItem;
+        //private Item _selectedItem;
 
         public ObservableCollection<Order> Items { get; set; }
 
-        bool isBusy = false;
-        public bool IsBusy
-        {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
-        }
         public ICommand TapOrderCommand => new Command<Order>(async (param) =>
         {
             await _page.Navigation.PushAsync(new OrderPage(param));
