@@ -1,5 +1,6 @@
 ﻿using MyCanteen.Helpers;
 using MyCanteen.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -26,21 +27,22 @@ namespace MyCanteen.Services
             {
                 try
                 {
-                    //httpClient.BaseAddress = new Uri(
-                    //    Constants.GetBaseWebApiAddress() + "/api/users/");
-                    var content = JsonSerializer.Serialize(loginModel);
-                    //HttpContent contentPost = new StringContent(
-                    //    content, Encoding.UTF8, "application/json");
-                    //var response = await httpClient.PostAsync("login", contentPost);
+                    httpClient.BaseAddress = new Uri(
+                        Constants.GetBaseWebApiAddress() + "/api/users/");
+                    //var content = JsonSerializer.Serialize(loginModel);
+                    var content = JsonConvert.SerializeObject(loginModel);
+                    HttpContent contentPost = new StringContent(
+                        content, Encoding.UTF8, "application/json");
+                    var response = await httpClient.PostAsync("login", contentPost);
 
-                    var request = new HttpRequestMessage(HttpMethod.Post,
-                        Constants.GetBaseWebApiAddress() + "/api/users/login");
-                    // Добавляем в запрос тело, как ответ формы
-                    //request.Content = new FormUrlEncodedContent(keyValues);
-                    request.Content = new StringContent(content);
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                    HttpResponseMessage response = null;
-                    response = await httpClient.SendAsync(request);
+                    //var request = new HttpRequestMessage(HttpMethod.Post,
+                    //    Constants.GetBaseWebApiAddress() + "/api/users/login");
+                    //// Добавляем в запрос тело, как ответ формы
+                    ////request.Content = new FormUrlEncodedContent(keyValues);
+                    //request.Content = new StringContent(content);
+                    //request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    //HttpResponseMessage response = null;
+                    //response = await httpClient.SendAsync(request);
 
 
 
@@ -51,7 +53,8 @@ namespace MyCanteen.Services
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        return JsonSerializer.Deserialize<UserModel>(result);
+                        //return JsonSerializer.Deserialize<UserModel>(result);
+                        return JsonConvert.DeserializeObject<UserModel>(result);
                     }
                 }
                 catch (Exception ex)
@@ -74,7 +77,7 @@ namespace MyCanteen.Services
                 {
                     httpClient.BaseAddress = new Uri(
                         Constants.GetBaseWebApiAddress() + "/api/users/");
-                    var content = JsonSerializer.Serialize(userModel);
+                    var content = System.Text.Json.JsonSerializer.Serialize(userModel);
                     HttpContent contentPost = new StringContent(
                         content, Encoding.UTF8, "application/json");
                     var response = await httpClient.PostAsync("register", contentPost);
@@ -85,7 +88,7 @@ namespace MyCanteen.Services
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        return JsonSerializer.Deserialize<long>(result);
+                        return System.Text.Json.JsonSerializer.Deserialize<long>(result);
                     }
                 }
                 catch (Exception ex)
@@ -108,7 +111,7 @@ namespace MyCanteen.Services
                 {
                     httpClient.BaseAddress = new Uri(
                         Constants.GetBaseWebApiAddress() + "/api/users/");
-                    var content = JsonSerializer.Serialize(refreshToken);
+                    var content = System.Text.Json.JsonSerializer.Serialize(refreshToken);
                     HttpContent contentPost = new StringContent(
                         content, Encoding.UTF8, "application/json");
                     var response = await httpClient.PostAsync("refreshtoken", contentPost);
@@ -119,7 +122,7 @@ namespace MyCanteen.Services
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        return JsonSerializer.Deserialize<UserModel>(result);
+                        return System.Text.Json.JsonSerializer.Deserialize<UserModel>(result);
                     }
                 }
                 catch (Exception ex)
@@ -152,7 +155,7 @@ namespace MyCanteen.Services
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        return JsonSerializer.Deserialize<IEnumerable<UserModel>>(result);
+                        return System.Text.Json.JsonSerializer.Deserialize<IEnumerable<UserModel>>(result);
                     }
                 }
                 catch (Exception ex)

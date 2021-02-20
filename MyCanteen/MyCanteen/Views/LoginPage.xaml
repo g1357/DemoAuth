@@ -8,28 +8,19 @@
              x:Class="MyCanteen.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <!--<StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>-->
         <StackLayout HorizontalOptions="Center"
                  VerticalOptions="Center">
             <Label Text="Login or password is incorrect!"
-               HorizontalOptions="Center"
-               TextColor="#FFF"
-               FontSize="20"
                IsVisible="{Binding IsErrorVisible}"
-               BackgroundColor="#FF8800"/>
+               HorizontalOptions="Center"
+               TextColor="#FFF" FontSize="20"  BackgroundColor="#FF8800"/>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Login:"
-                   FontSize="20"
-                   WidthRequest="95"
-                   HorizontalTextAlignment="End"
-                   TextColor="#000"
+                <Label Text="Login:" FontSize="20" WidthRequest="95"
+                   HorizontalTextAlignment="End" TextColor="#000"
                    VerticalOptions="Center"/>
                 <Entry Placeholder="Email"
-                   FontSize="18"
                    Text="{Binding Login, Mode=TwoWay}"
-                   WidthRequest="200"
+                   FontSize="18" WidthRequest="200"
                    VerticalOptions="Center">
                     <Entry.Behaviors>
                         <behavior:EventToCommandBehavior EventName="TextChanged"  
@@ -44,10 +35,8 @@
                    FontSize="12"
                    FontAttributes="Italic" />
             <StackLayout Orientation="Horizontal">
-                <Label Text="Password:"
-                   HorizontalTextAlignment="End"
-                   FontSize="20"
-                   TextColor="#000"
+                <Label Text="Password:" HorizontalTextAlignment="End"
+                   FontSize="20" TextColor="#000"
                    VerticalOptions="Center"/>
                 <Entry Placeholder="Password"
                    IsPassword="True"
@@ -61,7 +50,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </StackLayout>
-            <Label IsVisible="{Binding IsPassworddInvalid}"
+            <Label IsVisible="{Binding IsPasswordInvalid}"
                    TextColor="Red"
                    HorizontalOptions="Center"
                    Text="Password is required field!"
