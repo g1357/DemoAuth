@@ -48,6 +48,15 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref isPasswordInvalid, value);
         }
 
+        private string errorMessage = "Login or password is incorrect!";
+
+        public string ErrorMessage
+        {
+            get => errorMessage;
+            set => SetProperty(ref errorMessage, value);
+        }
+
+
         private bool isErrorVisible;
 
         public bool IsErrorVisible
@@ -75,17 +84,24 @@ namespace MyCanteen.ViewModels
 
         private async void SignIn(object obj)
         {
-            var user = await usersService.Login(new LoginModel { 
+            //var user = await usersService.Login(new LoginModel { 
+            //    Email = Login,
+            //    Password = Password
+            //});
+            var (user, message) = await usersService.Login2(new LoginModel
+            {
                 Email = Login,
                 Password = Password
             });
             if (user != null)
             {
                 // Go to Welcome page
+                await page.DisplayAlert("Enter", $"Welcome to MyCanteen Service!", "Ok");
             }
             else
             {
-                IsErrorVisible = true;
+               ErrorMessage = message;
+               IsErrorVisible = true;
             }
         }
 

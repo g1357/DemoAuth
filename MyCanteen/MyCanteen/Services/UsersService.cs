@@ -23,6 +23,12 @@ namespace MyCanteen.Services
         /// <returns>Информация о пользователе за исключением пароля</returns>
         public async Task<UserModel> Login(LoginModel loginModel)
         {
+            var (userModel, message) = await Login2(loginModel);
+            return userModel;
+        }
+            
+        public async Task<(UserModel, string)> Login2(LoginModel loginModel)
+        {
             using (HttpClient httpClient = new HttpClient())
             {
                 try
@@ -48,18 +54,27 @@ namespace MyCanteen.Services
 
                     if (!response.IsSuccessStatusCode)
                     {
-                        throw new HttpRequestException();
+                        //throw new HttpRequestException();
+                        var result = await response.Content.ReadAsStringAsync();
+                        if (string.IsNullOrEmpty(result))
+                        {
+                            return (null, response.ReasonPhrase);
+                        }
+                        else
+                        {
+                            return (null, result);
+                        }
                     }
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
                         //return JsonSerializer.Deserialize<UserModel>(result);
-                        return JsonConvert.DeserializeObject<UserModel>(result);
+                        return (JsonConvert.DeserializeObject<UserModel>(result), "");
                     }
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return (null, "Web service access error.");
                 }
             }
         }

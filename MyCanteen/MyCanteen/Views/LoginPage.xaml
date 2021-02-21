@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center"
                  VerticalOptions="Center">
-            <Label Text="Login or password is incorrect!"
+            <Label Text="{Binding ErrorMessage}"
                IsVisible="{Binding IsErrorVisible}"
                HorizontalOptions="Center"
                TextColor="#FFF" FontSize="20"  BackgroundColor="#FF8800"/>

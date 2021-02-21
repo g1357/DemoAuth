@@ -17,6 +17,7 @@ namespace MyCanteen.Services
         /// <param name="loginModel">Данные для входа в систему</param>
         /// <returns>Информация о пользователе за исключением пароля</returns>
         Task<UserModel> Login(LoginModel loginModel);
+        Task<(UserModel, string)> Login2(LoginModel loginModel);
 
         /// <summary>
         /// Регистрация нового пользователя в системе
