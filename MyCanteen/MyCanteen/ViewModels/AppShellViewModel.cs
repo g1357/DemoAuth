@@ -11,6 +11,12 @@ namespace MyCanteen.ViewModels
     {
         AppShell page;
         public Command LoginCommand { get; set; }
+
+        public Command RegisterCommand => new Command(async () =>
+        {
+            await Shell.Current.GoToAsync("//RegisterPage");
+        });
+
         public AppShellViewModel(AppShell page )
         {
             this.page = page;
