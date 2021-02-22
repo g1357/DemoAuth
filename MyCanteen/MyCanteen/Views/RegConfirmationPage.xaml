@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCanteen.Views.RegConfirmationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Подтверждение электронной почты пользователя"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label>
+                <Label.FormattedText>
+                    Пользователь успешно создан.\n
+                    Перед началом использования системы, Вам необходимо подтвердить
+                    адрес электронной почты.
+                    Введите, пожалуйста, в поле ниже код,
+                    полученный в электронном письме с адреса "confirmation@epe.su".
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

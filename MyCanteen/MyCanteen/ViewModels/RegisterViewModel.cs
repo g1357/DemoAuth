@@ -24,7 +24,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref firstName, value);
         }
 
-        private bool isFirstNameInvalid;
+        private bool isFirstNameInvalid = true;
 
         public bool IsFirstNameInvalid
         {
@@ -50,7 +50,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref middleName, value);
         }
 
-        private bool isMiddleNameInvalid;
+        private bool isMiddleNameInvalid = true;
 
         public bool IsMiddleNameInvalid
         {
@@ -76,7 +76,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref lastName, value);
         }
 
-        private bool isLastNameInvalid;
+        private bool isLastNameInvalid = true;
 
         public bool IsLastNameInvalid
         {
@@ -102,7 +102,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref email, value);
         }
 
-        private bool isEmailInvalid;
+        private bool isEmailInvalid = true;
 
         public bool IsEmailInvalid
         {
@@ -131,7 +131,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref password, value);
         }
 
-        private bool isPasswordInvalid;
+        private bool isPasswordInvalid = true;
 
         public bool IsPasswordInvalid
         {
@@ -157,7 +157,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref mobileNumber, value);
         }
 
-        private bool isMobileNumberInvalid;
+        private bool isMobileNumberInvalid = true;
 
         public bool IsMobileNumberInvalid
         {
@@ -169,7 +169,9 @@ namespace MyCanteen.ViewModels
 
         private void ValidateMobileNumber(object obj)
         {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Regex regex = new Regex(
+                //                @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+                @"\(?\d{3}\)?-? *\d{3}-? *-?\d{2}-? *-?\d{2}");
             Match match = regex.Match(MobileNumber);
 
             IsMobileNumberInvalid = !match.Success;
@@ -214,6 +216,10 @@ namespace MyCanteen.ViewModels
             };
 
             var id = await usersService.Register(user);
+
+            await page.Navigation.PushAsync(new RegConfirmationPage(id));
+            var nav = page.Navigation;
+            nav.RemovePage(page);
         }
 
         private bool CanExecuteRegister(object arg)
