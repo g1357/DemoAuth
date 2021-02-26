@@ -32,5 +32,25 @@ namespace MyCanteen.Views
             BindingContext = vm;
 
         }
+
+        override protected bool OnBackButtonPressed()
+        {
+            //var answer = DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда! Выйти из приложения", "Yes", "No")
+            //    .GetAwaiter().GetResult();
+            //return !answer;
+            //DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда!", "Ok");
+            //return true;
+            bool answer = false;
+            Task.Run(() =>
+           {
+               Device.BeginInvokeOnMainThread(async () =>
+               {
+                   var ans = await DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда! Выйти из приложения", "Yes", "No");
+                   answer = ans;
+               });
+           }).GetAwaiter();
+            return !answer;
+        }
+
     }
 }

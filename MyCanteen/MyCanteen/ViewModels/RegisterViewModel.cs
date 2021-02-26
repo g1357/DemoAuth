@@ -217,9 +217,11 @@ namespace MyCanteen.ViewModels
 
             var id = await usersService.Register(user);
 
-            await page.Navigation.PushAsync(new RegConfirmationPage(id));
-            var nav = page.Navigation;
-            nav.RemovePage(page);
+            //await page.Navigation.PushAsync(new RegConfirmationPage(id));
+            //var nav = page.Navigation;
+            //nav.RemovePage(page);
+            await Shell.Current.GoToAsync("//RegConfirmationPage");
+
         }
 
         private bool CanExecuteRegister(object arg)
