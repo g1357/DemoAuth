@@ -16,7 +16,7 @@ namespace MyCanteen.ViewModels
         private readonly RegisterPage page;
 
         #region First Name Property
-        private string firstName;
+        private string firstName = "Иван";
 
         public string FirstName
         {
@@ -42,7 +42,7 @@ namespace MyCanteen.ViewModels
         #endregion First Name Property
 
         #region Middle Name Property
-        private string middleName;
+        private string middleName = "Иванович";
 
         public string MiddleName
         {
@@ -68,7 +68,7 @@ namespace MyCanteen.ViewModels
         #endregion Middle Name Property
 
         #region Last Name Property
-        private string lastName;
+        private string lastName = "Иванов";
 
         public string LastName
         {
@@ -94,7 +94,7 @@ namespace MyCanteen.ViewModels
         #endregion Last Name Property
 
         #region Email Property
-        private string email;
+        private string email = "ivanov@mail.com";
 
         public string Email
         {
@@ -123,7 +123,7 @@ namespace MyCanteen.ViewModels
         #endregion Email Property
 
         #region Password Property
-        private string password;
+        private string password = "P@$$w0rd";
 
         public string Password
         {
@@ -149,7 +149,7 @@ namespace MyCanteen.ViewModels
         #endregion Password Property
 
         #region Mobile Number Property
-        private string mobileNumber;
+        private string mobileNumber = "(985) 123-4567";
 
         public string MobileNumber
         {
@@ -204,11 +204,11 @@ namespace MyCanteen.ViewModels
         }
 
         private async void Register(object obj)
-        {
+         {
             var user = new UserModel
             {
                 FirstName = FirstName,
-                MiddleName =MiddleName,
+                MiddleName = MiddleName,
                 LastName = LastName,
                 Email = Email,
                 Password = Password,

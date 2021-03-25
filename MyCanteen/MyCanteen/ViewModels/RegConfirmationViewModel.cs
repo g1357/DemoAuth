@@ -22,5 +22,11 @@ namespace MyCanteen.ViewModels
             this.page = page;
 
         }
+
+        public bool Method1()
+        {
+            var t = page.DisplayAlert("MESSAGE", "Hello!", "OK", "Cancel");
+            return t.Result;
+        }
     }
 }
