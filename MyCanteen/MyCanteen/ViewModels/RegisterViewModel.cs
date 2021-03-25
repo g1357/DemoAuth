@@ -24,7 +24,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref firstName, value);
         }
 
-        private bool isFirstNameInvalid;
+        private bool isFirstNameInvalid = true;
 
         public bool IsFirstNameInvalid
         {
@@ -50,7 +50,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref middleName, value);
         }
 
-        private bool isMiddleNameInvalid;
+        private bool isMiddleNameInvalid = true;
 
         public bool IsMiddleNameInvalid
         {
@@ -76,7 +76,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref lastName, value);
         }
 
-        private bool isLastNameInvalid;
+        private bool isLastNameInvalid = true;
 
         public bool IsLastNameInvalid
         {
@@ -102,7 +102,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref email, value);
         }
 
-        private bool isEmailInvalid;
+        private bool isEmailInvalid = true;
 
         public bool IsEmailInvalid
         {
@@ -131,7 +131,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref password, value);
         }
 
-        private bool isPasswordInvalid;
+        private bool isPasswordInvalid = true;
 
         public bool IsPasswordInvalid
         {
@@ -143,10 +143,39 @@ namespace MyCanteen.ViewModels
 
         private void ValidatePassword(object obj)
         {
-            IsPasswordInvalid = string.IsNullOrEmpty(Password);
+            IsPasswordInvalid = string.IsNullOrEmpty(Password)
+                || (Password != Password2);
             RegisterCommand.ChangeCanExecute();
         }
         #endregion Password Property
+
+        #region Password2 Property
+        private string password2;
+
+        public string Password2
+        {
+            get => password2;
+            set => SetProperty(ref password2, value);
+        }
+
+        private bool isPassword2Invalid = true;
+
+        public bool IsPassword2Invalid
+        {
+            get => isPassword2Invalid;
+            set => SetProperty(ref isPassword2Invalid, value);
+        }
+
+        public Command ValidatePassword2Command { get; }
+
+        private void ValidatePassword2(object obj)
+        {
+            IsPassword2Invalid = string.IsNullOrEmpty(Password2)
+                || (Password != Password2);
+            RegisterCommand.ChangeCanExecute();
+        }
+        #endregion Password2 Property
+
 
         #region Mobile Number Property
         private string mobileNumber;
@@ -157,7 +186,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref mobileNumber, value);
         }
 
-        private bool isMobileNumberInvalid;
+        private bool isMobileNumberInvalid = true;
 
         public bool IsMobileNumberInvalid
         {
@@ -169,7 +198,9 @@ namespace MyCanteen.ViewModels
 
         private void ValidateMobileNumber(object obj)
         {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Regex regex = new Regex(
+                //                @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+                @"\(?\d{3}\)?-? *\d{3}-? *-?\d{2}-? *-?\d{2}");
             Match match = regex.Match(MobileNumber);
 
             IsMobileNumberInvalid = !match.Success;
@@ -197,16 +228,18 @@ namespace MyCanteen.ViewModels
                 a => Email != null);
             ValidatePasswordCommand = new Command(ValidatePassword,
                 a => Password != null);
+            ValidatePassword2Command = new Command(ValidatePassword2,
+                a => Password2 != null);
             ValidateMobileNumberCommand = new Command(ValidateMobileNumber,
                 a => MobileNumber != null);
         }
 
         private async void Register(object obj)
-        {
+         {
             var user = new UserModel
             {
                 FirstName = FirstName,
-                MiddleName =MiddleName,
+                MiddleName = MiddleName,
                 LastName = LastName,
                 Email = Email,
                 Password = Password,
@@ -214,6 +247,12 @@ namespace MyCanteen.ViewModels
             };
 
             var id = await usersService.Register(user);
+
+            //await page.Navigation.PushAsync(new RegConfirmationPage(id));
+            //var nav = page.Navigation;
+            //nav.RemovePage(page);
+            await Shell.Current.GoToAsync("//RegConfirmationPage");
+
         }
 
         private bool CanExecuteRegister(object arg)
