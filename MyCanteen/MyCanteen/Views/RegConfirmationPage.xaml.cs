@@ -36,61 +36,15 @@ namespace MyCanteen.Views
 
         }
 
-        private bool? answer = null;
-
+        /// <summary>
+        /// Обработка нажатия аппаратной клавиши"назад"
+        /// </summary>
+        /// <returns></returns>
         override protected bool OnBackButtonPressed()
         {
-            var res = vm.Method1();
-
-            return res;
-
-            //var answer = DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда! Выйти из приложения", "Yes", "No")
-            //    .GetAwaiter().GetResult();
-            //return !answer;
-            //var t = await DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда!", "Ok");
-            //t.Result;
-            //Debug.WriteLine($"Result before call = {_myRes}.");
-            //MyResult2();
-            //Debug.WriteLine($"Result after call = {_myRes}.");
-            //return _myRes;
-            // bool answer;
-            // var task = Task<bool>.Run(() =>
-            //{
-            //    bool answer = false;
-            //Device.BeginInvokeOnMainThread(async () =>
-            //    {
-            //        var ans = await DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда! Выйти из приложения", "Yes", "No");
-            //        answer = ans;
-            //    });
-            //while(answer == null)
-            //{
-
-            //}
-            //return (bool)answer;
-            // answer = task.Result;
-            // return !answer;
-            //var answer = new Task<bool>.Run(async () =>
-            //{
-            //    return await DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда! Выйти из приложения", "Yes", "No");
-            //}).Result;
-            //return !answer;
-            //var task = DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда! Выйти из приложения", "Yes", "No").RunSynchronously();
-            //task.Wait();
-            //return !task.Result;
+            DisplayAlert("Сообщение", "Возвращаться некуда. Для свёртывания приложения нажмите о", "Закрыть");
+            return true; // Не сворачивать
         }
 
-        private bool _myRes = true;
-        private async Task<bool> MyResult()
-        {
-            var result = await DisplayAlert("ВНИММАНИЕ!", "Возвращаться некуда!", "Ok", "Cancel");
-            _myRes = result;
-            return result;
-        }
-
-        private async void MyResult2()
-        {
-            var result = await MyResult();
-            _myRes = result;
-        }
     }
 }

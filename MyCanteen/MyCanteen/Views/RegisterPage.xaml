@@ -73,7 +73,7 @@
                    TextColor="Red" HorizontalOptions="Center"
                    FontSize="12" FontAttributes="Italic" />
             <StackLayout Orientation="Horizontal">
-                <Label Text="Password:" HorizontalTextAlignment="End"
+                <Label Text="Password:" HorizontalTextAlignment="End" 
                    FontSize="20" TextColor="#000" VerticalOptions="Center"/>
                 <Entry Placeholder="Password" Text="{Binding Password, Mode=TwoWay}"
                    IsPassword="True"
@@ -84,7 +84,22 @@
                     </Entry.Behaviors>
                 </Entry>
             </StackLayout>
-            <Label IsVisible="{Binding IsPasswordInvalid}" Text="Password is required field!"
+            <Label IsVisible="{Binding IsPasswordInvalid}" Text="Password is required fiels! And must be the same."
+                   TextColor="Red" HorizontalOptions="Center"
+                   FontSize="12" FontAttributes="Italic" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Repeat Password:" HorizontalTextAlignment="End" WidthRequest="95"
+                   FontSize="20" TextColor="#000" VerticalOptions="Center"/>
+                <Entry Placeholder="Password" Text="{Binding Password2, Mode=TwoWay}"
+                   IsPassword="True"
+                   FontSize="18" WidthRequest="200" VerticalOptions="Center">
+                    <Entry.Behaviors>
+                        <behavior:EventToCommandBehavior EventName="TextChanged"  
+                            Command="{Binding ValidatePassword2Command}" />
+                    </Entry.Behaviors>
+                </Entry>
+            </StackLayout>
+            <Label IsVisible="{Binding IsPassword2Invalid}" Text="Password is required fiels! And must be the same."
                    TextColor="Red" HorizontalOptions="Center"
                    FontSize="12" FontAttributes="Italic" />
             <StackLayout Orientation="Horizontal">

@@ -3,6 +3,8 @@ using MyCanteen.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MyCanteen.ViewModels
 {
@@ -16,11 +18,17 @@ namespace MyCanteen.ViewModels
 
         private readonly RegConfirmationPage page;
 
+        public ICommand NextCommand { get; }
+
         public RegConfirmationViewModel(IUsersService usersService, RegConfirmationPage page)
         {
             this.usersService = usersService;
             this.page = page;
 
+            NextCommand = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("//LoginPage");
+            });
         }
 
         public bool Method1()

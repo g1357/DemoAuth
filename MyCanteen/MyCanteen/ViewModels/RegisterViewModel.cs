@@ -16,7 +16,7 @@ namespace MyCanteen.ViewModels
         private readonly RegisterPage page;
 
         #region First Name Property
-        private string firstName = "Иван";
+        private string firstName;
 
         public string FirstName
         {
@@ -42,7 +42,7 @@ namespace MyCanteen.ViewModels
         #endregion First Name Property
 
         #region Middle Name Property
-        private string middleName = "Иванович";
+        private string middleName;
 
         public string MiddleName
         {
@@ -68,7 +68,7 @@ namespace MyCanteen.ViewModels
         #endregion Middle Name Property
 
         #region Last Name Property
-        private string lastName = "Иванов";
+        private string lastName;
 
         public string LastName
         {
@@ -94,7 +94,7 @@ namespace MyCanteen.ViewModels
         #endregion Last Name Property
 
         #region Email Property
-        private string email = "ivanov@mail.com";
+        private string email;
 
         public string Email
         {
@@ -123,7 +123,7 @@ namespace MyCanteen.ViewModels
         #endregion Email Property
 
         #region Password Property
-        private string password = "P@$$w0rd";
+        private string password;
 
         public string Password
         {
@@ -143,13 +143,42 @@ namespace MyCanteen.ViewModels
 
         private void ValidatePassword(object obj)
         {
-            IsPasswordInvalid = string.IsNullOrEmpty(Password);
+            IsPasswordInvalid = string.IsNullOrEmpty(Password)
+                || (Password != Password2);
             RegisterCommand.ChangeCanExecute();
         }
         #endregion Password Property
 
+        #region Password2 Property
+        private string password2;
+
+        public string Password2
+        {
+            get => password2;
+            set => SetProperty(ref password2, value);
+        }
+
+        private bool isPassword2Invalid = true;
+
+        public bool IsPassword2Invalid
+        {
+            get => isPassword2Invalid;
+            set => SetProperty(ref isPassword2Invalid, value);
+        }
+
+        public Command ValidatePassword2Command { get; }
+
+        private void ValidatePassword2(object obj)
+        {
+            IsPassword2Invalid = string.IsNullOrEmpty(Password2)
+                || (Password != Password2);
+            RegisterCommand.ChangeCanExecute();
+        }
+        #endregion Password2 Property
+
+
         #region Mobile Number Property
-        private string mobileNumber = "(985) 123-4567";
+        private string mobileNumber;
 
         public string MobileNumber
         {
@@ -199,6 +228,8 @@ namespace MyCanteen.ViewModels
                 a => Email != null);
             ValidatePasswordCommand = new Command(ValidatePassword,
                 a => Password != null);
+            ValidatePassword2Command = new Command(ValidatePassword2,
+                a => Password2 != null);
             ValidateMobileNumberCommand = new Command(ValidateMobileNumber,
                 a => MobileNumber != null);
         }
