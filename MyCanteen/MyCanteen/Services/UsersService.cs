@@ -162,7 +162,7 @@ namespace MyCanteen.Services
                     var content = "";
                     HttpContent contentPost = new StringContent(
                         content, Encoding.UTF8, "application/json");
-                    var response = await httpClient.PostAsync("getusers", contentPost);
+                    var response = await httpClient.GetAsync("getusers");
                     if (!response.IsSuccessStatusCode)
                     {
                         throw new HttpRequestException();
