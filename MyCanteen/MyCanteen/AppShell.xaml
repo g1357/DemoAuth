@@ -127,6 +127,7 @@
     <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate views:LoginPage}" />
     <ShellContent Route="RegisterPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate views:RegisterPage}" />
     <ShellContent Route="RegConfirmationPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate views:RegConfirmationPage}" />
+    <ShellContent Route="AllUsers" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate views:AllUsersPage}" />
 
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.

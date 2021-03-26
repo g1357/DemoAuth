@@ -1,4 +1,5 @@
-﻿using MyCanteen.Models;
+﻿using MyCanteen.Helpers;
+using MyCanteen.Models;
 using MyCanteen.Services;
 using MyCanteen.Views;
 using System;
@@ -98,9 +99,10 @@ namespace MyCanteen.ViewModels
                 // Go to Welcome page
                 await page.DisplayAlert("Enter", $"Welcome to MyCanteen Service!", "Ok");
                 // Сохраняем данные пользователя в приложении (кроме пароля)
-
+                Settings.CurrentUser = user;
                 // Переходим к начальной странице
-                await Shell.Current.GoToAsync("//CurrentMenu");
+                //await Shell.Current.GoToAsync("//CurrentMenu");
+                await Shell.Current.GoToAsync("//AllUsers");
             }
             else
             {
