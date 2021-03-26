@@ -97,6 +97,10 @@ namespace MyCanteen.ViewModels
             {
                 // Go to Welcome page
                 await page.DisplayAlert("Enter", $"Welcome to MyCanteen Service!", "Ok");
+                // Сохраняем данные пользователя в приложении (кроме пароля)
+
+                // Переходим к начальной странице
+                await Shell.Current.GoToAsync("//CurrentMenu");
             }
             else
             {

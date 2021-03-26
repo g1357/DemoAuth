@@ -88,7 +88,8 @@
     -->
 
     <FlyoutItem Title="Текущее меню" Icon="choices.png">
-        <ShellContent Title="Текущее меню" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:CurrenMenuPage}" />
+        <ShellContent Title="Текущее меню" Icon="tab_feed.png" Route="CurrentMenu"
+                      ContentTemplate="{DataTemplate views:CurrenMenuPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Мои заказы" Icon="shopping_bag.png">
         <ShellContent Title="Мои заказы" Icon="tab_feed.png" ContentTemplate="{DataTemplate views:MyOrdersPage}" />

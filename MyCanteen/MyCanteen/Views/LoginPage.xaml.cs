@@ -13,12 +13,13 @@ namespace MyCanteen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        LoginViewModel vm;
         public LoginPage()
         {
             InitializeComponent();
 
             var usersService = DependencyService.Get<IUsersService>();
-            var vm = new LoginViewModel(usersService, this);
+            vm = new LoginViewModel(usersService, this);
             BindingContext = vm;
         }
     }
