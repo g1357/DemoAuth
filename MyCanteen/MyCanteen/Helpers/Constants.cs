@@ -32,6 +32,7 @@ namespace MyCanteen.Helpers
                     break;
                 case Device.Android:
                     address = "http://10.0.2.2:5000";
+                    //address = "https://10.0.2.2:5001";
                     break;
                 default:
                     address = "http://localhost:5000";
