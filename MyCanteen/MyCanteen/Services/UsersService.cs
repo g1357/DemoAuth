@@ -3,6 +3,7 @@ using MyCanteen.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -153,6 +154,8 @@ namespace MyCanteen.Services
         /// <returns>Список информации о пользователях</returns>
         public async Task<IEnumerable<UserModel>> GetAllUsers()
         {
+            IEnumerable<UserModel> users;
+            
             using (HttpClient httpClient = new HttpClient())
             {
                 try
@@ -162,6 +165,9 @@ namespace MyCanteen.Services
                     var content = "";
                     HttpContent contentPost = new StringContent(
                         content, Encoding.UTF8, "application/json");
+                    httpClient.DefaultRequestHeaders.Accept.Add(
+                        new MediaTypeWithQualityHeaderValue("application/json"));
+                    httpClient.DefaultRequestHeaders.Add("Token", Settings.CurrentUser.Token);
                     var response = await httpClient.GetAsync("getusers");
                     if (!response.IsSuccessStatusCode)
                     {
@@ -170,14 +176,17 @@ namespace MyCanteen.Services
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        return System.Text.Json.JsonSerializer.Deserialize<IEnumerable<UserModel>>(result);
+                        var users2 = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<UserModel>>(result);
+                        users = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(result);
                     }
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    Debug.WriteLine(ex.ToString());
+                    users = null;
                 }
             }
+            return users;
         }
 
     }

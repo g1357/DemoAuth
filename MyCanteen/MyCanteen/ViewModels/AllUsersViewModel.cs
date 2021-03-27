@@ -23,7 +23,7 @@ namespace MyCanteen.ViewModels
             this.page = page;
 
             Items = new ObservableCollection<UserModel>();
-            ExecuteLoadItemsCommand().Wait();
+            ExecuteLoadItemsCommand();//.Wait();
 
         }
 
@@ -35,7 +35,7 @@ namespace MyCanteen.ViewModels
             {
 
                 Items.Clear();
-                var items = (ObservableCollection<UserModel>)await usersService.GetAllUsers();
+                var items = await usersService.GetAllUsers();
                 //Items = new ObservableCollection<Order>(Items);
                 foreach (var item in items)
                 {
