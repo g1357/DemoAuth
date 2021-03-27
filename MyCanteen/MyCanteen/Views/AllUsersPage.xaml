@@ -4,16 +4,24 @@
              x:Class="MyCanteen.Views.AllUsersPage">
     <StackLayout>
         <Label Text="Список всех пользователей сервиса" />
-        <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
+        <ListView x:Name="MyListView" ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped" HasUnevenRows="True" 
             CachingStrategy="RecycleElement">
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
+            <!--Built in Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!-- <TextCell Text="{Binding .}" /> -->
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Text="{Binding LastName}" Style="{DynamicResource ListItemTextStyle}" />
+                                <Label Text="{Binding FirstName}" Style="{DynamicResource ListItemTextStyle}" />
+                            </StackLayout>
+                            <Label Text="{Binding Email}" Style="{DynamicResource ListItemDetailTextStyle}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
     
     <!--Custom View Cells-->
     <!--
