@@ -31,8 +31,9 @@ namespace MyCanteen.Helpers
                     address = "http://localhost:5000";
                     break;
                 case Device.Android:
-                    address = "http://10.0.2.2:5000";
+                    //address = "http://10.0.2.2:5000";
                     //address = "https://10.0.2.2:5001";
+                    address = "https://simplewebapi20210402212925.azurewebsites.net";
                     break;
                 default:
                     address = "http://localhost:5000";

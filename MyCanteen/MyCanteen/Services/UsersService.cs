@@ -32,6 +32,12 @@ namespace MyCanteen.Services
         {
             using (HttpClient httpClient = new HttpClient())
             {
+                //specify to use TLS 1.2 as default connection
+                System.Net.ServicePointManager.SecurityProtocol = 
+                    System.Net.SecurityProtocolType.Tls12 
+                    | System.Net.SecurityProtocolType.Tls11 
+                    | System.Net.SecurityProtocolType.Tls;
+
                 try
                 {
                     httpClient.BaseAddress = new Uri(
@@ -167,7 +173,9 @@ namespace MyCanteen.Services
                         content, Encoding.UTF8, "application/json");
                     httpClient.DefaultRequestHeaders.Accept.Add(
                         new MediaTypeWithQualityHeaderValue("application/json"));
-                    httpClient.DefaultRequestHeaders.Add("Token", Settings.CurrentUser.Token);
+                    httpClient.DefaultRequestHeaders.Add(
+                        "Authorization",
+                        $"Bearer {Settings.CurrentUser.Token}");
                     var response = await httpClient.GetAsync("getusers");
                     if (!response.IsSuccessStatusCode)
                     {
