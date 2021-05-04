@@ -1,14 +1,17 @@
 ﻿using MyCanteen.Models;
 using MyCanteen.Services.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace MyCanteen.Services
 {
     /// <summary>
-    /// Сервис сеанса
+    /// Сервис сеанса.
+    /// Использует Xamarin.Essentials для хранения данных в защищённом хранилище.
     /// </summary>
     public class SessionService
         : ISessionService   // Интерфейс сервиса сеанса
@@ -19,7 +22,20 @@ namespace MyCanteen.Services
         /// <returns>Данные о текущем пользователе или null</returns>
         public async Task<UserModel> GetUserAsync()
         {
-            return null;
+            var content = string.Empty;
+            try
+            {
+                // Получаем сериализованные данные подключёного пользователя из безопасного хранилища
+                content = await SecureStorage.GetAsync("ConnectedUser");
+            }
+            catch (Exception exp)
+            {
+
+            }
+            // Если контент не пустой,
+            // то десериализуем данные из JSON в объект данных о пользователе
+            return string.IsNullOrEmpty(content) ? null
+                : JsonConvert.DeserializeObject<UserModel>(content);
         }
 
         /// <summary>
@@ -28,7 +44,11 @@ namespace MyCanteen.Services
         /// <param name="userModel"Данные пользователя></param>
         public async Task SetUserAsync(UserModel userModel)
         {
-
+            // Сериализуем данные о пользователе в JSON
+            string content = JsonConvert.SerializeObject(userModel);
+            // Сохраняем данные о пользователе в безопасном хранилище
+            // с ключом "ConnectedUser" (подключённый пользователь)
+            await SecureStorage.SetAsync("ConnectedUser", content);
         }
 
         /// <summary>
@@ -37,7 +57,21 @@ namespace MyCanteen.Services
         /// <returns>Данные о токенах</returns>
         public async Task<TokenModel> GetTokenAsync()
         {
-            return null;
+            // Инициализируем контент пустой строкой
+            string content = string.Empty;
+            try
+            {
+                // Получаем сериализованные данные о жетоне из безопасного хранилища
+                content = await SecureStorage.GetAsync("Token");
+            }
+            catch (Exception exp)
+            {
+
+            }
+            // Если контент не пустой,
+            // то десериализуем данные из JSON в объект данных о жетоне
+            return string.IsNullOrEmpty(content) ? null
+                : JsonConvert.DeserializeObject<TokenModel>(content);
         }
 
         /// <summary>
@@ -46,7 +80,11 @@ namespace MyCanteen.Services
         /// <param name="tokenModel">Данные о токенах</param>
         public async Task SetTokenAsync(TokenModel tokenModel)
         {
-
+            // Сериализуем данные о жетоне в JSON
+            string content = JsonConvert.SerializeObject(tokenModel);
+            // Сохраняем данные о жетоне в безопасном хранилище
+            // с ключом "Token" (жетон)
+            await SecureStorage.SetAsync("Token", content);
         }
 
         /// <summary>
@@ -54,7 +92,10 @@ namespace MyCanteen.Services
         /// </summary>
         public async Task LogOutAsync()
         {
-
+            // Очищаем в безопасном хранилище значение подключённого пользователя
+            await SecureStorage.SetAsync("ConnectedUser", string.Empty);
+            // Очищаем в безопасном хранилище значение жетона
+            await SecureStorage.SetAsync("Token", string.Empty);
         }
 
         /// <summary>
@@ -66,7 +107,12 @@ namespace MyCanteen.Services
         /// <returns>Соответсвующее ключу значение, заданного типа</returns>
         public T GetValue<T>(string key) where T: class
         {
-            return default(T);
+            // Получаем персональные значения для указанного ключа
+            // со значением по умолчанию null
+            var content = Preferences.Get(key, null);
+            // Еcли контент не пустой, по выполняем десериализацию из JSON
+            return string.IsNullOrEmpty(content) ? null
+                : JsonConvert.DeserializeObject<T>(content);
         }
 
         /// <summary>
@@ -78,7 +124,11 @@ namespace MyCanteen.Services
         /// <returns>Соответсвующее ключу значение, заданного типа</returns>
         public T GetStructValue<T>(string key) where T : struct
         {
-            return default(T);
+            // Получаем персональные настройки для указанного ключа
+            // со значением по умолчанию null
+            var content = Preferences.Get(key, null);
+            // Еcли контент не пустой, по выполняем десериализацию из JSON
+            return JsonConvert.DeserializeObject<T>(content);
         }
 
         /// <summary>
@@ -89,7 +139,11 @@ namespace MyCanteen.Services
         /// <param name="value">Сохраняемон значение</param>
         public void SetValue<T>(string key, T value)
         {
-
+            // Сериализуем в JSON указанное значение
+            string content = JsonConvert.SerializeObject(value);
+            // Сохраняем сериализованные данные в персональных настройка
+            // с казанным ключок
+            Preferences.Set(key, content);
         }
     }
 }
