@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MyCanteen.Helpers
@@ -31,9 +32,15 @@ namespace MyCanteen.Helpers
                     address = "http://localhost:5000";
                     break;
                 case Device.Android:
-                    //address = "http://10.0.2.2:5000";
-                    //address = "https://10.0.2.2:5001";
-                    address = "https://simplewebapi20210402212925.azurewebsites.net";
+                    if (DeviceInfo.DeviceType == DeviceType.Virtual)
+                    {
+                        address = "http://10.0.2.2:5000";
+                        //address = "https://10.0.2.2:5001";
+                    }
+                    else
+                    {
+                        //address = "https://simplewebapi20210402212925.azurewebsites.net";
+                    }
                     break;
                 default:
                     address = "http://localhost:5000";
