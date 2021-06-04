@@ -46,7 +46,7 @@ namespace MyCanteen.ViewModels
             {
                 case "Local Demo":
                     await page.DisplayAlert(@"РЕЖИМ ДЕМО!", 
-                        @"Вы выбрали режим ЛОКАЛЛЬНОЙ демонстрации!", @"Ok");
+                        @"Вы выбрали режим ЛОКАЛЬНОЙ демонстрации!", @"Ok");
                     DependencyService.Register<ICanteenService, CanteenDemoService>();
 
                     break;
