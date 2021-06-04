@@ -12,6 +12,8 @@ namespace MyCanteen.ViewModels
     {
         private readonly SelectModePage page;
 
+        string NextPage;
+
         private string _selectedMode;
 
         public string SelectedMode
@@ -22,6 +24,7 @@ namespace MyCanteen.ViewModels
                 if (SetProperty(ref _selectedMode, value))
                 {
                     SelectMode(_selectedMode);
+                    ContinueCommand.ChangeCanExecute();
                 };
             }
         }
@@ -34,10 +37,10 @@ namespace MyCanteen.ViewModels
 
             Title = @"Выбор режима демонстрации";
 
-            ContinueCommand = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("//CurrentMenu");
-            });
+            ContinueCommand = new Command(
+                async () => await Shell.Current.GoToAsync(NextPage),
+                () => !string.IsNullOrEmpty(_selectedMode)
+             );
         }
 
         private async void SelectMode(string mode)
@@ -48,12 +51,13 @@ namespace MyCanteen.ViewModels
                     await page.DisplayAlert(@"РЕЖИМ ДЕМО!", 
                         @"Вы выбрали режим ЛОКАЛЬНОЙ демонстрации!", @"Ok");
                     DependencyService.Register<ICanteenService, CanteenDemoService>();
-
+                    NextPage = @"//CurrentMenu";
                     break;
                 case "Network Demo":
                     await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
                         @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok");
                     DependencyService.Register<ICanteenService, CanteenDemoService>();
+                    NextPage = @"//LoginPage";
                     break;
                 default: // недопустимое значение
                     break;
