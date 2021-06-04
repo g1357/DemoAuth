@@ -1,5 +1,4 @@
 ﻿using MyCanteen.Models;
-using MyCanteen.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +10,9 @@ using System.Threading.Tasks;
 namespace MyCanteen.Services
 {
     /// <summary>
-    /// Демонстрационный сервис работы со столовой
+    /// Интерфейс для сетевого сервиса столовой
     /// </summary>
-    public class CanteenDemoService : ICanteenService
+    public class CanteenService
     {
         // Имя файла для сохранений заказов
         const string FileName = @"orders.json";
@@ -34,7 +33,7 @@ namespace MyCanteen.Services
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public CanteenDemoService()
+        public CanteenService()
         {
             // Создаём список типов блюд
             DishTypeList = new List<DishType>
@@ -631,7 +630,7 @@ namespace MyCanteen.Services
         public List<Dish> GetFullMenuAsync()
         {
             var dishList = new List<Dish>();
-            foreach(var dish in DishList)
+            foreach (var dish in DishList)
             {
                 //dish.Type = DishTypeList[dish.TypeId];
                 dish.Type = DishTypeList.Find(t => t.Id == dish.TypeId);

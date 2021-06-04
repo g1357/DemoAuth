@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MyCanteen.ViewModels"
+             x:DataType="viewmodels:SelectModeViewModel"
+             x:Class="MyCanteen.Views.SelectModePage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout
+            RadioButtonGroup.GroupName="Mode"
+            RadioButtonGroup.SelectedValue="{Binding SelectedMode, Mode=TwoWay}">
+            <Label Text="Пожалуйста выбирите режим работы приложения:"
+                   FontSize="Subtitle" VerticalOptions="Start" 
+                   HorizontalOptions="CenterAndExpand" />
+            <RadioButton Content="Режим локальной демонстрации"
+                         Value="Local Demo"/>
+            <RadioButton Content="Режим сетевой демонстрации" 
+                         Value="Network Demo"/>
+            <Button Margin="0,10,0,0" Text="Продолжить..."
+                        Command="{Binding ContinueCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

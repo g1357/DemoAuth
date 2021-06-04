@@ -1,5 +1,6 @@
 ﻿using MyCanteen.Models;
 using MyCanteen.Services;
+using MyCanteen.Services.Interfaces;
 using MyCanteen.Views;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace MyCanteen.ViewModels
         // Страница данной модели представления
         Page _page;
         // Сервис
-        CanteenDemoService _canteenService;
+        ICanteenService _canteenService;
 
         /// <summary>
         /// Коллекция пятидневок с меню-заказами на неделю.
@@ -66,7 +67,7 @@ namespace MyCanteen.ViewModels
         public CurrentMenuViewModel(Page page)
         {
             _page = page;
-            _canteenService = DependencyService.Get<CanteenDemoService>();
+            _canteenService = DependencyService.Get<ICanteenService>();
 
             _refreshOrders = false;
             MessagingCenter.Subscribe<DayMenuViewModel, DateTime>(

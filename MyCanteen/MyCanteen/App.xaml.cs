@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyCanteen.Services;
 using MyCanteen.Views;
+using MyCanteen.Services.Interfaces;
 
 namespace MyCanteen
 {
@@ -13,8 +14,9 @@ namespace MyCanteen
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
 
+            //DependencyService.Register<ICanteenService, CanteenDemoService>();
             DependencyService.Register<CanteenDemoService>();
 
             DependencyService.Register<IUsersService, UsersService>();

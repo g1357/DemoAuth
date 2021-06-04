@@ -86,6 +86,10 @@
         <ShellContent Title="Browse" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
     -->
+    <FlyoutItem Title="Выбор режима" Icon="choices.png">
+        <ShellContent Title="Выбор режима" Icon="choices.png" Route="SelectMode"
+                      ContentTemplate="{DataTemplate views:SelectModePage}" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Текущее меню" Icon="choices.png">
         <ShellContent Title="Текущее меню" Icon="tab_feed.png" Route="CurrentMenu"
