@@ -1,4 +1,5 @@
 ﻿using MyCanteen.Models;
+using MyCanteen.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ namespace MyCanteen.Services
     /// <summary>
     /// Интерфейс для сетевого сервиса столовой
     /// </summary>
-    public class CanteenService
+    public class CanteenService : ICanteenService
     {
         // Имя файла для сохранений заказов
         const string FileName = @"orders.json";

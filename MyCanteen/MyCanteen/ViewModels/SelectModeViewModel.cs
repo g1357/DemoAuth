@@ -55,8 +55,8 @@ namespace MyCanteen.ViewModels
                     break;
                 case "Network Demo":
                     await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
-                        @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok");
-                    DependencyService.Register<ICanteenService, CanteenDemoService>();
+                        @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok", @"Not");
+                    DependencyService.Register<ICanteenService, CanteenService>();
                     NextPage = @"//LoginPage";
                     break;
                 default: // недопустимое значение

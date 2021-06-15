@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MyCanteen.ViewModels
 {
@@ -17,13 +19,20 @@ namespace MyCanteen.ViewModels
         private readonly AllUsersPage page;
         public ObservableCollection<UserModel> Items { get; set; }
 
+        public ICommand CurrentMenuCommand { get; }
+
         public AllUsersViewModel(IUsersService usersService, AllUsersPage page)
         {
             this.usersService = usersService;
             this.page = page;
 
+            Title = @"Текущие пользователи";
+            CurrentMenuCommand = new Command(async () =>
+                await Shell.Current.GoToAsync("//CurrentMenu")
+            );
+
             Items = new ObservableCollection<UserModel>();
-            ExecuteLoadItemsCommand();//.Wait();
+            ExecuteLoadItemsCommand(); //.GetAwaiter();//.Wait();
 
         }
 

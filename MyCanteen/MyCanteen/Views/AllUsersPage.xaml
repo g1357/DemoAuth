@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCanteen.Views.AllUsersPage">
     <StackLayout>
-        <Label Text="Список всех пользователей сервиса" />
+        <Button Margin="0,10,0,0" Text="Перейти к текущему меню"
+                        Command="{Binding CurrentMenuCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
         <ListView x:Name="MyListView" ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped" HasUnevenRows="True" 
             CachingStrategy="RecycleElement">
