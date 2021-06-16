@@ -687,7 +687,7 @@ namespace MyCanteen.Services
         /// (на теущую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListCurrentAsync()
+        public async Task<List<MenuOrder>> GetMenuOrderListCurrentAsync()
         {
             var result = new List<MenuOrder>();
             DayMenu dayMenu;
@@ -754,7 +754,7 @@ namespace MyCanteen.Services
         /// (на следующую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListNextAsync()
+        public async Task<List<MenuOrder>> GetMenuOrderListNextAsync()
         {
             var result = new List<MenuOrder>();
             DayMenu dayMenu;

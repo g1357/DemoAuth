@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyCanteen.Services
@@ -687,8 +688,9 @@ namespace MyCanteen.Services
         /// (на теущую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListCurrentAsync()
+        public async Task<List<MenuOrder>> GetMenuOrderListCurrentAsync()
         {
+            Thread.Sleep(1000); // Для демо режима
             var result = new List<MenuOrder>();
             DayMenu dayMenu;
             Order dayOrder;
@@ -754,8 +756,9 @@ namespace MyCanteen.Services
         /// (на следующую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListNextAsync()
+        public async Task<List<MenuOrder>> GetMenuOrderListNextAsync()
         {
+            Thread.Sleep(1000); // Для демо режима
             var result = new List<MenuOrder>();
             DayMenu dayMenu;
             Order dayOrder;
