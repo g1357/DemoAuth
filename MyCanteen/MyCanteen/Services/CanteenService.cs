@@ -1,9 +1,14 @@
-﻿using MyCanteen.Models;
+﻿using MyCanteen.Helpers;
+using MyCanteen.Models;
 using MyCanteen.Services.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -616,26 +621,70 @@ namespace MyCanteen.Services
         }
 
         /// <summary>
-        /// Получение списка типов блюд
+        /// Получить список типов блюд.
         /// </summary>
-        /// <returns>Список типов блюд</returns>
-        public List<DishType> GetDishTypesAsync()
+        /// <returns>Список типов блюд.</returns>
+        public async Task<IEnumerable<DishType>> GetDishTypesAsync()
         {
-            return DishTypeList;
+            IEnumerable<DishType> dishTypes = null;
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                try
+                {
+                    httpClient.BaseAddress = new Uri(
+                        Constants.GetBaseWebApiAddress() + @"/api/catalog/");
+                    //var content = "";
+                    //HttpContent contentGet = new StringContent(
+                    //    content, Encoding.UTF8, "application/json");
+                    //httpClient.DefaultRequestHeaders.Accept.Add(
+                    //    new MediaTypeWithQualityHeaderValue("application/json"));
+                    httpClient.DefaultRequestHeaders.Add(
+                        "Authorization",
+                        $"Bearer {Settings.CurrentUser.Token}");
+                    var response = await httpClient.GetAsync("GetAllDishTypes");
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpRequestException();
+                    }
+                    else
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        var dishTypes2 = System.Text.Json.JsonSerializer.Deserialize<List<DishType>>(result);
+                        dishTypes = JsonConvert.DeserializeObject<IEnumerable<DishType>>(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
+
+            return dishTypes;
         }
 
         /// <summary>
-        /// Получение полного меню.
+        /// Получить полнео меню.
         /// </summary>
         /// <returns>Полный список блюд</returns>
-        public List<Dish> GetFullMenuAsync()
+        public async Task<IEnumerable<Dish>> GetFullMenuAsync()
         {
-            var dishList = new List<Dish>();
-            foreach (var dish in DishList)
+            List<DishType> DishTypesList;
+            List<Dish> dishList = null;
+            try
             {
-                //dish.Type = DishTypeList[dish.TypeId];
-                dish.Type = DishTypeList.Find(t => t.Id == dish.TypeId);
-                dishList.Add(dish);
+                DishTypesList = (List<DishType>)await GetDishTypesAsync();
+                dishList = new List<Dish>();
+                foreach (var dish in DishList)
+                {
+                    //dish.Type = DishTypeList[dish.TypeId];
+                    dish.Type = DishTypesList.Find(t => t.Id == dish.TypeId);
+                    dishList.Add(dish);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
             }
             return dishList;
         }
@@ -864,7 +913,7 @@ namespace MyCanteen.Services
                 Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
                 FileName);
-            var json = JsonSerializer.Serialize<List<Order>>(OrderList);
+            var json = System.Text.Json.JsonSerializer.Serialize<List<Order>>(OrderList);
             File.WriteAllText(filePath, json);
         }
 
@@ -880,7 +929,7 @@ namespace MyCanteen.Services
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);
-                var orderList = JsonSerializer.Deserialize<IList<Order>>(json);
+                var orderList = System.Text.Json.JsonSerializer.Deserialize<IList<Order>>(json);
                 if (orderList != null)
                 {
                     OrderList = new List<Order>(orderList);

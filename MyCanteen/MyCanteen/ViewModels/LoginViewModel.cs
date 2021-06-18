@@ -16,7 +16,7 @@ namespace MyCanteen.ViewModels
 
         private readonly LoginPage page;
 
-        private string login;
+        private string login = @"aaa@aaa.aaa";
 
         public string Login
         {
@@ -24,7 +24,7 @@ namespace MyCanteen.ViewModels
             set => SetProperty(ref login, value);
         }
 
-        private string password;
+        private string password = @"aaa";
 
         public string Password
         {

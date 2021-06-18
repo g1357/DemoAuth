@@ -168,11 +168,11 @@ namespace MyCanteen.Services
                 {
                     httpClient.BaseAddress = new Uri(
                         Constants.GetBaseWebApiAddress() + "/api/users/");
-                    var content = "";
-                    HttpContent contentPost = new StringContent(
-                        content, Encoding.UTF8, "application/json");
-                    httpClient.DefaultRequestHeaders.Accept.Add(
-                        new MediaTypeWithQualityHeaderValue("application/json"));
+                    //var content = "";
+                    //HttpContent contentPost = new StringContent(
+                    //    content, Encoding.UTF8, "application/json");
+                    //httpClient.DefaultRequestHeaders.Accept.Add(
+                    //    new MediaTypeWithQualityHeaderValue("application/json"));
                     httpClient.DefaultRequestHeaders.Add(
                         "Authorization",
                         $"Bearer {Settings.CurrentUser.Token}");

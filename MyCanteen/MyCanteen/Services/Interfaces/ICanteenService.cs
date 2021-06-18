@@ -8,13 +8,17 @@ namespace MyCanteen.Services.Interfaces
 {
     public interface ICanteenService
     {
-        public List<DishType> GetDishTypesAsync();
+        /// <summary>
+        /// Получить список типов блюд.
+        /// </summary>
+        /// <returns>Список типов блюд.</returns>
+        public Task<IEnumerable<DishType>> GetDishTypesAsync();
 
         /// <summary>
         /// Получение полного меню.
         /// </summary>
         /// <returns>Полный список блюд</returns>
-        public List<Dish> GetFullMenuAsync();
+        public Task<IEnumerable<Dish>> GetFullMenuAsync();
 
         /// <summary>
         /// Получение списка идентификаторов текущего меню

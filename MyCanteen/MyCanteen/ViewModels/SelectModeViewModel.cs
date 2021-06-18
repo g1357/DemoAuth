@@ -48,14 +48,14 @@ namespace MyCanteen.ViewModels
             switch (mode)
             {
                 case "Local Demo":
-                    await page.DisplayAlert(@"РЕЖИМ ДЕМО!", 
-                        @"Вы выбрали режим ЛОКАЛЬНОЙ демонстрации!", @"Ok");
+                    //await page.DisplayAlert(@"РЕЖИМ ДЕМО!", 
+                    //    @"Вы выбрали режим ЛОКАЛЬНОЙ демонстрации!", @"Ok");
                     DependencyService.Register<ICanteenService, CanteenDemoService>();
                     NextPage = @"//CurrentMenu";
                     break;
                 case "Network Demo":
-                    await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
-                        @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok", @"Not");
+                    //await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
+                    //    @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok", @"Not");
                     DependencyService.Register<ICanteenService, CanteenService>();
                     NextPage = @"//LoginPage";
                     break;

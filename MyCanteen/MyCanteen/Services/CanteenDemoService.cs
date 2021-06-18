@@ -619,7 +619,7 @@ namespace MyCanteen.Services
         /// Получение списка типов блюд
         /// </summary>
         /// <returns>Список типов блюд</returns>
-        public List<DishType> GetDishTypesAsync()
+        public async Task<IEnumerable<DishType>> GetDishTypesAsync()
         {
             return DishTypeList;
         }
@@ -628,7 +628,7 @@ namespace MyCanteen.Services
         /// Получение полного меню.
         /// </summary>
         /// <returns>Полный список блюд</returns>
-        public List<Dish> GetFullMenuAsync()
+        public async Task<IEnumerable<Dish>> GetFullMenuAsync()
         {
             var dishList = new List<Dish>();
             foreach(var dish in DishList)
