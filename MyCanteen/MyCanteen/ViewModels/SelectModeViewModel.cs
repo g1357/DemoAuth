@@ -57,6 +57,9 @@ namespace MyCanteen.ViewModels
                     //await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
                     //    @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok", @"Not");
                     DependencyService.Register<ICanteenService, CanteenService>();
+                    await page.DisplayAlert(@"ВАШ ОТВЕТ",
+                        $"Вы ответили {ans}.", @"Ok");
+
                     NextPage = @"//LoginPage";
                     break;
                 default: // недопустимое значение

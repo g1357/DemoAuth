@@ -42,14 +42,14 @@ namespace MyCanteen.Services.Interfaces
         /// (на теущую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListCurrentAsync();
+        public Task<List<MenuOrder>> GetMenuOrderListCurrentAsync();
 
         /// <summary>
         /// Получить следующий список меню и заказов
         /// (на следующую неделю)
         /// </summary>
         /// <returns>Подневный список пар менюБ заказ.</returns>
-        public List<MenuOrder> GetMenuOrderListNextAsync();
+        public Task<List<MenuOrder>> GetMenuOrderListNextAsync();
 
         #region Операции с заказами
         /// <summary>
