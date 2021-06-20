@@ -10,12 +10,15 @@
             <Label Text="Полное меню"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding ItemsGrouped}" 
+            <ListView ItemsSource="{Binding ItemsGrouped, Mode=TwoWay}" 
                       SelectedItem="{Binding ItemSelected}"
                       HasUnevenRows="True" 
                       IsGroupingEnabled="true"
                       GroupDisplayBinding="{Binding Key}"
                       GroupShortNameBinding="{Binding Key}"
+                      IsPullToRefreshEnabled="true"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                       SeparatorColor="DarkRed" >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Dish" >

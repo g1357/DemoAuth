@@ -10,6 +10,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center"
                  VerticalOptions="Center">
+            <ActivityIndicator IsRunning="{Binding IsBusy, Mode=TwoWay}" />
             <Label Text="{Binding ErrorMessage}"
                IsVisible="{Binding IsErrorVisible}"
                HorizontalOptions="Center"

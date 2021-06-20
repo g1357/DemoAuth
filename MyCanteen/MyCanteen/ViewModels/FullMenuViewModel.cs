@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 /// <summary>
@@ -30,6 +31,11 @@ namespace MyCanteen.ViewModels
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
 
         List<Dish> dList;
+
+        public ICommand RefreshCommand => new Command(async () =>
+            await GetFullMenu()
+        );
+
         public FullMenuViewModel(FullMenuPage page)
         {
             _page = page;
@@ -41,8 +47,9 @@ namespace MyCanteen.ViewModels
 
         private async Task GetFullMenu()
         {
+            IsBusy = true;
             var tList = await _canteenService.GetFullMenuAsync();
-            Debug.WriteLine($"Qty:{dList.Count()}");
+            //Debug.WriteLine($"Qty:{dList.Count()}");
             dList = new List<Dish>();
             foreach (var item in tList)
             {
