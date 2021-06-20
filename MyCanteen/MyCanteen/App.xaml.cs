@@ -16,8 +16,8 @@ namespace MyCanteen
 
             //DependencyService.Register<MockDataStore>();
 
-            //DependencyService.Register<ICanteenService, CanteenDemoService>();
-            DependencyService.Register<CanteenDemoService>();
+            DependencyService.Register<ICanteenService, CanteenService>();
+            //DependencyService.Register<CanteenDemoService>();
 
             DependencyService.Register<IUsersService, UsersService>();
             
@@ -34,8 +34,8 @@ namespace MyCanteen
         protected override void OnSleep()
         {
             // Сохранение существующих заказов в локальном файле
-            var _canteenService = DependencyService.Get<CanteenDemoService>();
-            _canteenService.SaveOrdersAsync();
+            var _canteenService = DependencyService.Get<ICanteenService>();
+            _canteenService?.SaveOrdersAsync();
         }
 
         protected override void OnResume()
@@ -45,8 +45,8 @@ namespace MyCanteen
         public async void LoadLocalData()
         {
             // Загрузка существующих заказов из локального файла
-            var _canteenService = DependencyService.Get<CanteenDemoService>();
-            await _canteenService.LoadOrdersAsync();
+            var _canteenService = DependencyService.Get<ICanteenService>();
+            await _canteenService?.LoadOrdersAsync();
         }
     }
 }

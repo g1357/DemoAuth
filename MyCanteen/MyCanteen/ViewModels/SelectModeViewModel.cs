@@ -43,7 +43,7 @@ namespace MyCanteen.ViewModels
              );
         }
 
-        private async void SelectMode(string mode)
+        private void SelectMode(string mode)
         {
             switch (mode)
             {
@@ -56,7 +56,7 @@ namespace MyCanteen.ViewModels
                 case "Network Demo":
                     //await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
                     //    @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok", @"Not");
-                    DependencyService.Register<ICanteenService, CanteenService>();
+                    //DependencyService.Register<ICanteenService, CanteenService>();
                     NextPage = @"//LoginPage";
                     break;
                 default: // недопустимое значение

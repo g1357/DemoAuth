@@ -12,6 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+/// <summary>
+/// Пространство имён моделей представлений.
+/// </summary>
 namespace MyCanteen.ViewModels
 {
     /// <summary>
@@ -33,7 +36,7 @@ namespace MyCanteen.ViewModels
             IsBusy = true;
 
             _canteenService = DependencyService.Get<ICanteenService>();
-            GetFullMenu(); //.Wait();
+            _ = GetFullMenu(); //.Wait();
         }
 
         private async Task GetFullMenu()
