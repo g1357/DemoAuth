@@ -97,7 +97,7 @@ namespace MyCanteen.Services
         public async Task<IEnumerable<Dish>> GetFullMenuAsync()
         {
             List<DishType> DishTypesList;
-            IEnumerable<Dish> dishList = null;
+            List<Dish> dishList = null;
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -121,7 +121,7 @@ namespace MyCanteen.Services
                     else
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        dishList = JsonConvert.DeserializeObject<IEnumerable<Dish>>(result);
+                        dishList = JsonConvert.DeserializeObject<List<Dish>>(result);
                     }
                 }
                 catch (Exception ex)
@@ -131,6 +131,7 @@ namespace MyCanteen.Services
                 }
             }
 
+            var DL = new List<Dish>();
             try
             {
                 DishTypesList = (List<DishType>)await GetDishTypesAsync();
@@ -139,13 +140,14 @@ namespace MyCanteen.Services
                 {
                     //dish.Type = DishTypeList[dish.TypeId];
                     dish.Type = DishTypesList.Find(t => t.Id == dish.TypeId);
+                    DL.Add(dish);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
             }
-            return dishList;
+            return DL; // dishList;
         }
 
         /// <summary>
