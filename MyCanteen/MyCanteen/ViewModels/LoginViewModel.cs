@@ -85,6 +85,7 @@ namespace MyCanteen.ViewModels
 
         private async void SignIn(object obj)
         {
+            IsBusy = true;
             //var user = await usersService.Login(new LoginModel { 
             //    Email = Login,
             //    Password = Password
@@ -94,6 +95,7 @@ namespace MyCanteen.ViewModels
                 Email = Login,
                 Password = Password
             });
+            IsBusy = false;
             if (user != null)
             {
                 // Go to Welcome page

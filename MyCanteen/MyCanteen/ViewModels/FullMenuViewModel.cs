@@ -10,8 +10,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
+/// <summary>
+/// Пространство имён моделей представлений.
+/// </summary>
 namespace MyCanteen.ViewModels
 {
     /// <summary>
@@ -26,26 +30,32 @@ namespace MyCanteen.ViewModels
 
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
 
-        List<Dish> dList;
+        public Dish ItemSelected { get; set; }
+
+        public ICommand RefreshCommand => new Command(async () =>
+            await GetFullMenu()
+        );
+
         public FullMenuViewModel(FullMenuPage page)
         {
             _page = page;
             IsBusy = true;
 
-            _canteenService = DependencyService.Get<ICanteenService>();
-            GetFullMenu(); //.Wait();
+            _ = GetFullMenu(); //.Wait();
         }
 
         private async Task GetFullMenu()
         {
-            var tList = await _canteenService.GetFullMenuAsync();
-            Debug.WriteLine($"Qty:{dList.Count()}");
-            dList = new List<Dish>();
-            foreach (var item in tList)
+            _canteenService = DependencyService.Get<ICanteenService>();
+            IsBusy = true;
+            IEnumerable<Dish> tList = await _canteenService.GetFullMenuAsync();
+            //Debug.WriteLine($"Qty:{dList.Count()}");
+            List<Dish> dList = new List<Dish>();
+            foreach (Dish item in tList)
             {
                 dList.Add(item);
             }
-            var sorted = from item in dList
+            IEnumerable<Grouping<string, Dish>> sorted = from item in dList
                          orderby item.TypeId
                          group item by item.Type.Plurals into itemGroup
                          select new Grouping<string, Dish>(itemGroup.Key, itemGroup);
