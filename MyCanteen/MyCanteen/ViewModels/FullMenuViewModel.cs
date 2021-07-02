@@ -31,7 +31,6 @@ namespace MyCanteen.ViewModels
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
 
         public Dish ItemSelected { get; set; }
-        //List<Dish> dList;
 
         public ICommand RefreshCommand => new Command(async () =>
             await GetFullMenu()
@@ -49,14 +48,14 @@ namespace MyCanteen.ViewModels
         {
             _canteenService = DependencyService.Get<ICanteenService>();
             IsBusy = true;
-            var tList = await _canteenService.GetFullMenuAsync();
+            IEnumerable<Dish> tList = await _canteenService.GetFullMenuAsync();
             //Debug.WriteLine($"Qty:{dList.Count()}");
-            //dList = new List<Dish>();
-            //foreach (var item in tList)
-            //{
-            //    dList.Add(item);
-            //}
-            var sorted = from item in tList //dList
+            List<Dish> dList = new List<Dish>();
+            foreach (Dish item in tList)
+            {
+                dList.Add(item);
+            }
+            IEnumerable<Grouping<string, Dish>> sorted = from item in dList
                          orderby item.TypeId
                          group item by item.Type.Plurals into itemGroup
                          select new Grouping<string, Dish>(itemGroup.Key, itemGroup);

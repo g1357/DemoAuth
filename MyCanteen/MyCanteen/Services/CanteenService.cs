@@ -41,10 +41,6 @@ namespace MyCanteen.Services
         /// </summary>
         public CanteenService()
         {
-            // Создаём список типов блюд
-            DishTypeList = new List<DishType>();
-
-            OrderList = new List<Order>();
         }
 
         /// <summary>
@@ -53,7 +49,7 @@ namespace MyCanteen.Services
         /// <returns>Список типов блюд.</returns>
         public async Task<IEnumerable<DishType>> GetDishTypesAsync()
         {
-            IEnumerable<DishType> dishTypes = null;
+            List<DishType> dishTypes = null;
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -78,7 +74,7 @@ namespace MyCanteen.Services
                     {
                         var result = await response.Content.ReadAsStringAsync();
                         var dishTypes2 = System.Text.Json.JsonSerializer.Deserialize<List<DishType>>(result);
-                        dishTypes = JsonConvert.DeserializeObject<IEnumerable<DishType>>(result);
+                        dishTypes = JsonConvert.DeserializeObject<List<DishType>>(result);
                     }
                 }
                 catch (Exception ex)

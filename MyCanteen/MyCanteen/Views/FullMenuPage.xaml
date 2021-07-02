@@ -2,22 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:MyCanteen.Models"
-             xmlns:helpers="clr-namespace:MyCanteen.Helpers"
+             xmlns:viewmodels="clr-namespace:MyCanteen.ViewModels"
+             xmlns:helpers="clr-namespace:MyCanteen.Helpers" 
              x:Class="MyCanteen.Views.FullMenuPage"
              x:Name="FullMenuList">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Полное меню"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
             <ListView ItemsSource="{Binding ItemsGrouped, Mode=TwoWay}" 
-                      SelectedItem="{Binding ItemSelected}"
+                      SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
                       HasUnevenRows="True" 
                       IsGroupingEnabled="true"
                       GroupDisplayBinding="{Binding Key}"
                       GroupShortNameBinding="{Binding Key}"
                       IsPullToRefreshEnabled="true"
-                      RefreshCommand="{Binding RefreshCommand}"
+                      RefreshCommand="{Binding RefreshCommand, Mode=Default}"
                       IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                       SeparatorColor="DarkRed" >
                 <ListView.ItemTemplate>
