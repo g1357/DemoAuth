@@ -30,6 +30,7 @@ namespace MyCanteen.ViewModels
 
         public ObservableCollection<Grouping<string, Dish>> ItemsGrouped { get; set; }
 
+        public Dish ItemSelected { get; set; }
         //List<Dish> dList;
 
         public ICommand RefreshCommand => new Command(async () =>
