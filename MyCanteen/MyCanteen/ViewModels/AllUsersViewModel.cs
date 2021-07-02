@@ -28,11 +28,12 @@ namespace MyCanteen.ViewModels
 
             Title = @"Текущие пользователи";
             CurrentMenuCommand = new Command(async () =>
-                await Shell.Current.GoToAsync("//CurrentMenu")
+                //await Shell.Current.GoToAsync("//CurrentMenu")
+                await Shell.Current.GoToAsync("//FullMenu")
             );
 
             Items = new ObservableCollection<UserModel>();
-            ExecuteLoadItemsCommand(); //.GetAwaiter();//.Wait();
+            _ = ExecuteLoadItemsCommand(); //.GetAwaiter().GetResult();
 
         }
 

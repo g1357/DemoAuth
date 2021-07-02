@@ -43,20 +43,27 @@ namespace MyCanteen.ViewModels
              );
         }
 
-        private async void SelectMode(string mode)
+        private void SelectMode(string mode)
         {
+            var svc = DependencyService.Get<ICanteenService>();
             switch (mode)
             {
                 case "Local Demo":
                     //await page.DisplayAlert(@"РЕЖИМ ДЕМО!", 
                     //    @"Вы выбрали режим ЛОКАЛЬНОЙ демонстрации!", @"Ok");
-                    DependencyService.Register<ICanteenService, CanteenDemoService>();
+                    if (!(svc is CanteenDemoService))
+                    {
+                        DependencyService.Register<ICanteenService, CanteenDemoService>();
+                    }
                     NextPage = @"//CurrentMenu";
                     break;
                 case "Network Demo":
                     //await page.DisplayAlert(@"РЕЖИМ ДЕМО!",
                     //    @"Вы выбрали режим СЕТЕВОЙ демонстрации!", @"Ok", @"Not");
-                    DependencyService.Register<ICanteenService, CanteenService>();
+                    if (!(svc is CanteenService))
+                    {
+                        DependencyService.Register<ICanteenService, CanteenService>();
+                    }
                     NextPage = @"//LoginPage";
                     break;
                 default: // недопустимое значение

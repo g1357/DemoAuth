@@ -10,10 +10,10 @@ using Xamarin.Forms.Xaml;
 
 namespace MyCanteen.Views
 {
-    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectModePage : ContentPage
     {
-        readonly SelectModeViewModel vm;
+        SelectModeViewModel vm;
 
         public SelectModePage()
         {
